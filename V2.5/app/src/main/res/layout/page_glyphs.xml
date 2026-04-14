@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    android:overScrollMode="never">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Glyph controls"
+            android:textColor="#F0F0F0"
+            android:textSize="28sp"
+            android:fontFamily="sans-serif-light"
+            android:layout_marginTop="8dp"/>
+
+        <!-- ── GAMMA SECTION ───────────────────────────────────────── -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gamma control"
+            android:textColor="#CCCCCC"
+            android:textSize="18sp"
+            android:layout_marginTop="24dp"/>
+
+        <!-- Gamma card with curve + description -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_gamma_card"
+            android:padding="16dp"
+            android:layout_marginTop="12dp">
+
+            <ImageView
+                android:layout_width="100dp"
+                android:layout_height="68dp"
+                android:src="@drawable/ic_gamma_curve"
+                android:scaleType="fitCenter"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Controls LED brightness response. Higher values make bright moments punchier and more dramatic. Lower values produce a softer, more linear look."
+                android:textColor="#888888"
+                android:textSize="12sp"
+                android:lineSpacingMultiplier="1.5"
+                android:layout_marginStart="14dp"/>
+        </LinearLayout>
+
+        <!-- Gamma value label -->
+        <TextView
+            android:id="@+id/tvGammaLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Light Gamma: 1.00"
+            android:textColor="#CCCCCC"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:layout_marginTop="14dp"/>
+
+        <!-- Gamma slider -->
+        <com.betterglyph.DotSeekBar
+            android:id="@+id/seekGamma"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="6dp"/>
+
+        <!-- ── PRESETS SECTION ─────────────────────────────────────── -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Visualizer presets"
+            android:textColor="#CCCCCC"
+            android:textSize="18sp"
+            android:layout_marginTop="28dp"/>
+
+        <!-- Preset carousel -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:scrollbars="none"
+            android:overScrollMode="never">
+            <LinearLayout
+                android:id="@+id/presetCarousel"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"/>
+        </HorizontalScrollView>
+
+        <!-- Preset description card -->
+        <LinearLayout
+            android:id="@+id/presetDescCard"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card"
+            android:padding="16dp"
+            android:layout_marginTop="12dp">
+            <TextView
+                android:id="@+id/tvPresetName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="np2"
+                android:textColor="#CCCCCC"
+                android:textSize="13sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:id="@+id/tvPresetDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Select a preset above to see its description."
+                android:textColor="#666666"
+                android:textSize="12sp"
+                android:lineSpacingMultiplier="1.5"
+                android:layout_marginTop="6dp"/>
+        </LinearLayout>
+
+        <!-- Device selector -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Device"
+            android:textColor="#CCCCCC"
+            android:textSize="18sp"
+            android:layout_marginTop="28dp"/>
+
+        <TextView
+            android:id="@+id/tvDeviceLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Auto-detecting…"
+            android:textColor="#4ADE80"
+            android:textSize="12sp"
+            android:layout_marginTop="6dp"/>
+
+        <Spinner
+            android:id="@+id/spinnerDevice"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="8dp"
+            android:backgroundTint="#888888"/>
+
+    </LinearLayout>
+</ScrollView>

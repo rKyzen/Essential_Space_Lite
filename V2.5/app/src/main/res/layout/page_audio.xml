@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    android:overScrollMode="never"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <!-- Title -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Better Nothing\nMusic Visualizer"
+            android:textColor="#F0F0F0"
+            android:textSize="32sp"
+            android:lineSpacingMultiplier="1.1"
+            android:fontFamily="sans-serif-light"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Why we need permission -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="This app captures your device&#8217;s internal audio to drive the Glyph LEDs in real time. It uses Android&#8217;s Media Projection API — the same system your screen recorder uses — so it can hear what&#8217;s playing without accessing the microphone."
+            android:textColor="#888888"
+            android:textSize="14sp"
+            android:lineSpacingMultiplier="1.5"
+            android:layout_marginTop="20dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="When you tap Start, Android will ask permission to capture screen audio. Nothing you see on screen is recorded — only the audio output is analysed, frame by frame."
+            android:textColor="#888888"
+            android:textSize="14sp"
+            android:lineSpacingMultiplier="1.5"
+            android:layout_marginTop="12dp"/>
+
+        <!-- Latency section — only shown when running -->
+        <LinearLayout
+            android:id="@+id/latencySection"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="28dp"
+            android:visibility="gone">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Latency adjust"
+                    android:textColor="#888888"
+                    android:textSize="13sp"/>
+
+                <!-- Marker pills -->
+                <TextView android:id="@+id/tvMarker0"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="10ms" android:textColor="#AAAAAA" android:textSize="11sp"
+                    android:paddingStart="8dp" android:paddingEnd="8dp"
+                    android:paddingTop="3dp" android:paddingBottom="3dp"
+                    android:background="@drawable/bg_marker" android:layout_marginStart="6dp"/>
+                <TextView android:id="@+id/tvMarker1"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="154ms" android:textColor="#AAAAAA" android:textSize="11sp"
+                    android:paddingStart="8dp" android:paddingEnd="8dp"
+                    android:paddingTop="3dp" android:paddingBottom="3dp"
+                    android:background="@drawable/bg_marker" android:layout_marginStart="6dp"/>
+                <TextView android:id="@+id/tvMarker2"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="300ms" android:textColor="#AAAAAA" android:textSize="11sp"
+                    android:paddingStart="8dp" android:paddingEnd="8dp"
+                    android:paddingTop="3dp" android:paddingBottom="3dp"
+                    android:background="@drawable/bg_marker" android:layout_marginStart="6dp"/>
+            </LinearLayout>
+
+            <com.betterglyph.DotSeekBar
+                android:id="@+id/seekLatency"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="If the glyphs feel out of sync with the beat, nudge this left or right until they lock in."
+                android:textColor="#555555"
+                android:textSize="12sp"
+                android:lineSpacingMultiplier="1.4"
+                android:layout_marginTop="8dp"/>
+        </LinearLayout>
+
+        <!-- Spacer pushes button down -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:minHeight="40dp"/>
+
+        <!-- Status indicator -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="20dp">
+            <View
+                android:id="@+id/statusDot"
+                android:layout_width="7dp"
+                android:layout_height="7dp"
+                android:background="@drawable/dot_inactive"
+                android:layout_marginEnd="8dp"/>
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Not running"
+                android:textColor="#555555"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <!-- Start / Stop button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnToggle"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:text="Start  ▶"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:letterSpacing="0.02"
+            app:backgroundTint="#4ADE80"
+            app:cornerRadius="29dp"/>
+
+    </LinearLayout>
+</ScrollView>

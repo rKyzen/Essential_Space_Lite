@@ -1,0 +1,114 @@
+[
+    {
+        "merged": "com.betterglyph.app-debug-4:/drawable_bg_gamma_card.xml.flat",
+        "source": "com.betterglyph.app-main-6:/drawable/bg_gamma_card.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/drawable_tab_selected_bg.xml.flat",
+        "source": "com.betterglyph.app-main-6:/drawable/tab_selected_bg.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/anim_slide_out_left.xml.flat",
+        "source": "com.betterglyph.app-main-6:/anim/slide_out_left.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/drawable_slider_thumb.xml.flat",
+        "source": "com.betterglyph.app-main-6:/drawable/slider_thumb.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.betterglyph.app-main-6:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/drawable_dot_active.xml.flat",
+        "source": "com.betterglyph.app-main-6:/drawable/dot_active.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/drawable_ic_gamma_curve.xml.flat",
+        "source": "com.betterglyph.app-main-6:/drawable/ic_gamma_curve.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/drawable_slider_track_bg.xml.flat",
+        "source": "com.betterglyph.app-main-6:/drawable/slider_track_bg.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/drawable_shelf_bg.xml.flat",
+        "source": "com.betterglyph.app-main-6:/drawable/shelf_bg.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/drawable_bg_nav.xml.flat",
+        "source": "com.betterglyph.app-main-6:/drawable/bg_nav.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/drawable_bg_marker.xml.flat",
+        "source": "com.betterglyph.app-main-6:/drawable/bg_marker.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/drawable_dot_inactive.xml.flat",
+        "source": "com.betterglyph.app-main-6:/drawable/dot_inactive.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/drawable_bg_card.xml.flat",
+        "source": "com.betterglyph.app-main-6:/drawable/bg_card.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/anim_slide_in_left.xml.flat",
+        "source": "com.betterglyph.app-main-6:/anim/slide_in_left.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/anim_slide_in_right.xml.flat",
+        "source": "com.betterglyph.app-main-6:/anim/slide_in_right.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/drawable_ic_nav_glyphs.xml.flat",
+        "source": "com.betterglyph.app-main-6:/drawable/ic_nav_glyphs.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/drawable_ic_glyph_ring.xml.flat",
+        "source": "com.betterglyph.app-main-6:/drawable/ic_glyph_ring.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/drawable_ic_nav_audio.xml.flat",
+        "source": "com.betterglyph.app-main-6:/drawable/ic_nav_audio.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/drawable_beat_pulse_ring.xml.flat",
+        "source": "com.betterglyph.app-main-6:/drawable/beat_pulse_ring.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/layout_activity_main.xml.flat",
+        "source": "com.betterglyph.app-main-6:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/drawable_bg_preset_unselected.xml.flat",
+        "source": "com.betterglyph.app-main-6:/drawable/bg_preset_unselected.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/drawable_ic_nav_about.xml.flat",
+        "source": "com.betterglyph.app-main-6:/drawable/ic_nav_about.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/layout_page_glyphs.xml.flat",
+        "source": "com.betterglyph.app-main-6:/layout/page_glyphs.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/anim_slide_out_right.xml.flat",
+        "source": "com.betterglyph.app-main-6:/anim/slide_out_right.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/layout_page_audio.xml.flat",
+        "source": "com.betterglyph.app-main-6:/layout/page_audio.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/drawable_bg_preset_selected.xml.flat",
+        "source": "com.betterglyph.app-main-6:/drawable/bg_preset_selected.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.betterglyph.app-main-6:/mipmap-anydpi-v26/ic_launcher.xml"
+    },
+    {
+        "merged": "com.betterglyph.app-debug-4:/layout_page_about.xml.flat",
+        "source": "com.betterglyph.app-main-6:/layout/page_about.xml"
+    }
+]

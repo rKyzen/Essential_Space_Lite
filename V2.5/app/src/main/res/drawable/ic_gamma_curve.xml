@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp" android:height="80dp"
+    android:viewportWidth="120" android:viewportHeight="80">
+    <!-- Background grid lines -->
+    <path android:pathData="M0,80 L120,80" android:strokeColor="#333333" android:strokeWidth="0.5" android:fillColor="#00000000"/>
+    <path android:pathData="M0,40 L120,40" android:strokeColor="#222222" android:strokeWidth="0.5" android:fillColor="#00000000"/>
+    <path android:pathData="M0,0 L120,0" android:strokeColor="#333333" android:strokeWidth="0.5" android:fillColor="#00000000"/>
+    <path android:pathData="M0,0 L0,80" android:strokeColor="#333333" android:strokeWidth="0.5" android:fillColor="#00000000"/>
+    <path android:pathData="M60,0 L60,80" android:strokeColor="#222222" android:strokeWidth="0.5" android:fillColor="#00000000"/>
+    <path android:pathData="M120,0 L120,80" android:strokeColor="#333333" android:strokeWidth="0.5" android:fillColor="#00000000"/>
+    <!-- Linear reference line -->
+    <path android:pathData="M0,80 L120,0"
+        android:strokeColor="#333333" android:strokeWidth="1" android:fillColor="#00000000"/>
+    <!-- Gamma curve (brighter gamma > 1, scooped curve) -->
+    <path android:pathData="M0,80 C30,78 60,50 120,0"
+        android:strokeColor="#EEEEEE" android:strokeWidth="2"
+        android:strokeLineCap="round" android:fillColor="#00000000"/>
+</vector>
