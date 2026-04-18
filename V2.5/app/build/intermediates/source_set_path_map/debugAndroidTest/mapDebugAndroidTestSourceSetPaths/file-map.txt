@@ -1,4 +1,0 @@
-com.betterglyph.test.app-androidTest-0 A:\dansh\V2.5\app\build\generated\res\resValues\androidTest\debug
-com.betterglyph.test.app-mergeDebugAndroidTestResources-1 A:\dansh\V2.5\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
-com.betterglyph.test.app-mergeDebugAndroidTestResources-2 A:\dansh\V2.5\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
-com.betterglyph.test.app-debugAndroidTest-3 A:\dansh\V2.5\app\build\intermediates\merged_res\debugAndroidTest\mergeDebugAndroidTestResources
