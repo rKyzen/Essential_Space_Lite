@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="app_name">Better Nothing Music Visualizer</string>
-    <string name="nav_audio">Audio</string>
-    <string name="nav_glyphs">Glyphs</string>
-    <string name="nav_about">About</string>
-</resources>
