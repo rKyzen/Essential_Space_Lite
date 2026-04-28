@@ -1,0 +1,213 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+3    package="com.essential.spacelite"
+4    android:versionCode="21"
+5    android:versionName="2.1" >
+6
+7    <uses-sdk
+8        android:minSdkVersion="28"
+9        android:targetSdkVersion="34" />
+10
+11    <!-- Permissions -->
+12    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+12-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:6:5-71
+12-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:6:22-68
+13    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
+13-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:7:5-76
+13-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:7:22-73
+14    <uses-permission
+14-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:8:5-9:38
+15        android:name="android.permission.READ_EXTERNAL_STORAGE"
+15-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:8:22-77
+16        android:maxSdkVersion="32" />
+16-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:9:9-35
+17    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+17-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:10:5-77
+17-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:10:22-74
+18    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
+18-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:11:5-12:47
+18-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:11:22-82
+19
+20    <permission
+20-->[androidx.core:core:1.12.0] C:\Users\dansh\.gradle\caches\transforms-4\d78fa7c6b7912b2d1a5d15d07607782f\transformed\core-1.12.0\AndroidManifest.xml:22:5-24:47
+21        android:name="com.essential.spacelite.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+21-->[androidx.core:core:1.12.0] C:\Users\dansh\.gradle\caches\transforms-4\d78fa7c6b7912b2d1a5d15d07607782f\transformed\core-1.12.0\AndroidManifest.xml:23:9-81
+22        android:protectionLevel="signature" />
+22-->[androidx.core:core:1.12.0] C:\Users\dansh\.gradle\caches\transforms-4\d78fa7c6b7912b2d1a5d15d07607782f\transformed\core-1.12.0\AndroidManifest.xml:24:9-44
+23
+24    <uses-permission android:name="com.essential.spacelite.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+24-->[androidx.core:core:1.12.0] C:\Users\dansh\.gradle\caches\transforms-4\d78fa7c6b7912b2d1a5d15d07607782f\transformed\core-1.12.0\AndroidManifest.xml:26:5-97
+24-->[androidx.core:core:1.12.0] C:\Users\dansh\.gradle\caches\transforms-4\d78fa7c6b7912b2d1a5d15d07607782f\transformed\core-1.12.0\AndroidManifest.xml:26:22-94
+25
+26    <application
+26-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:14:5-65:19
+27        android:name="com.essential.spacelite.EssentialSpaceApp"
+27-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:15:9-42
+28        android:allowBackup="true"
+28-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:16:9-35
+29        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+29-->[androidx.core:core:1.12.0] C:\Users\dansh\.gradle\caches\transforms-4\d78fa7c6b7912b2d1a5d15d07607782f\transformed\core-1.12.0\AndroidManifest.xml:28:18-86
+30        android:extractNativeLibs="false"
+31        android:icon="@mipmap/ic_launcher"
+31-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:17:9-43
+32        android:label="@string/app_name"
+32-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:18:9-41
+33        android:roundIcon="@mipmap/ic_launcher_round"
+33-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:19:9-54
+34        android:supportsRtl="true"
+34-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:20:9-35
+35        android:theme="@style/Theme.EssentialSpaceLite" >
+35-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:21:9-56
+36
+37        <!-- Main Activity -->
+38        <activity
+38-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:24:9-32:20
+39            android:name="com.essential.spacelite.timeline.MainActivity"
+39-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:25:13-50
+40            android:exported="true"
+40-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:26:13-36
+41            android:windowSoftInputMode="adjustResize" >
+41-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:27:13-55
+42            <intent-filter>
+42-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:28:13-31:29
+43                <action android:name="android.intent.action.MAIN" />
+43-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:29:17-69
+43-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:29:25-66
+44
+45                <category android:name="android.intent.category.LAUNCHER" />
+45-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:30:17-77
+45-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:30:27-74
+46            </intent-filter>
+47        </activity>
+48
+49        <!-- Detail Activity -->
+50        <activity
+50-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:35:9-39:58
+51            android:name="com.essential.spacelite.timeline.DetailActivity"
+51-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:36:13-52
+52            android:exported="false"
+52-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:37:13-37
+53            android:parentActivityName="com.essential.spacelite.timeline.MainActivity"
+53-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:38:13-64
+54            android:windowSoftInputMode="adjustResize" />
+54-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:39:13-55
+55
+56        <!-- Accessibility Service -->
+57        <service
+57-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:42:9-53:19
+58            android:name="com.essential.spacelite.accessibility.VolumeAccessibilityService"
+58-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:43:13-69
+59            android:exported="true"
+59-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:44:13-36
+60            android:label="@string/accessibility_service_label"
+60-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:45:13-64
+61            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" >
+61-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:46:13-79
+62            <intent-filter>
+62-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:47:13-49:29
+63                <action android:name="android.accessibilityservice.AccessibilityService" />
+63-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:48:17-92
+63-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:48:25-89
+64            </intent-filter>
+65
+66            <meta-data
+66-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:50:13-52:72
+67                android:name="android.accessibilityservice"
+67-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:51:17-60
+68                android:resource="@xml/accessibility_service_config" />
+68-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:52:17-69
+69        </service>
+70
+71        <provider
+72            android:name="androidx.core.content.FileProvider"
+72-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:56:13-62
+73            android:authorities="com.essential.spacelite.fileprovider"
+73-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:57:13-64
+74            android:exported="false"
+74-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:58:13-37
+75            android:grantUriPermissions="true" >
+75-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:59:13-47
+76            <meta-data
+76-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:60:13-62:54
+77                android:name="android.support.FILE_PROVIDER_PATHS"
+77-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:61:17-67
+78                android:resource="@xml/file_paths" />
+78-->A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:62:17-51
+79        </provider>
+80        <provider
+80-->[androidx.emoji2:emoji2:1.2.0] C:\Users\dansh\.gradle\caches\transforms-4\3ffb397f644a87aed795176fc635d48f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:24:9-32:20
+81            android:name="androidx.startup.InitializationProvider"
+81-->[androidx.emoji2:emoji2:1.2.0] C:\Users\dansh\.gradle\caches\transforms-4\3ffb397f644a87aed795176fc635d48f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:25:13-67
+82            android:authorities="com.essential.spacelite.androidx-startup"
+82-->[androidx.emoji2:emoji2:1.2.0] C:\Users\dansh\.gradle\caches\transforms-4\3ffb397f644a87aed795176fc635d48f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:26:13-68
+83            android:exported="false" >
+83-->[androidx.emoji2:emoji2:1.2.0] C:\Users\dansh\.gradle\caches\transforms-4\3ffb397f644a87aed795176fc635d48f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:27:13-37
+84            <meta-data
+84-->[androidx.emoji2:emoji2:1.2.0] C:\Users\dansh\.gradle\caches\transforms-4\3ffb397f644a87aed795176fc635d48f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:29:13-31:52
+85                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+85-->[androidx.emoji2:emoji2:1.2.0] C:\Users\dansh\.gradle\caches\transforms-4\3ffb397f644a87aed795176fc635d48f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:30:17-75
+86                android:value="androidx.startup" />
+86-->[androidx.emoji2:emoji2:1.2.0] C:\Users\dansh\.gradle\caches\transforms-4\3ffb397f644a87aed795176fc635d48f\transformed\jetified-emoji2-1.2.0\AndroidManifest.xml:31:17-49
+87            <meta-data
+87-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\dansh\.gradle\caches\transforms-4\814a07d594864a5f757ad2226d600a36\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:29:13-31:52
+88                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+88-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\dansh\.gradle\caches\transforms-4\814a07d594864a5f757ad2226d600a36\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:30:17-78
+89                android:value="androidx.startup" />
+89-->[androidx.lifecycle:lifecycle-process:2.7.0] C:\Users\dansh\.gradle\caches\transforms-4\814a07d594864a5f757ad2226d600a36\transformed\jetified-lifecycle-process-2.7.0\AndroidManifest.xml:31:17-49
+90            <meta-data
+90-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\dansh\.gradle\caches\transforms-4\bce9a9aaa67baaf73bbfe455a098801d\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:29:13-31:52
+91                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+91-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\dansh\.gradle\caches\transforms-4\bce9a9aaa67baaf73bbfe455a098801d\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:30:17-85
+92                android:value="androidx.startup" />
+92-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\dansh\.gradle\caches\transforms-4\bce9a9aaa67baaf73bbfe455a098801d\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:31:17-49
+93        </provider>
+94
+95        <service
+95-->[androidx.room:room-runtime:2.6.1] C:\Users\dansh\.gradle\caches\transforms-4\4c7d88c0352586a76e21aafa62a837ed\transformed\room-runtime-2.6.1\AndroidManifest.xml:24:9-28:63
+96            android:name="androidx.room.MultiInstanceInvalidationService"
+96-->[androidx.room:room-runtime:2.6.1] C:\Users\dansh\.gradle\caches\transforms-4\4c7d88c0352586a76e21aafa62a837ed\transformed\room-runtime-2.6.1\AndroidManifest.xml:25:13-74
+97            android:directBootAware="true"
+97-->[androidx.room:room-runtime:2.6.1] C:\Users\dansh\.gradle\caches\transforms-4\4c7d88c0352586a76e21aafa62a837ed\transformed\room-runtime-2.6.1\AndroidManifest.xml:26:13-43
+98            android:exported="false" />
+98-->[androidx.room:room-runtime:2.6.1] C:\Users\dansh\.gradle\caches\transforms-4\4c7d88c0352586a76e21aafa62a837ed\transformed\room-runtime-2.6.1\AndroidManifest.xml:27:13-37
+99
+100        <receiver
+100-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\dansh\.gradle\caches\transforms-4\bce9a9aaa67baaf73bbfe455a098801d\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:34:9-52:20
+101            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+101-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\dansh\.gradle\caches\transforms-4\bce9a9aaa67baaf73bbfe455a098801d\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:35:13-76
+102            android:directBootAware="false"
+102-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\dansh\.gradle\caches\transforms-4\bce9a9aaa67baaf73bbfe455a098801d\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:36:13-44
+103            android:enabled="true"
+103-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\dansh\.gradle\caches\transforms-4\bce9a9aaa67baaf73bbfe455a098801d\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:37:13-35
+104            android:exported="true"
+104-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\dansh\.gradle\caches\transforms-4\bce9a9aaa67baaf73bbfe455a098801d\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:38:13-36
+105            android:permission="android.permission.DUMP" >
+105-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\dansh\.gradle\caches\transforms-4\bce9a9aaa67baaf73bbfe455a098801d\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:39:13-57
+106            <intent-filter>
+106-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\dansh\.gradle\caches\transforms-4\bce9a9aaa67baaf73bbfe455a098801d\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:40:13-42:29
+107                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+107-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\dansh\.gradle\caches\transforms-4\bce9a9aaa67baaf73bbfe455a098801d\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:17-91
+107-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\dansh\.gradle\caches\transforms-4\bce9a9aaa67baaf73bbfe455a098801d\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:41:25-88
+108            </intent-filter>
+109            <intent-filter>
+109-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\dansh\.gradle\caches\transforms-4\bce9a9aaa67baaf73bbfe455a098801d\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:43:13-45:29
+110                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+110-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\dansh\.gradle\caches\transforms-4\bce9a9aaa67baaf73bbfe455a098801d\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:17-85
+110-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\dansh\.gradle\caches\transforms-4\bce9a9aaa67baaf73bbfe455a098801d\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:44:25-82
+111            </intent-filter>
+112            <intent-filter>
+112-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\dansh\.gradle\caches\transforms-4\bce9a9aaa67baaf73bbfe455a098801d\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:46:13-48:29
+113                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+113-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\dansh\.gradle\caches\transforms-4\bce9a9aaa67baaf73bbfe455a098801d\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:17-88
+113-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\dansh\.gradle\caches\transforms-4\bce9a9aaa67baaf73bbfe455a098801d\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:47:25-85
+114            </intent-filter>
+115            <intent-filter>
+115-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\dansh\.gradle\caches\transforms-4\bce9a9aaa67baaf73bbfe455a098801d\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:49:13-51:29
+116                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+116-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\dansh\.gradle\caches\transforms-4\bce9a9aaa67baaf73bbfe455a098801d\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:17-95
+116-->[androidx.profileinstaller:profileinstaller:1.3.0] C:\Users\dansh\.gradle\caches\transforms-4\bce9a9aaa67baaf73bbfe455a098801d\transformed\jetified-profileinstaller-1.3.0\AndroidManifest.xml:50:25-92
+117            </intent-filter>
+118        </receiver>
+119    </application>
+120
+121</manifest>

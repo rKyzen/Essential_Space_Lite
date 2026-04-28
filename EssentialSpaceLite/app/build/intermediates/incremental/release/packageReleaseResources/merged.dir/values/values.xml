@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="accent_dot">#111111</color>
+    <color name="accent_green">#34C759</color>
+    <color name="accent_red">#FF3B30</color>
+    <color name="accent_white">#FFFFFF</color>
+    <color name="bg_card">#FFFFFF</color>
+    <color name="bg_elevated">#F0F0EA</color>
+    <color name="bg_primary">#F6F6F2</color>
+    <color name="bg_surface">#FFFFFF</color>
+    <color name="colorBackground">#F6F6F2</color>
+    <color name="colorError">#B3261E</color>
+    <color name="colorOnBackground">#111111</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorOnSecondary">#FFFFFF</color>
+    <color name="colorOnSurface">#111111</color>
+    <color name="colorPrimary">#111111</color>
+    <color name="colorPrimaryVariant">#202020</color>
+    <color name="colorSecondary">#202020</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="overlay_dim">#CC000000</color>
+    <color name="stroke">#D8D8CF</color>
+    <color name="stroke_subtle">#E7E7DE</color>
+    <color name="text_placeholder">#9A9A9A</color>
+    <color name="text_primary">#111111</color>
+    <color name="text_secondary">#4C4C4C</color>
+    <color name="text_tertiary">#7B7B7B</color>
+    <color name="thumbnail_placeholder">#EDEDE6</color>
+    <string name="accessibility_service_description">Detects simultaneous Volume Up + Down press to trigger an instant screenshot capture with notes. No screen content is read.</string>
+    <string name="accessibility_service_label">Essential Space Capture</string>
+    <string name="app_name">Essential Space</string>
+    <string name="copy_note">Copy note</string>
+    <string name="credits_message">Built for fast everyday capture workflows.\n\nCredits:\n- rKyzen\n- Essential Space Lite project contributors</string>
+    <string name="credits_title">Credits</string>
+    <string name="empty_state_filtered_subtitle">Try another keyword or switch filters.</string>
+    <string name="empty_state_filtered_title">No matches yet</string>
+    <string name="empty_state_subtitle">Press Vol Up + Down together\nto capture your first moment</string>
+    <string name="empty_state_title">Nothing captured yet</string>
+    <string name="filter_all">All</string>
+    <string name="filter_notes">Notes</string>
+    <string name="filter_today">Today</string>
+    <string name="filter_voice">Voice</string>
+    <string name="privacy_note_message">Essential Space Lite does not send any photos, videos, voice notes, or app data anywhere while it is running. Your captures stay on this device unless you explicitly share them.</string>
+    <string name="privacy_note_title">Privacy</string>
+    <string name="search_hint">Search notes</string>
+    <string name="settings_credits">Credits</string>
+    <string name="settings_how_to_use">How to use Essential Space</string>
+    <string name="settings_open_accessibility">Open Accessibility Settings</string>
+    <string name="settings_privacy">Privacy</string>
+    <string name="settings_theme">Theme</string>
+    <string name="settings_title">Settings</string>
+    <string name="settings_version">Version</string>
+    <string name="share_capture">Share</string>
+    <string name="tap_to_enable">Tap to enable Accessibility Service</string>
+    <style name="AlertDialogEssential" parent="ThemeOverlay.MaterialComponents.MaterialAlertDialog">
+        <item name="android:colorBackground">@color/bg_elevated</item>
+        <item name="colorPrimary">?attr/colorPrimary</item>
+        <item name="android:textColorPrimary">@color/text_primary</item>
+        <item name="android:textColorSecondary">@color/text_secondary</item>
+    </style>
+    <style name="OverlayAnimation">
+        <item name="android:activityOpenEnterAnimation">@anim/slide_up_enter</item>
+        <item name="android:activityOpenExitAnimation">@android:anim/fade_out</item>
+        <item name="android:activityCloseEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:activityCloseExitAnimation">@anim/slide_down_exit</item>
+    </style>
+    <style name="TextAppearance.Essential.Body" parent="TextAppearance.MaterialComponents.Body2">
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:lineSpacingMultiplier">1.4</item>
+    </style>
+    <style name="TextAppearance.Essential.Mono" parent="TextAppearance.MaterialComponents.Caption">
+        <item name="android:textColor">@color/text_tertiary</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:fontFamily">monospace</item>
+        <item name="android:letterSpacing">0.04</item>
+    </style>
+    <style name="TextAppearance.Essential.Title" parent="TextAppearance.MaterialComponents.Headline6">
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:letterSpacing">0.08</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+    <style name="Theme.EssentialSpaceLite" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryVariant</item>
+        <item name="colorOnPrimary">@color/colorOnPrimary</item>
+        <item name="colorSecondary">@color/colorSecondary</item>
+        <item name="colorOnSecondary">@color/colorOnSecondary</item>
+        <item name="colorSurface">@color/colorSurface</item>
+        <item name="colorOnSurface">@color/colorOnSurface</item>
+        <item name="android:colorBackground">@color/bg_primary</item>
+        <item name="colorOnBackground">@color/colorOnBackground</item>
+        <item name="colorError">@color/colorError</item>
+        <item name="android:statusBarColor">@color/bg_primary</item>
+        <item name="android:navigationBarColor">@color/bg_primary</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+    <style name="Theme.EssentialSpaceLite.MaterialYou" parent="Theme.EssentialSpaceLite">
+        <item name="android:statusBarColor">?attr/colorSurface</item>
+        <item name="android:navigationBarColor">?attr/colorSurface</item>
+    </style>
+    <style name="Theme.EssentialSpaceLite.Nothing" parent="Theme.EssentialSpaceLite"/>
+    <style name="Theme.EssentialSpaceLite.Overlay" parent="Theme.EssentialSpaceLite">
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowAnimationStyle">@style/OverlayAnimation</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+    <style name="Theme.EssentialSpaceLite.Translucent" parent="Theme.EssentialSpaceLite">
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+</resources>

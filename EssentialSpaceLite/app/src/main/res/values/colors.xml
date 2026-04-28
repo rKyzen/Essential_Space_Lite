@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="bg_primary">#F6F6F2</color>
+    <color name="bg_surface">#FFFFFF</color>
+    <color name="bg_elevated">#F0F0EA</color>
+    <color name="bg_card">#FFFFFF</color>
+    <color name="stroke">#D8D8CF</color>
+    <color name="stroke_subtle">#E7E7DE</color>
+
+    <color name="text_primary">#111111</color>
+    <color name="text_secondary">#4C4C4C</color>
+    <color name="text_tertiary">#7B7B7B</color>
+    <color name="text_placeholder">#9A9A9A</color>
+
+    <color name="accent_white">#FFFFFF</color>
+    <color name="accent_red">#FF3B30</color>
+    <color name="accent_green">#34C759</color>
+    <color name="accent_dot">#111111</color>
+
+    <color name="overlay_dim">#CC000000</color>
+    <color name="thumbnail_placeholder">#EDEDE6</color>
+
+    <color name="colorPrimary">#111111</color>
+    <color name="colorPrimaryVariant">#202020</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorSecondary">#202020</color>
+    <color name="colorOnSecondary">#FFFFFF</color>
+    <color name="colorSurface">#FFFFFF</color>
+    <color name="colorOnSurface">#111111</color>
+    <color name="colorBackground">#F6F6F2</color>
+    <color name="colorOnBackground">#111111</color>
+    <color name="colorError">#B3261E</color>
+</resources>
