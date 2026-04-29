@@ -35,6 +35,7 @@ object CaptureOrchestrator {
         val token = ++captureToken
         hasDeliveredCapture = false
         fallbackStarted = false
+        overlay?.beginCapture(token)
 
         currentObserver?.stop()
         currentObserver = null
@@ -50,15 +51,6 @@ object CaptureOrchestrator {
         }.also {
             mainHandler.postDelayed(it, 12_000L)
         }
-
-        mainHandler.postDelayed({
-            val ov = overlay
-            if (ov != null) {
-                ov.show(token)
-            } else {
-                mainHandler.postDelayed({ overlay?.show(token) }, 300)
-            }
-        }, 600)
 
         requestDirectScreenshot(service, token)
         fallbackStart = Runnable {
@@ -126,12 +118,18 @@ object CaptureOrchestrator {
             bitmap.recycle()
             return
         }
-        overlay?.onScreenshotBitmap(token, bitmap)
+        mainHandler.post {
+            overlay?.show(token)
+            overlay?.onScreenshotBitmap(token, bitmap)
+        }
     }
 
     private fun deliverUri(token: Long, uri: android.net.Uri) {
         if (!tryResolveCapture(token)) return
-        mainHandler.post { overlay?.onScreenshotDetected(token, uri) }
+        mainHandler.post {
+            overlay?.show(token)
+            overlay?.onScreenshotDetected(token, uri)
+        }
     }
 
     private fun tryResolveCapture(token: Long): Boolean {

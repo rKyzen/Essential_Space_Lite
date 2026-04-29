@@ -44,6 +44,8 @@ public final class CaptureEntryDao_Impl implements CaptureEntryDao {
 
   private final SharedSQLiteStatement __preparedStmtOfDeleteById;
 
+  private final SharedSQLiteStatement __preparedStmtOfDeleteAll;
+
   public CaptureEntryDao_Impl(@NonNull final RoomDatabase __db) {
     this.__db = __db;
     this.__insertionAdapterOfCaptureEntry = new EntityInsertionAdapter<CaptureEntry>(__db) {
@@ -148,6 +150,14 @@ public final class CaptureEntryDao_Impl implements CaptureEntryDao {
         return _query;
       }
     };
+    this.__preparedStmtOfDeleteAll = new SharedSQLiteStatement(__db) {
+      @Override
+      @NonNull
+      public String createQuery() {
+        final String _query = "DELETE FROM capture_entries";
+        return _query;
+      }
+    };
   }
 
   @Override
@@ -230,6 +240,29 @@ public final class CaptureEntryDao_Impl implements CaptureEntryDao {
   }
 
   @Override
+  public Object deleteAll(final Continuation<? super Unit> $completion) {
+    return CoroutinesRoom.execute(__db, true, new Callable<Unit>() {
+      @Override
+      @NonNull
+      public Unit call() throws Exception {
+        final SupportSQLiteStatement _stmt = __preparedStmtOfDeleteAll.acquire();
+        try {
+          __db.beginTransaction();
+          try {
+            _stmt.executeUpdateDelete();
+            __db.setTransactionSuccessful();
+            return Unit.INSTANCE;
+          } finally {
+            __db.endTransaction();
+          }
+        } finally {
+          __preparedStmtOfDeleteAll.release(_stmt);
+        }
+      }
+    }, $completion);
+  }
+
+  @Override
   public Flow<List<CaptureEntry>> getAllEntries() {
     final String _sql = "SELECT * FROM capture_entries ORDER BY timestamp DESC";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
@@ -300,6 +333,76 @@ public final class CaptureEntryDao_Impl implements CaptureEntryDao {
         _statement.release();
       }
     });
+  }
+
+  @Override
+  public Object getAllEntriesSnapshot(final Continuation<? super List<CaptureEntry>> $completion) {
+    final String _sql = "SELECT * FROM capture_entries ORDER BY timestamp DESC";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    final CancellationSignal _cancellationSignal = DBUtil.createCancellationSignal();
+    return CoroutinesRoom.execute(__db, false, _cancellationSignal, new Callable<List<CaptureEntry>>() {
+      @Override
+      @NonNull
+      public List<CaptureEntry> call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+          final int _cursorIndexOfScreenshotPath = CursorUtil.getColumnIndexOrThrow(_cursor, "screenshot_path");
+          final int _cursorIndexOfThumbnailPath = CursorUtil.getColumnIndexOrThrow(_cursor, "thumbnail_path");
+          final int _cursorIndexOfTextNote = CursorUtil.getColumnIndexOrThrow(_cursor, "text_note");
+          final int _cursorIndexOfVoiceNotePath = CursorUtil.getColumnIndexOrThrow(_cursor, "voice_note_path");
+          final int _cursorIndexOfVoiceNoteDurationMs = CursorUtil.getColumnIndexOrThrow(_cursor, "voice_note_duration_ms");
+          final int _cursorIndexOfTimestamp = CursorUtil.getColumnIndexOrThrow(_cursor, "timestamp");
+          final int _cursorIndexOfAppName = CursorUtil.getColumnIndexOrThrow(_cursor, "app_name");
+          final List<CaptureEntry> _result = new ArrayList<CaptureEntry>(_cursor.getCount());
+          while (_cursor.moveToNext()) {
+            final CaptureEntry _item;
+            final long _tmpId;
+            _tmpId = _cursor.getLong(_cursorIndexOfId);
+            final String _tmpScreenshotPath;
+            if (_cursor.isNull(_cursorIndexOfScreenshotPath)) {
+              _tmpScreenshotPath = null;
+            } else {
+              _tmpScreenshotPath = _cursor.getString(_cursorIndexOfScreenshotPath);
+            }
+            final String _tmpThumbnailPath;
+            if (_cursor.isNull(_cursorIndexOfThumbnailPath)) {
+              _tmpThumbnailPath = null;
+            } else {
+              _tmpThumbnailPath = _cursor.getString(_cursorIndexOfThumbnailPath);
+            }
+            final String _tmpTextNote;
+            if (_cursor.isNull(_cursorIndexOfTextNote)) {
+              _tmpTextNote = null;
+            } else {
+              _tmpTextNote = _cursor.getString(_cursorIndexOfTextNote);
+            }
+            final String _tmpVoiceNotePath;
+            if (_cursor.isNull(_cursorIndexOfVoiceNotePath)) {
+              _tmpVoiceNotePath = null;
+            } else {
+              _tmpVoiceNotePath = _cursor.getString(_cursorIndexOfVoiceNotePath);
+            }
+            final long _tmpVoiceNoteDurationMs;
+            _tmpVoiceNoteDurationMs = _cursor.getLong(_cursorIndexOfVoiceNoteDurationMs);
+            final long _tmpTimestamp;
+            _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
+            final String _tmpAppName;
+            if (_cursor.isNull(_cursorIndexOfAppName)) {
+              _tmpAppName = null;
+            } else {
+              _tmpAppName = _cursor.getString(_cursorIndexOfAppName);
+            }
+            _item = new CaptureEntry(_tmpId,_tmpScreenshotPath,_tmpThumbnailPath,_tmpTextNote,_tmpVoiceNotePath,_tmpVoiceNoteDurationMs,_tmpTimestamp,_tmpAppName);
+            _result.add(_item);
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+          _statement.release();
+        }
+      }
+    }, $completion);
   }
 
   @Override

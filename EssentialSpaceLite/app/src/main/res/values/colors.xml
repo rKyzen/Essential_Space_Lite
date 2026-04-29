@@ -1,33 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="bg_primary">#F6F6F2</color>
-    <color name="bg_surface">#FFFFFF</color>
-    <color name="bg_elevated">#F0F0EA</color>
-    <color name="bg_card">#FFFFFF</color>
-    <color name="stroke">#D8D8CF</color>
-    <color name="stroke_subtle">#E7E7DE</color>
+    <color name="bg_primary">#050505</color>
+    <color name="bg_surface">#121212</color>
+    <color name="bg_elevated">#171717</color>
+    <color name="bg_card">#1C1C1C</color>
+    <color name="stroke">#26FFFFFF</color>
+    <color name="stroke_subtle">#14FFFFFF</color>
+    <color name="glass_surface">#18FFFFFF</color>
+    <color name="glass_surface_strong">#22FFFFFF</color>
+    <color name="glass_dark">#D90A0A0A</color>
+    <color name="glass_dark_soft">#C8121212</color>
+    <color name="glass_stroke">#22FFFFFF</color>
 
-    <color name="text_primary">#111111</color>
-    <color name="text_secondary">#4C4C4C</color>
-    <color name="text_tertiary">#7B7B7B</color>
-    <color name="text_placeholder">#9A9A9A</color>
+    <color name="text_primary">#F7F7F7</color>
+    <color name="text_secondary">#D8D8D8</color>
+    <color name="text_tertiary">#8C8C8C</color>
+    <color name="text_placeholder">#6E6E6E</color>
 
-    <color name="accent_white">#FFFFFF</color>
+    <color name="accent_white">#F2F2F2</color>
     <color name="accent_red">#FF3B30</color>
     <color name="accent_green">#34C759</color>
-    <color name="accent_dot">#111111</color>
+    <color name="accent_dot">#F2F2F2</color>
+    <color name="accent_yellow">#FFC91A</color>
 
-    <color name="overlay_dim">#CC000000</color>
-    <color name="thumbnail_placeholder">#EDEDE6</color>
+    <color name="overlay_dim">#A6000000</color>
+    <color name="thumbnail_placeholder">#242424</color>
 
-    <color name="colorPrimary">#111111</color>
-    <color name="colorPrimaryVariant">#202020</color>
-    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorPrimary">#F1F1F1</color>
+    <color name="colorPrimaryVariant">#D9D9D9</color>
+    <color name="colorOnPrimary">#0B0B0B</color>
     <color name="colorSecondary">#202020</color>
-    <color name="colorOnSecondary">#FFFFFF</color>
-    <color name="colorSurface">#FFFFFF</color>
-    <color name="colorOnSurface">#111111</color>
-    <color name="colorBackground">#F6F6F2</color>
-    <color name="colorOnBackground">#111111</color>
-    <color name="colorError">#B3261E</color>
+    <color name="colorOnSecondary">#F1F1F1</color>
+    <color name="colorSurface">#151515</color>
+    <color name="colorOnSurface">#F7F7F7</color>
+    <color name="colorBackground">#050505</color>
+    <color name="colorOnBackground">#F7F7F7</color>
+    <color name="colorError">#FF453A</color>
 </resources>

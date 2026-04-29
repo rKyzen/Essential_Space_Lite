@@ -129,7 +129,7 @@ class DetailActivity : AppCompatActivity() {
             putExtra(Intent.EXTRA_TEXT, e.textNote.orEmpty())
             addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
         }
-        startActivity(Intent.createChooser(shareIntent, "Share capture"))
+        startActivity(Intent.createChooser(shareIntent, "Share origin"))
     }
 
     private fun copyNote() {
@@ -140,7 +140,7 @@ class DetailActivity : AppCompatActivity() {
         }
 
         val clipboard = getSystemService(ClipboardManager::class.java)
-        clipboard.setPrimaryClip(ClipData.newPlainText("Essential Space note", note))
+        clipboard.setPrimaryClip(ClipData.newPlainText("Origin Space note", note))
         Toast.makeText(this, "Note copied", Toast.LENGTH_SHORT).show()
     }
 

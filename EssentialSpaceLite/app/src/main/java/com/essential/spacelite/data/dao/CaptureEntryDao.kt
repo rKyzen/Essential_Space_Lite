@@ -11,6 +11,9 @@ interface CaptureEntryDao {
     @Query("SELECT * FROM capture_entries ORDER BY timestamp DESC")
     fun getAllEntries(): Flow<List<CaptureEntry>>
 
+    @Query("SELECT * FROM capture_entries ORDER BY timestamp DESC")
+    suspend fun getAllEntriesSnapshot(): List<CaptureEntry>
+
     @Query("SELECT * FROM capture_entries WHERE id = :id")
     suspend fun getEntryById(id: Long): CaptureEntry?
 
@@ -28,4 +31,7 @@ interface CaptureEntryDao {
 
     @Query("SELECT COUNT(*) FROM capture_entries")
     suspend fun getCount(): Int
+
+    @Query("DELETE FROM capture_entries")
+    suspend fun deleteAll()
 }

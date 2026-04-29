@@ -14,8 +14,8 @@
         <item name="colorError">@color/colorError</item>
         <item name="android:statusBarColor">@color/bg_primary</item>
         <item name="android:navigationBarColor">@color/bg_primary</item>
-        <item name="android:windowLightStatusBar">true</item>
-        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
         <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
@@ -60,7 +60,7 @@
         <item name="android:textColor">@color/text_primary</item>
         <item name="android:letterSpacing">0.08</item>
         <item name="android:textSize">13sp</item>
-        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:fontFamily">serif</item>
         <item name="android:textAllCaps">true</item>
     </style>
 

@@ -38,6 +38,12 @@
             android:parentActivityName=".timeline.MainActivity"
             android:windowSoftInputMode="adjustResize" />
 
+        <activity
+            android:name=".timeline.SettingsActivity"
+            android:exported="false"
+            android:parentActivityName=".timeline.MainActivity"
+            android:windowSoftInputMode="adjustResize" />
+
         <!-- Accessibility Service -->
         <service
             android:name=".accessibility.VolumeAccessibilityService"

@@ -90,6 +90,15 @@ class CaptureOverlayManager(private val context: Context) {
         hide(animate = false)
     }
 
+    fun beginCapture(captureToken: Long) {
+        if (isVisible) {
+            hide(animate = false)
+        }
+        activeCaptureToken = captureToken
+        pendingShowToken = NO_ACTIVE_CAPTURE
+        isScreenshotReady = false
+    }
+
     private fun buildView() {
         val themed = ContextThemeWrapper(context, R.style.Theme_EssentialSpaceLite)
         rootView = LayoutInflater.from(themed).inflate(R.layout.overlay_capture, null)
@@ -298,7 +307,12 @@ class CaptureOverlayManager(private val context: Context) {
     }
 
     fun onScreenshotFailed(captureToken: Long) {
-        if (!isCaptureStillActive(captureToken)) return
+        if (activeCaptureToken != captureToken) return
+        if (!isVisible) {
+            invalidateCaptureSession()
+            Toast.makeText(context, "Could not read the screenshot. Please try again.", Toast.LENGTH_SHORT).show()
+            return
+        }
         screenshotLoadingIndicator.visibility = View.GONE
         thumbnailPlaceholder.visibility = View.VISIBLE
         thumbnailImage.visibility = View.GONE

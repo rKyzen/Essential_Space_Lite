@@ -9,6 +9,7 @@ object PrefsManager {
     private const val KEY_ACCESSIBILITY_ENABLED = "accessibility_feature_enabled"
     private const val KEY_ONBOARDING_DONE = "onboarding_done"
     private const val KEY_THEME_OPTION = "theme_option"
+    private const val KEY_USE_NDOT = "use_ndot_headings"
 
     enum class ThemeOption(val storageValue: String) {
         MATERIAL_YOU_LIGHT("material_you_light"),
@@ -49,4 +50,10 @@ object PrefsManager {
 
     fun setThemeOption(context: Context, option: ThemeOption) =
         prefs(context).edit().putString(KEY_THEME_OPTION, option.storageValue).apply()
+
+    fun useNdotHeadings(context: Context): Boolean =
+        prefs(context).getBoolean(KEY_USE_NDOT, true)
+
+    fun setUseNdotHeadings(context: Context, enabled: Boolean) =
+        prefs(context).edit().putBoolean(KEY_USE_NDOT, enabled).apply()
 }
