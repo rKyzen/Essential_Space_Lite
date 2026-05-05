@@ -27,6 +27,9 @@ data class CaptureEntry(
     @ColumnInfo(name = "timestamp")
     val timestamp: Long = System.currentTimeMillis(),
 
+    @ColumnInfo(name = "reminder_at")
+    val reminderAt: Long? = null,
+
     @ColumnInfo(name = "app_name")
     val appName: String? = null
 )

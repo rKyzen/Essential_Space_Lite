@@ -52,7 +52,7 @@ public final class CaptureEntryDao_Impl implements CaptureEntryDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "INSERT OR REPLACE INTO `capture_entries` (`id`,`screenshot_path`,`thumbnail_path`,`text_note`,`voice_note_path`,`voice_note_duration_ms`,`timestamp`,`app_name`) VALUES (nullif(?, 0),?,?,?,?,?,?,?)";
+        return "INSERT OR REPLACE INTO `capture_entries` (`id`,`screenshot_path`,`thumbnail_path`,`text_note`,`voice_note_path`,`voice_note_duration_ms`,`timestamp`,`reminder_at`,`app_name`) VALUES (nullif(?, 0),?,?,?,?,?,?,?,?)";
       }
 
       @Override
@@ -81,10 +81,15 @@ public final class CaptureEntryDao_Impl implements CaptureEntryDao {
         }
         statement.bindLong(6, entity.getVoiceNoteDurationMs());
         statement.bindLong(7, entity.getTimestamp());
-        if (entity.getAppName() == null) {
+        if (entity.getReminderAt() == null) {
           statement.bindNull(8);
         } else {
-          statement.bindString(8, entity.getAppName());
+          statement.bindLong(8, entity.getReminderAt());
+        }
+        if (entity.getAppName() == null) {
+          statement.bindNull(9);
+        } else {
+          statement.bindString(9, entity.getAppName());
         }
       }
     };
@@ -105,7 +110,7 @@ public final class CaptureEntryDao_Impl implements CaptureEntryDao {
       @Override
       @NonNull
       protected String createQuery() {
-        return "UPDATE OR ABORT `capture_entries` SET `id` = ?,`screenshot_path` = ?,`thumbnail_path` = ?,`text_note` = ?,`voice_note_path` = ?,`voice_note_duration_ms` = ?,`timestamp` = ?,`app_name` = ? WHERE `id` = ?";
+        return "UPDATE OR ABORT `capture_entries` SET `id` = ?,`screenshot_path` = ?,`thumbnail_path` = ?,`text_note` = ?,`voice_note_path` = ?,`voice_note_duration_ms` = ?,`timestamp` = ?,`reminder_at` = ?,`app_name` = ? WHERE `id` = ?";
       }
 
       @Override
@@ -134,12 +139,17 @@ public final class CaptureEntryDao_Impl implements CaptureEntryDao {
         }
         statement.bindLong(6, entity.getVoiceNoteDurationMs());
         statement.bindLong(7, entity.getTimestamp());
-        if (entity.getAppName() == null) {
+        if (entity.getReminderAt() == null) {
           statement.bindNull(8);
         } else {
-          statement.bindString(8, entity.getAppName());
+          statement.bindLong(8, entity.getReminderAt());
         }
-        statement.bindLong(9, entity.getId());
+        if (entity.getAppName() == null) {
+          statement.bindNull(9);
+        } else {
+          statement.bindString(9, entity.getAppName());
+        }
+        statement.bindLong(10, entity.getId());
       }
     };
     this.__preparedStmtOfDeleteById = new SharedSQLiteStatement(__db) {
@@ -279,6 +289,7 @@ public final class CaptureEntryDao_Impl implements CaptureEntryDao {
           final int _cursorIndexOfVoiceNotePath = CursorUtil.getColumnIndexOrThrow(_cursor, "voice_note_path");
           final int _cursorIndexOfVoiceNoteDurationMs = CursorUtil.getColumnIndexOrThrow(_cursor, "voice_note_duration_ms");
           final int _cursorIndexOfTimestamp = CursorUtil.getColumnIndexOrThrow(_cursor, "timestamp");
+          final int _cursorIndexOfReminderAt = CursorUtil.getColumnIndexOrThrow(_cursor, "reminder_at");
           final int _cursorIndexOfAppName = CursorUtil.getColumnIndexOrThrow(_cursor, "app_name");
           final List<CaptureEntry> _result = new ArrayList<CaptureEntry>(_cursor.getCount());
           while (_cursor.moveToNext()) {
@@ -313,13 +324,19 @@ public final class CaptureEntryDao_Impl implements CaptureEntryDao {
             _tmpVoiceNoteDurationMs = _cursor.getLong(_cursorIndexOfVoiceNoteDurationMs);
             final long _tmpTimestamp;
             _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
+            final Long _tmpReminderAt;
+            if (_cursor.isNull(_cursorIndexOfReminderAt)) {
+              _tmpReminderAt = null;
+            } else {
+              _tmpReminderAt = _cursor.getLong(_cursorIndexOfReminderAt);
+            }
             final String _tmpAppName;
             if (_cursor.isNull(_cursorIndexOfAppName)) {
               _tmpAppName = null;
             } else {
               _tmpAppName = _cursor.getString(_cursorIndexOfAppName);
             }
-            _item = new CaptureEntry(_tmpId,_tmpScreenshotPath,_tmpThumbnailPath,_tmpTextNote,_tmpVoiceNotePath,_tmpVoiceNoteDurationMs,_tmpTimestamp,_tmpAppName);
+            _item = new CaptureEntry(_tmpId,_tmpScreenshotPath,_tmpThumbnailPath,_tmpTextNote,_tmpVoiceNotePath,_tmpVoiceNoteDurationMs,_tmpTimestamp,_tmpReminderAt,_tmpAppName);
             _result.add(_item);
           }
           return _result;
@@ -353,6 +370,7 @@ public final class CaptureEntryDao_Impl implements CaptureEntryDao {
           final int _cursorIndexOfVoiceNotePath = CursorUtil.getColumnIndexOrThrow(_cursor, "voice_note_path");
           final int _cursorIndexOfVoiceNoteDurationMs = CursorUtil.getColumnIndexOrThrow(_cursor, "voice_note_duration_ms");
           final int _cursorIndexOfTimestamp = CursorUtil.getColumnIndexOrThrow(_cursor, "timestamp");
+          final int _cursorIndexOfReminderAt = CursorUtil.getColumnIndexOrThrow(_cursor, "reminder_at");
           final int _cursorIndexOfAppName = CursorUtil.getColumnIndexOrThrow(_cursor, "app_name");
           final List<CaptureEntry> _result = new ArrayList<CaptureEntry>(_cursor.getCount());
           while (_cursor.moveToNext()) {
@@ -387,13 +405,19 @@ public final class CaptureEntryDao_Impl implements CaptureEntryDao {
             _tmpVoiceNoteDurationMs = _cursor.getLong(_cursorIndexOfVoiceNoteDurationMs);
             final long _tmpTimestamp;
             _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
+            final Long _tmpReminderAt;
+            if (_cursor.isNull(_cursorIndexOfReminderAt)) {
+              _tmpReminderAt = null;
+            } else {
+              _tmpReminderAt = _cursor.getLong(_cursorIndexOfReminderAt);
+            }
             final String _tmpAppName;
             if (_cursor.isNull(_cursorIndexOfAppName)) {
               _tmpAppName = null;
             } else {
               _tmpAppName = _cursor.getString(_cursorIndexOfAppName);
             }
-            _item = new CaptureEntry(_tmpId,_tmpScreenshotPath,_tmpThumbnailPath,_tmpTextNote,_tmpVoiceNotePath,_tmpVoiceNoteDurationMs,_tmpTimestamp,_tmpAppName);
+            _item = new CaptureEntry(_tmpId,_tmpScreenshotPath,_tmpThumbnailPath,_tmpTextNote,_tmpVoiceNotePath,_tmpVoiceNoteDurationMs,_tmpTimestamp,_tmpReminderAt,_tmpAppName);
             _result.add(_item);
           }
           return _result;
@@ -425,6 +449,7 @@ public final class CaptureEntryDao_Impl implements CaptureEntryDao {
           final int _cursorIndexOfVoiceNotePath = CursorUtil.getColumnIndexOrThrow(_cursor, "voice_note_path");
           final int _cursorIndexOfVoiceNoteDurationMs = CursorUtil.getColumnIndexOrThrow(_cursor, "voice_note_duration_ms");
           final int _cursorIndexOfTimestamp = CursorUtil.getColumnIndexOrThrow(_cursor, "timestamp");
+          final int _cursorIndexOfReminderAt = CursorUtil.getColumnIndexOrThrow(_cursor, "reminder_at");
           final int _cursorIndexOfAppName = CursorUtil.getColumnIndexOrThrow(_cursor, "app_name");
           final CaptureEntry _result;
           if (_cursor.moveToFirst()) {
@@ -458,13 +483,19 @@ public final class CaptureEntryDao_Impl implements CaptureEntryDao {
             _tmpVoiceNoteDurationMs = _cursor.getLong(_cursorIndexOfVoiceNoteDurationMs);
             final long _tmpTimestamp;
             _tmpTimestamp = _cursor.getLong(_cursorIndexOfTimestamp);
+            final Long _tmpReminderAt;
+            if (_cursor.isNull(_cursorIndexOfReminderAt)) {
+              _tmpReminderAt = null;
+            } else {
+              _tmpReminderAt = _cursor.getLong(_cursorIndexOfReminderAt);
+            }
             final String _tmpAppName;
             if (_cursor.isNull(_cursorIndexOfAppName)) {
               _tmpAppName = null;
             } else {
               _tmpAppName = _cursor.getString(_cursorIndexOfAppName);
             }
-            _result = new CaptureEntry(_tmpId,_tmpScreenshotPath,_tmpThumbnailPath,_tmpTextNote,_tmpVoiceNotePath,_tmpVoiceNoteDurationMs,_tmpTimestamp,_tmpAppName);
+            _result = new CaptureEntry(_tmpId,_tmpScreenshotPath,_tmpThumbnailPath,_tmpTextNote,_tmpVoiceNotePath,_tmpVoiceNoteDurationMs,_tmpTimestamp,_tmpReminderAt,_tmpAppName);
           } else {
             _result = null;
           }

@@ -4,7 +4,7 @@
             "outputFile": "com.essential.spacelite.app-mergeDebugResources-2:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\dansh\\.gradle\\caches\\transforms-4\\d94efb18cdb34d9ed7fbb82233586a21\\transformed\\appcompat-1.6.1\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "source": "C:\\Users\\dansh\\.gradle\\caches\\transforms-4\\ca0e8118e5bf9d64ad81a445a84a0974\\transformed\\appcompat-1.7.0\\res\\values-watch-v20\\values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",

@@ -7,198 +7,187 @@
     android:clickable="true"
     android:focusable="true">
 
-    <!-- Flash overlay: full-screen white flash on trigger -->
     <View
         android:id="@+id/flash_overlay"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#FFFFFF"
-        android:visibility="gone"/>
+        android:visibility="gone" />
 
-    <!-- Bottom card — Nothing OS: dark surface, thin strokes, mono -->
     <LinearLayout
         android:id="@+id/card_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:orientation="vertical"
         android:background="@drawable/bg_capture_card"
-        android:paddingTop="12dp"
-        android:paddingBottom="32dp"
-        android:paddingHorizontal="20dp"
-        android:elevation="0dp">
+        android:orientation="vertical"
+        android:paddingTop="14dp"
+        android:paddingBottom="22dp"
+        android:paddingHorizontal="18dp">
 
-        <!-- Drag handle -->
         <View
-            android:layout_width="32dp"
-            android:layout_height="2dp"
-            android:background="#3A3A3A"
+            android:layout_width="42dp"
+            android:layout_height="3dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="20dp"/>
+            android:background="@drawable/bg_handle"
+            android:alpha="0.55" />
 
-        <!-- Screenshot area + text input row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="top">
+            android:layout_marginTop="24dp"
+            android:gravity="top"
+            android:orientation="horizontal">
 
-            <!-- Thumbnail container: fixed phone-aspect ratio -->
             <FrameLayout
                 android:id="@+id/thumbnail_container"
-                android:layout_width="64dp"
-                android:layout_height="114dp">
+                android:layout_width="96dp"
+                android:layout_height="132dp"
+                android:background="@drawable/bg_thumbnail_placeholder">
 
-                <!-- Placeholder: crosshatch/grid hint -->
                 <View
                     android:id="@+id/thumbnail_placeholder"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@drawable/bg_thumbnail_placeholder"/>
+                    android:background="@drawable/bg_thumbnail_placeholder" />
 
-                <!-- Loading indicator: pulsing dot while waiting for screenshot -->
                 <TextView
                     android:id="@+id/screenshot_loading"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="···"
-                    android:textColor="#3A3A3A"
-                    android:textSize="16sp"
                     android:fontFamily="monospace"
-                    android:visibility="visible"/>
+                    android:text="..."
+                    android:textColor="@color/text_placeholder"
+                    android:textSize="16sp" />
 
-                <!-- Actual screenshot thumbnail -->
                 <ImageView
                     android:id="@+id/thumbnail_image"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:clipToOutline="true"
-                    android:outlineProvider="background"
                     android:background="@drawable/bg_thumbnail_placeholder"
-                    android:visibility="gone"/>
+                    android:scaleType="centerCrop"
+                    android:visibility="gone" />
             </FrameLayout>
 
-            <!-- Text input -->
-            <EditText
-                android:id="@+id/text_note_input"
+            <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:layout_marginStart="16dp"
-                android:background="@null"
-                android:hint="Add a note…"
-                android:textColorHint="#3C3C3C"
-                android:textColor="#F0F0F0"
-                android:textSize="14sp"
-                android:fontFamily="sans-serif-light"
-                android:letterSpacing="0.01"
-                android:lineSpacingMultiplier="1.45"
-                android:inputType="textMultiLine|textCapSentences"
-                android:maxLines="6"
-                android:gravity="top"
-                android:minHeight="80dp"
-                android:cursorVisible="true"
-                android:textCursorDrawable="@null"/>
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <EditText
+                    android:id="@+id/text_note_input"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@null"
+                    android:fontFamily="sans-serif-light"
+                    android:gravity="top"
+                    android:hint="@string/overlay_note_hint"
+                    android:inputType="textMultiLine|textCapSentences"
+                    android:lineSpacingMultiplier="1.2"
+                    android:maxLines="4"
+                    android:minHeight="68dp"
+                    android:textColor="@color/text_primary"
+                    android:textColorHint="@color/text_placeholder"
+                    android:textCursorDrawable="@null"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/overlay_caption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-light"
+                    android:lineSpacingMultiplier="1.1"
+                    android:text="@string/overlay_caption"
+                    android:textColor="@color/text_tertiary"
+                    android:textSize="11sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="22dp"
+                    android:layout_marginTop="10dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <View
+                        android:id="@+id/recording_dot"
+                        android:layout_width="6dp"
+                        android:layout_height="6dp"
+                        android:background="@drawable/bg_recording_dot"
+                        android:visibility="gone" />
+
+                    <View
+                        android:id="@+id/voice_waveform"
+                        android:layout_width="46dp"
+                        android:layout_height="2dp"
+                        android:layout_marginStart="8dp"
+                        android:background="#66FFFFFF"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/voice_timer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="monospace"
+                        android:textColor="@color/text_tertiary"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
 
-        <!-- Voice status row -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="20dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:layout_marginTop="10dp">
-
-            <!-- Recording pulse dot -->
-            <View
-                android:id="@+id/recording_dot"
-                android:layout_width="5dp"
-                android:layout_height="5dp"
-                android:background="@drawable/bg_recording_dot"
-                android:layout_marginEnd="7dp"
-                android:visibility="gone"/>
-
-            <!-- Waveform placeholder (animated via alpha) -->
-            <View
-                android:id="@+id/voice_waveform"
-                android:layout_width="40dp"
-                android:layout_height="2dp"
-                android:background="#4AFFFFFF"
-                android:visibility="gone"/>
-
-            <!-- Timer / saved duration -->
-            <TextView
-                android:id="@+id/voice_timer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textColor="#5A5A5A"
-                android:textSize="11sp"
-                android:fontFamily="monospace"
-                android:letterSpacing="0.04"
-                android:visibility="gone"/>
-        </LinearLayout>
-
-        <!-- Divider -->
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#1E1E1E"
-            android:layout_marginTop="14dp"
-            android:layout_marginBottom="14dp"/>
+            android:layout_marginTop="28dp"
+            android:background="@color/stroke" />
 
-        <!-- Action row -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical">
+            android:layout_marginTop="18dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
 
-            <!-- Discard -->
             <ImageView
                 android:id="@+id/btn_discard"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/ic_close"
-                android:tint="#4A4A4A"
-                android:background="@null"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:contentDescription="Discard"
-                android:padding="6dp"/>
+                android:src="@drawable/ic_close"
+                android:tint="@color/text_tertiary" />
 
-            <!-- Voice record -->
             <ImageView
                 android:id="@+id/btn_voice"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:src="@drawable/ic_mic"
-                android:tint="#6A6A6A"
-                android:background="@null"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="18dp"
                 android:contentDescription="Voice note"
-                android:layout_marginStart="8dp"
-                android:padding="6dp"/>
+                android:src="@drawable/ic_mic"
+                android:tint="@color/text_tertiary" />
 
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
 
-            <!-- Save -->
             <TextView
                 android:id="@+id/btn_save"
                 android:layout_width="wrap_content"
-                android:layout_height="36dp"
-                android:text="SAVE"
-                android:textColor="#0A0A0A"
-                android:textSize="11sp"
-                android:fontFamily="sans-serif-medium"
-                android:letterSpacing="0.12"
-                android:gravity="center"
+                android:layout_height="54dp"
                 android:background="@drawable/bg_save_button"
-                android:paddingHorizontal="24dp"
-                android:includeFontPadding="false"/>
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:letterSpacing="0.16"
+                android:paddingHorizontal="28dp"
+                android:text="SAVE"
+                android:textColor="@color/colorOnPrimary"
+                android:textSize="15sp" />
         </LinearLayout>
-
     </LinearLayout>
+
 </FrameLayout>

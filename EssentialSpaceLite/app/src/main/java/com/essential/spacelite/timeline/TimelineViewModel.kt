@@ -7,6 +7,7 @@ import com.essential.spacelite.data.AppDatabase
 import com.essential.spacelite.data.CaptureRepository
 import com.essential.spacelite.data.entity.CaptureEntry
 import com.essential.spacelite.utils.FileUtils
+import com.essential.spacelite.utils.ReminderScheduler
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
@@ -72,6 +73,7 @@ class TimelineViewModel(application: Application) : AndroidViewModel(application
             FileUtils.deleteFile(entry.screenshotPath)
             FileUtils.deleteFile(entry.thumbnailPath)
             FileUtils.deleteFile(entry.voiceNotePath)
+            ReminderScheduler.cancel(getApplication(), entry.id)
             repo.delete(entry)
         }
     }

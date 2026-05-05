@@ -38,6 +38,9 @@ public final class OverlayCaptureBinding implements ViewBinding {
   public final View flashOverlay;
 
   @NonNull
+  public final TextView overlayCaption;
+
+  @NonNull
   public final View recordingDot;
 
   @NonNull
@@ -63,16 +66,18 @@ public final class OverlayCaptureBinding implements ViewBinding {
 
   private OverlayCaptureBinding(@NonNull FrameLayout rootView, @NonNull ImageView btnDiscard,
       @NonNull TextView btnSave, @NonNull ImageView btnVoice, @NonNull LinearLayout cardContainer,
-      @NonNull View flashOverlay, @NonNull View recordingDot, @NonNull TextView screenshotLoading,
-      @NonNull EditText textNoteInput, @NonNull FrameLayout thumbnailContainer,
-      @NonNull ImageView thumbnailImage, @NonNull View thumbnailPlaceholder,
-      @NonNull TextView voiceTimer, @NonNull View voiceWaveform) {
+      @NonNull View flashOverlay, @NonNull TextView overlayCaption, @NonNull View recordingDot,
+      @NonNull TextView screenshotLoading, @NonNull EditText textNoteInput,
+      @NonNull FrameLayout thumbnailContainer, @NonNull ImageView thumbnailImage,
+      @NonNull View thumbnailPlaceholder, @NonNull TextView voiceTimer,
+      @NonNull View voiceWaveform) {
     this.rootView = rootView;
     this.btnDiscard = btnDiscard;
     this.btnSave = btnSave;
     this.btnVoice = btnVoice;
     this.cardContainer = cardContainer;
     this.flashOverlay = flashOverlay;
+    this.overlayCaption = overlayCaption;
     this.recordingDot = recordingDot;
     this.screenshotLoading = screenshotLoading;
     this.textNoteInput = textNoteInput;
@@ -140,6 +145,12 @@ public final class OverlayCaptureBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.overlay_caption;
+      TextView overlayCaption = ViewBindings.findChildViewById(rootView, id);
+      if (overlayCaption == null) {
+        break missingId;
+      }
+
       id = R.id.recording_dot;
       View recordingDot = ViewBindings.findChildViewById(rootView, id);
       if (recordingDot == null) {
@@ -189,8 +200,9 @@ public final class OverlayCaptureBinding implements ViewBinding {
       }
 
       return new OverlayCaptureBinding((FrameLayout) rootView, btnDiscard, btnSave, btnVoice,
-          cardContainer, flashOverlay, recordingDot, screenshotLoading, textNoteInput,
-          thumbnailContainer, thumbnailImage, thumbnailPlaceholder, voiceTimer, voiceWaveform);
+          cardContainer, flashOverlay, overlayCaption, recordingDot, screenshotLoading,
+          textNoteInput, thumbnailContainer, thumbnailImage, thumbnailPlaceholder, voiceTimer,
+          voiceWaveform);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

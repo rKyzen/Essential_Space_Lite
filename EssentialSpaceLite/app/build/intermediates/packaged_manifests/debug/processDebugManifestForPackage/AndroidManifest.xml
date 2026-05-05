@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.essential.spacelite"
-    android:versionCode="21"
-    android:versionName="2.1" >
+    android:versionCode="26"
+    android:versionName="2.2" >
 
     <uses-sdk
         android:minSdkVersion="28"
-        android:targetSdkVersion="34" />
+        android:targetSdkVersion="35" />
 
     <!-- Permissions -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
@@ -15,6 +15,7 @@
         android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
 
     <permission
@@ -35,12 +36,15 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.EssentialSpaceLite" >
+        <activity
+            android:name="com.essential.spacelite.timeline.AccessibilityDisclosureActivity"
+            android:exported="false"
+            android:theme="@style/Theme.EssentialSpaceLite" />
 
         <!-- Main Activity -->
         <activity
             android:name="com.essential.spacelite.timeline.MainActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize" >
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -52,8 +56,11 @@
         <activity
             android:name="com.essential.spacelite.timeline.DetailActivity"
             android:exported="false"
-            android:parentActivityName="com.essential.spacelite.timeline.MainActivity"
-            android:windowSoftInputMode="adjustResize" />
+            android:parentActivityName="com.essential.spacelite.timeline.MainActivity" />
+        <activity
+            android:name="com.essential.spacelite.timeline.SettingsActivity"
+            android:exported="false"
+            android:parentActivityName="com.essential.spacelite.timeline.MainActivity" />
 
         <!-- Accessibility Service -->
         <service
@@ -69,6 +76,10 @@
                 android:name="android.accessibilityservice"
                 android:resource="@xml/accessibility_service_config" />
         </service>
+
+        <receiver
+            android:name="com.essential.spacelite.reminder.ReminderReceiver"
+            android:exported="false" />
 
         <provider
             android:name="androidx.core.content.FileProvider"

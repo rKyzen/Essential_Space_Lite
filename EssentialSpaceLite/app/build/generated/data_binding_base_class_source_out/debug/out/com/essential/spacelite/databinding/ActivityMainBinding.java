@@ -6,16 +6,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
 import com.essential.spacelite.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.lang.NullPointerException;
 import java.lang.Override;
 import java.lang.String;
@@ -25,10 +24,16 @@ public final class ActivityMainBinding implements ViewBinding {
   private final FrameLayout rootView;
 
   @NonNull
-  public final TextView accessibilityBanner;
+  public final View backdropBlobBottom;
 
   @NonNull
-  public final ImageButton btnSettings;
+  public final View backdropBlobTop;
+
+  @NonNull
+  public final LinearLayout bottomNav;
+
+  @NonNull
+  public final ImageButton btnSettingsBottom;
 
   @NonNull
   public final TextView chipAll;
@@ -52,30 +57,110 @@ public final class ActivityMainBinding implements ViewBinding {
   public final TextView emptyStateTitle;
 
   @NonNull
-  public final FloatingActionButton fabCapture;
+  public final HorizontalScrollView filterScroll;
 
   @NonNull
-  public final LinearLayout header;
+  public final LinearLayout navNotes;
 
   @NonNull
-  public final RecyclerView recyclerView;
+  public final LinearLayout navSearch;
+
+  @NonNull
+  public final LinearLayout navVoice;
+
+  @NonNull
+  public final LinearLayout notesContent;
+
+  @NonNull
+  public final TextView recentLabel;
+
+  @NonNull
+  public final LinearLayout recentRows;
+
+  @NonNull
+  public final LinearLayout searchBar;
 
   @NonNull
   public final EditText searchInput;
 
   @NonNull
-  public final TextView subtitle;
+  public final LinearLayout statCaptures;
 
-  private ActivityMainBinding(@NonNull FrameLayout rootView, @NonNull TextView accessibilityBanner,
-      @NonNull ImageButton btnSettings, @NonNull TextView chipAll, @NonNull TextView chipNotes,
-      @NonNull TextView chipToday, @NonNull TextView chipVoice, @NonNull LinearLayout emptyState,
-      @NonNull TextView emptyStateSubtitle, @NonNull TextView emptyStateTitle,
-      @NonNull FloatingActionButton fabCapture, @NonNull LinearLayout header,
-      @NonNull RecyclerView recyclerView, @NonNull EditText searchInput,
-      @NonNull TextView subtitle) {
+  @NonNull
+  public final TextView statCapturesValue;
+
+  @NonNull
+  public final LinearLayout statReminders;
+
+  @NonNull
+  public final TextView statRemindersValue;
+
+  @NonNull
+  public final LinearLayout statVoice;
+
+  @NonNull
+  public final TextView statVoiceValue;
+
+  @NonNull
+  public final LinearLayout statsRow;
+
+  @NonNull
+  public final TextView subtitleText;
+
+  @NonNull
+  public final TextView titleText;
+
+  @NonNull
+  public final TextView todayLabel;
+
+  @NonNull
+  public final LinearLayout todayRows;
+
+  @NonNull
+  public final LinearLayout voiceContent;
+
+  @NonNull
+  public final TextView voiceSubtitleText;
+
+  @NonNull
+  public final TextView voiceTitleText;
+
+  @NonNull
+  public final TextView voiceTodayLabel;
+
+  @NonNull
+  public final LinearLayout voiceTodayRows;
+
+  @NonNull
+  public final TextView voiceYesterdayLabel;
+
+  @NonNull
+  public final LinearLayout voiceYesterdayRows;
+
+  private ActivityMainBinding(@NonNull FrameLayout rootView, @NonNull View backdropBlobBottom,
+      @NonNull View backdropBlobTop, @NonNull LinearLayout bottomNav,
+      @NonNull ImageButton btnSettingsBottom, @NonNull TextView chipAll,
+      @NonNull TextView chipNotes, @NonNull TextView chipToday, @NonNull TextView chipVoice,
+      @NonNull LinearLayout emptyState, @NonNull TextView emptyStateSubtitle,
+      @NonNull TextView emptyStateTitle, @NonNull HorizontalScrollView filterScroll,
+      @NonNull LinearLayout navNotes, @NonNull LinearLayout navSearch,
+      @NonNull LinearLayout navVoice, @NonNull LinearLayout notesContent,
+      @NonNull TextView recentLabel, @NonNull LinearLayout recentRows,
+      @NonNull LinearLayout searchBar, @NonNull EditText searchInput,
+      @NonNull LinearLayout statCaptures, @NonNull TextView statCapturesValue,
+      @NonNull LinearLayout statReminders, @NonNull TextView statRemindersValue,
+      @NonNull LinearLayout statVoice, @NonNull TextView statVoiceValue,
+      @NonNull LinearLayout statsRow, @NonNull TextView subtitleText, @NonNull TextView titleText,
+      @NonNull TextView todayLabel, @NonNull LinearLayout todayRows,
+      @NonNull LinearLayout voiceContent, @NonNull TextView voiceSubtitleText,
+      @NonNull TextView voiceTitleText, @NonNull TextView voiceTodayLabel,
+      @NonNull LinearLayout voiceTodayRows, @NonNull TextView voiceYesterdayLabel,
+      @NonNull LinearLayout voiceYesterdayRows) {
     this.rootView = rootView;
-    this.accessibilityBanner = accessibilityBanner;
-    this.btnSettings = btnSettings;
+    this.backdropBlobBottom = backdropBlobBottom;
+    this.backdropBlobTop = backdropBlobTop;
+    this.bottomNav = bottomNav;
+    this.btnSettingsBottom = btnSettingsBottom;
     this.chipAll = chipAll;
     this.chipNotes = chipNotes;
     this.chipToday = chipToday;
@@ -83,11 +168,33 @@ public final class ActivityMainBinding implements ViewBinding {
     this.emptyState = emptyState;
     this.emptyStateSubtitle = emptyStateSubtitle;
     this.emptyStateTitle = emptyStateTitle;
-    this.fabCapture = fabCapture;
-    this.header = header;
-    this.recyclerView = recyclerView;
+    this.filterScroll = filterScroll;
+    this.navNotes = navNotes;
+    this.navSearch = navSearch;
+    this.navVoice = navVoice;
+    this.notesContent = notesContent;
+    this.recentLabel = recentLabel;
+    this.recentRows = recentRows;
+    this.searchBar = searchBar;
     this.searchInput = searchInput;
-    this.subtitle = subtitle;
+    this.statCaptures = statCaptures;
+    this.statCapturesValue = statCapturesValue;
+    this.statReminders = statReminders;
+    this.statRemindersValue = statRemindersValue;
+    this.statVoice = statVoice;
+    this.statVoiceValue = statVoiceValue;
+    this.statsRow = statsRow;
+    this.subtitleText = subtitleText;
+    this.titleText = titleText;
+    this.todayLabel = todayLabel;
+    this.todayRows = todayRows;
+    this.voiceContent = voiceContent;
+    this.voiceSubtitleText = voiceSubtitleText;
+    this.voiceTitleText = voiceTitleText;
+    this.voiceTodayLabel = voiceTodayLabel;
+    this.voiceTodayRows = voiceTodayRows;
+    this.voiceYesterdayLabel = voiceYesterdayLabel;
+    this.voiceYesterdayRows = voiceYesterdayRows;
   }
 
   @Override
@@ -117,15 +224,27 @@ public final class ActivityMainBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.accessibility_banner;
-      TextView accessibilityBanner = ViewBindings.findChildViewById(rootView, id);
-      if (accessibilityBanner == null) {
+      id = R.id.backdrop_blob_bottom;
+      View backdropBlobBottom = ViewBindings.findChildViewById(rootView, id);
+      if (backdropBlobBottom == null) {
         break missingId;
       }
 
-      id = R.id.btn_settings;
-      ImageButton btnSettings = ViewBindings.findChildViewById(rootView, id);
-      if (btnSettings == null) {
+      id = R.id.backdrop_blob_top;
+      View backdropBlobTop = ViewBindings.findChildViewById(rootView, id);
+      if (backdropBlobTop == null) {
+        break missingId;
+      }
+
+      id = R.id.bottom_nav;
+      LinearLayout bottomNav = ViewBindings.findChildViewById(rootView, id);
+      if (bottomNav == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_settings_bottom;
+      ImageButton btnSettingsBottom = ViewBindings.findChildViewById(rootView, id);
+      if (btnSettingsBottom == null) {
         break missingId;
       }
 
@@ -171,21 +290,51 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.fab_capture;
-      FloatingActionButton fabCapture = ViewBindings.findChildViewById(rootView, id);
-      if (fabCapture == null) {
+      id = R.id.filter_scroll;
+      HorizontalScrollView filterScroll = ViewBindings.findChildViewById(rootView, id);
+      if (filterScroll == null) {
         break missingId;
       }
 
-      id = R.id.header;
-      LinearLayout header = ViewBindings.findChildViewById(rootView, id);
-      if (header == null) {
+      id = R.id.nav_notes;
+      LinearLayout navNotes = ViewBindings.findChildViewById(rootView, id);
+      if (navNotes == null) {
         break missingId;
       }
 
-      id = R.id.recycler_view;
-      RecyclerView recyclerView = ViewBindings.findChildViewById(rootView, id);
-      if (recyclerView == null) {
+      id = R.id.nav_search;
+      LinearLayout navSearch = ViewBindings.findChildViewById(rootView, id);
+      if (navSearch == null) {
+        break missingId;
+      }
+
+      id = R.id.nav_voice;
+      LinearLayout navVoice = ViewBindings.findChildViewById(rootView, id);
+      if (navVoice == null) {
+        break missingId;
+      }
+
+      id = R.id.notes_content;
+      LinearLayout notesContent = ViewBindings.findChildViewById(rootView, id);
+      if (notesContent == null) {
+        break missingId;
+      }
+
+      id = R.id.recent_label;
+      TextView recentLabel = ViewBindings.findChildViewById(rootView, id);
+      if (recentLabel == null) {
+        break missingId;
+      }
+
+      id = R.id.recent_rows;
+      LinearLayout recentRows = ViewBindings.findChildViewById(rootView, id);
+      if (recentRows == null) {
+        break missingId;
+      }
+
+      id = R.id.search_bar;
+      LinearLayout searchBar = ViewBindings.findChildViewById(rootView, id);
+      if (searchBar == null) {
         break missingId;
       }
 
@@ -195,15 +344,121 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.subtitle;
-      TextView subtitle = ViewBindings.findChildViewById(rootView, id);
-      if (subtitle == null) {
+      id = R.id.stat_captures;
+      LinearLayout statCaptures = ViewBindings.findChildViewById(rootView, id);
+      if (statCaptures == null) {
         break missingId;
       }
 
-      return new ActivityMainBinding((FrameLayout) rootView, accessibilityBanner, btnSettings,
-          chipAll, chipNotes, chipToday, chipVoice, emptyState, emptyStateSubtitle, emptyStateTitle,
-          fabCapture, header, recyclerView, searchInput, subtitle);
+      id = R.id.stat_captures_value;
+      TextView statCapturesValue = ViewBindings.findChildViewById(rootView, id);
+      if (statCapturesValue == null) {
+        break missingId;
+      }
+
+      id = R.id.stat_reminders;
+      LinearLayout statReminders = ViewBindings.findChildViewById(rootView, id);
+      if (statReminders == null) {
+        break missingId;
+      }
+
+      id = R.id.stat_reminders_value;
+      TextView statRemindersValue = ViewBindings.findChildViewById(rootView, id);
+      if (statRemindersValue == null) {
+        break missingId;
+      }
+
+      id = R.id.stat_voice;
+      LinearLayout statVoice = ViewBindings.findChildViewById(rootView, id);
+      if (statVoice == null) {
+        break missingId;
+      }
+
+      id = R.id.stat_voice_value;
+      TextView statVoiceValue = ViewBindings.findChildViewById(rootView, id);
+      if (statVoiceValue == null) {
+        break missingId;
+      }
+
+      id = R.id.stats_row;
+      LinearLayout statsRow = ViewBindings.findChildViewById(rootView, id);
+      if (statsRow == null) {
+        break missingId;
+      }
+
+      id = R.id.subtitle_text;
+      TextView subtitleText = ViewBindings.findChildViewById(rootView, id);
+      if (subtitleText == null) {
+        break missingId;
+      }
+
+      id = R.id.title_text;
+      TextView titleText = ViewBindings.findChildViewById(rootView, id);
+      if (titleText == null) {
+        break missingId;
+      }
+
+      id = R.id.today_label;
+      TextView todayLabel = ViewBindings.findChildViewById(rootView, id);
+      if (todayLabel == null) {
+        break missingId;
+      }
+
+      id = R.id.today_rows;
+      LinearLayout todayRows = ViewBindings.findChildViewById(rootView, id);
+      if (todayRows == null) {
+        break missingId;
+      }
+
+      id = R.id.voice_content;
+      LinearLayout voiceContent = ViewBindings.findChildViewById(rootView, id);
+      if (voiceContent == null) {
+        break missingId;
+      }
+
+      id = R.id.voice_subtitle_text;
+      TextView voiceSubtitleText = ViewBindings.findChildViewById(rootView, id);
+      if (voiceSubtitleText == null) {
+        break missingId;
+      }
+
+      id = R.id.voice_title_text;
+      TextView voiceTitleText = ViewBindings.findChildViewById(rootView, id);
+      if (voiceTitleText == null) {
+        break missingId;
+      }
+
+      id = R.id.voice_today_label;
+      TextView voiceTodayLabel = ViewBindings.findChildViewById(rootView, id);
+      if (voiceTodayLabel == null) {
+        break missingId;
+      }
+
+      id = R.id.voice_today_rows;
+      LinearLayout voiceTodayRows = ViewBindings.findChildViewById(rootView, id);
+      if (voiceTodayRows == null) {
+        break missingId;
+      }
+
+      id = R.id.voice_yesterday_label;
+      TextView voiceYesterdayLabel = ViewBindings.findChildViewById(rootView, id);
+      if (voiceYesterdayLabel == null) {
+        break missingId;
+      }
+
+      id = R.id.voice_yesterday_rows;
+      LinearLayout voiceYesterdayRows = ViewBindings.findChildViewById(rootView, id);
+      if (voiceYesterdayRows == null) {
+        break missingId;
+      }
+
+      return new ActivityMainBinding((FrameLayout) rootView, backdropBlobBottom, backdropBlobTop,
+          bottomNav, btnSettingsBottom, chipAll, chipNotes, chipToday, chipVoice, emptyState,
+          emptyStateSubtitle, emptyStateTitle, filterScroll, navNotes, navSearch, navVoice,
+          notesContent, recentLabel, recentRows, searchBar, searchInput, statCaptures,
+          statCapturesValue, statReminders, statRemindersValue, statVoice, statVoiceValue, statsRow,
+          subtitleText, titleText, todayLabel, todayRows, voiceContent, voiceSubtitleText,
+          voiceTitleText, voiceTodayLabel, voiceTodayRows, voiceYesterdayLabel, voiceYesterdayRows);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

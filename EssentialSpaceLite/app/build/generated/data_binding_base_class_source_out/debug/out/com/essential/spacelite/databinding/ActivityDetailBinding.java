@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -21,10 +22,19 @@ import java.lang.String;
 
 public final class ActivityDetailBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final FrameLayout rootView;
+
+  @NonNull
+  public final View backdropBlobTop;
+
+  @NonNull
+  public final Button btnAddToCalendar;
 
   @NonNull
   public final ImageButton btnBack;
+
+  @NonNull
+  public final Button btnClearReminder;
 
   @NonNull
   public final Button btnCopyNote;
@@ -36,7 +46,22 @@ public final class ActivityDetailBinding implements ViewBinding {
   public final Button btnSaveNote;
 
   @NonNull
+  public final Button btnSetReminder;
+
+  @NonNull
   public final Button btnShareCapture;
+
+  @NonNull
+  public final TextView chipNote;
+
+  @NonNull
+  public final TextView chipReminder;
+
+  @NonNull
+  public final TextView chipVoice;
+
+  @NonNull
+  public final LinearLayout detailChipRow;
 
   @NonNull
   public final EditText editTextNote;
@@ -48,7 +73,13 @@ public final class ActivityDetailBinding implements ViewBinding {
   public final LinearLayout metaGroup;
 
   @NonNull
+  public final TextView noteCount;
+
+  @NonNull
   public final LinearLayout notesSection;
+
+  @NonNull
+  public final TextView reminderValue;
 
   @NonNull
   public final ImageView screenshotFull;
@@ -60,34 +91,53 @@ public final class ActivityDetailBinding implements ViewBinding {
   public final TextView voiceDuration;
 
   @NonNull
+  public final LinearLayout voicePreviewCard;
+
+  @NonNull
   public final LinearLayout voiceSection;
 
-  private ActivityDetailBinding(@NonNull LinearLayout rootView, @NonNull ImageButton btnBack,
-      @NonNull Button btnCopyNote, @NonNull ImageButton btnPlayVoice, @NonNull Button btnSaveNote,
-      @NonNull Button btnShareCapture, @NonNull EditText editTextNote,
-      @NonNull TextView entryDateTime, @NonNull LinearLayout metaGroup,
-      @NonNull LinearLayout notesSection, @NonNull ImageView screenshotFull,
-      @NonNull LinearLayout toolbar, @NonNull TextView voiceDuration,
+  private ActivityDetailBinding(@NonNull FrameLayout rootView, @NonNull View backdropBlobTop,
+      @NonNull Button btnAddToCalendar, @NonNull ImageButton btnBack,
+      @NonNull Button btnClearReminder, @NonNull Button btnCopyNote,
+      @NonNull ImageButton btnPlayVoice, @NonNull Button btnSaveNote,
+      @NonNull Button btnSetReminder, @NonNull Button btnShareCapture, @NonNull TextView chipNote,
+      @NonNull TextView chipReminder, @NonNull TextView chipVoice,
+      @NonNull LinearLayout detailChipRow, @NonNull EditText editTextNote,
+      @NonNull TextView entryDateTime, @NonNull LinearLayout metaGroup, @NonNull TextView noteCount,
+      @NonNull LinearLayout notesSection, @NonNull TextView reminderValue,
+      @NonNull ImageView screenshotFull, @NonNull LinearLayout toolbar,
+      @NonNull TextView voiceDuration, @NonNull LinearLayout voicePreviewCard,
       @NonNull LinearLayout voiceSection) {
     this.rootView = rootView;
+    this.backdropBlobTop = backdropBlobTop;
+    this.btnAddToCalendar = btnAddToCalendar;
     this.btnBack = btnBack;
+    this.btnClearReminder = btnClearReminder;
     this.btnCopyNote = btnCopyNote;
     this.btnPlayVoice = btnPlayVoice;
     this.btnSaveNote = btnSaveNote;
+    this.btnSetReminder = btnSetReminder;
     this.btnShareCapture = btnShareCapture;
+    this.chipNote = chipNote;
+    this.chipReminder = chipReminder;
+    this.chipVoice = chipVoice;
+    this.detailChipRow = detailChipRow;
     this.editTextNote = editTextNote;
     this.entryDateTime = entryDateTime;
     this.metaGroup = metaGroup;
+    this.noteCount = noteCount;
     this.notesSection = notesSection;
+    this.reminderValue = reminderValue;
     this.screenshotFull = screenshotFull;
     this.toolbar = toolbar;
     this.voiceDuration = voiceDuration;
+    this.voicePreviewCard = voicePreviewCard;
     this.voiceSection = voiceSection;
   }
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public FrameLayout getRoot() {
     return rootView;
   }
 
@@ -112,9 +162,27 @@ public final class ActivityDetailBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.backdrop_blob_top;
+      View backdropBlobTop = ViewBindings.findChildViewById(rootView, id);
+      if (backdropBlobTop == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_add_to_calendar;
+      Button btnAddToCalendar = ViewBindings.findChildViewById(rootView, id);
+      if (btnAddToCalendar == null) {
+        break missingId;
+      }
+
       id = R.id.btn_back;
       ImageButton btnBack = ViewBindings.findChildViewById(rootView, id);
       if (btnBack == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_clear_reminder;
+      Button btnClearReminder = ViewBindings.findChildViewById(rootView, id);
+      if (btnClearReminder == null) {
         break missingId;
       }
 
@@ -136,9 +204,39 @@ public final class ActivityDetailBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btn_set_reminder;
+      Button btnSetReminder = ViewBindings.findChildViewById(rootView, id);
+      if (btnSetReminder == null) {
+        break missingId;
+      }
+
       id = R.id.btn_share_capture;
       Button btnShareCapture = ViewBindings.findChildViewById(rootView, id);
       if (btnShareCapture == null) {
+        break missingId;
+      }
+
+      id = R.id.chip_note;
+      TextView chipNote = ViewBindings.findChildViewById(rootView, id);
+      if (chipNote == null) {
+        break missingId;
+      }
+
+      id = R.id.chip_reminder;
+      TextView chipReminder = ViewBindings.findChildViewById(rootView, id);
+      if (chipReminder == null) {
+        break missingId;
+      }
+
+      id = R.id.chip_voice;
+      TextView chipVoice = ViewBindings.findChildViewById(rootView, id);
+      if (chipVoice == null) {
+        break missingId;
+      }
+
+      id = R.id.detail_chip_row;
+      LinearLayout detailChipRow = ViewBindings.findChildViewById(rootView, id);
+      if (detailChipRow == null) {
         break missingId;
       }
 
@@ -160,9 +258,21 @@ public final class ActivityDetailBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.note_count;
+      TextView noteCount = ViewBindings.findChildViewById(rootView, id);
+      if (noteCount == null) {
+        break missingId;
+      }
+
       id = R.id.notes_section;
       LinearLayout notesSection = ViewBindings.findChildViewById(rootView, id);
       if (notesSection == null) {
+        break missingId;
+      }
+
+      id = R.id.reminder_value;
+      TextView reminderValue = ViewBindings.findChildViewById(rootView, id);
+      if (reminderValue == null) {
         break missingId;
       }
 
@@ -184,15 +294,23 @@ public final class ActivityDetailBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.voice_preview_card;
+      LinearLayout voicePreviewCard = ViewBindings.findChildViewById(rootView, id);
+      if (voicePreviewCard == null) {
+        break missingId;
+      }
+
       id = R.id.voice_section;
       LinearLayout voiceSection = ViewBindings.findChildViewById(rootView, id);
       if (voiceSection == null) {
         break missingId;
       }
 
-      return new ActivityDetailBinding((LinearLayout) rootView, btnBack, btnCopyNote, btnPlayVoice,
-          btnSaveNote, btnShareCapture, editTextNote, entryDateTime, metaGroup, notesSection,
-          screenshotFull, toolbar, voiceDuration, voiceSection);
+      return new ActivityDetailBinding((FrameLayout) rootView, backdropBlobTop, btnAddToCalendar,
+          btnBack, btnClearReminder, btnCopyNote, btnPlayVoice, btnSaveNote, btnSetReminder,
+          btnShareCapture, chipNote, chipReminder, chipVoice, detailChipRow, editTextNote,
+          entryDateTime, metaGroup, noteCount, notesSection, reminderValue, screenshotFull, toolbar,
+          voiceDuration, voicePreviewCard, voiceSection);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

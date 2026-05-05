@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\dansh\\.gradle\\caches\\transforms-4\\0244dd0576ff8336a257bba33e266efe\\transformed\\material-1.11.0\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\dansh\\.gradle\\caches\\transforms-4\\f0df1319ae9307def337846e0ae2f023\\transformed\\material-1.12.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,5,9,13,16,19,22,25,28,32",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -42,7 +42,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\dansh\\.gradle\\caches\\transforms-4\\d94efb18cdb34d9ed7fbb82233586a21\\transformed\\appcompat-1.6.1\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\dansh\\.gradle\\caches\\transforms-4\\ca0e8118e5bf9d64ad81a445a84a0974\\transformed\\appcompat-1.7.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",

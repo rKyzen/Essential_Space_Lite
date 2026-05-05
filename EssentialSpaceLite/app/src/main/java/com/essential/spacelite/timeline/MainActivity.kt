@@ -5,15 +5,19 @@ import android.content.Intent
 import android.graphics.Typeface
 import android.media.MediaPlayer
 import android.os.Bundle
-import android.provider.Settings
+import android.util.Log
 import android.util.TypedValue
+import android.view.GestureDetector
 import android.view.Gravity
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.animation.OvershootInterpolator
+import android.view.animation.PathInterpolator
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
@@ -28,7 +32,10 @@ import com.essential.spacelite.data.entity.CaptureEntry
 import com.essential.spacelite.databinding.ActivityMainBinding
 import com.essential.spacelite.databinding.ItemOriginCaptureCardBinding
 import com.essential.spacelite.databinding.ItemVoiceNoteBinding
+import com.essential.spacelite.utils.FileUtils
+import com.essential.spacelite.utils.GlassUi
 import com.essential.spacelite.utils.PrefsManager
+import com.essential.spacelite.utils.ReminderUtils
 import com.essential.spacelite.utils.ThemeHelper
 import kotlinx.coroutines.launch
 import java.io.File
@@ -36,6 +43,8 @@ import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Date
 import java.util.Locale
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 
 class MainActivity : AppCompatActivity() {
 
@@ -49,12 +58,48 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: TimelineViewModel by viewModels()
     private var currentTab = OriginTab.NOTES
     private var latestEntries: List<CaptureEntry> = emptyList()
+    private var notesFilter = TimelineViewModel.FilterMode.ALL
     private var mediaPlayer: MediaPlayer? = null
     private var playingButton: ImageButton? = null
     private var hasAnimatedTabState = false
+    private val swipeThresholdPx by lazy { px(72) }
+    private val swipeVelocityThresholdPx by lazy { px(72) }
 
     private val cardTimeFormat = SimpleDateFormat("H:mm", Locale.US)
     private val nDotTypeface by lazy { ResourcesCompat.getFont(this, R.font.ndot_47_inspired_by_nothing) }
+    private val tabInterpolator = PathInterpolator(0.2f, 0f, 0f, 1f)
+    private val swipeDetector by lazy {
+        GestureDetector(
+            this,
+            object : GestureDetector.SimpleOnGestureListener() {
+                override fun onDown(e: MotionEvent): Boolean = false
+
+                override fun onFling(
+                    e1: MotionEvent?,
+                    e2: MotionEvent,
+                    velocityX: Float,
+                    velocityY: Float
+                ): Boolean {
+                    val start = e1 ?: return false
+                    val deltaX = e2.x - start.x
+                    val deltaY = e2.y - start.y
+                    if (kotlin.math.abs(deltaX) < swipeThresholdPx ||
+                        kotlin.math.abs(velocityX) < swipeVelocityThresholdPx ||
+                        kotlin.math.abs(deltaX) <= kotlin.math.abs(deltaY)
+                    ) {
+                        return false
+                    }
+
+                    if (deltaX < 0) {
+                        swipeToNextTab()
+                    } else {
+                        swipeToPreviousTab()
+                    }
+                    return true
+                }
+            }
+        )
+    }
 
     private val permissionsLauncher = registerForActivityResult(
         ActivityResultContracts.RequestMultiplePermissions()
@@ -63,20 +108,28 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeHelper.prepareActivity(this)
         super.onCreate(savedInstanceState)
+        if (!PrefsManager.isDisclosureAccepted(this)) {
+            startActivity(Intent(this, AccessibilityDisclosureActivity::class.java))
+            finish()
+            return
+        }
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
+            v.setPadding(bars.left, bars.top, bars.right, bars.bottom)
+            insets
+        }
 
         currentTab = parseOriginTab(intent.getStringExtra(EXTRA_INITIAL_TAB))
 
+        applyGlassSystem()
         setupInteractions()
         applyHeadingTypography()
         observeEntries()
         requestAllPermissions()
-        if (!isAccessibilityServiceEnabled() && !PrefsManager.isOnboardingDone(this)) {
-            openAccessibilitySettings()
-            PrefsManager.setOnboardingDone(this, true)
-        }
         applyTab(currentTab, focusSearch = currentTab == OriginTab.SEARCH)
+        animateScreenEntrance()
     }
 
     private fun setupInteractions() {
@@ -84,7 +137,7 @@ class MainActivity : AppCompatActivity() {
             viewModel.setQuery(it?.toString().orEmpty())
         }
 
-        binding.btnSettings.setOnClickListener {
+        binding.btnSettingsBottom.setOnClickListener {
             startActivity(Intent(this, SettingsActivity::class.java))
         }
 
@@ -97,6 +150,11 @@ class MainActivity : AppCompatActivity() {
         binding.navSearch.setOnClickListener {
             applyTab(OriginTab.SEARCH, focusSearch = true)
         }
+
+        binding.chipAll.setOnClickListener { setNotesFilter(TimelineViewModel.FilterMode.ALL) }
+        binding.chipToday.setOnClickListener { setNotesFilter(TimelineViewModel.FilterMode.TODAY) }
+        binding.chipNotes.setOnClickListener { setNotesFilter(TimelineViewModel.FilterMode.NOTES) }
+        binding.chipVoice.setOnClickListener { setNotesFilter(TimelineViewModel.FilterMode.VOICE) }
     }
 
     private fun observeEntries() {
@@ -108,36 +166,53 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                viewModel.subtitle.collect { subtitle ->
+                    binding.subtitleText.text = subtitle
+                }
+            }
+        }
     }
 
     private fun applyTab(tab: OriginTab, focusSearch: Boolean = false) {
         val shouldAnimate = hasAnimatedTabState && currentTab != tab
+        val previousTab = currentTab
         currentTab = tab
         when (tab) {
             OriginTab.NOTES -> {
-                viewModel.setFilter(TimelineViewModel.FilterMode.ALL)
+                viewModel.setFilter(notesFilter)
                 binding.titleText.text = getString(R.string.main_title)
-                setVisible(binding.titleText, true, shouldAnimate)
-                setVisible(binding.searchBar, true, shouldAnimate)
-                setVisible(binding.notesContent, true, shouldAnimate)
-                setVisible(binding.voiceContent, false, shouldAnimate)
+                setVisible(binding.titleText, true, shouldAnimate, tabDirection(previousTab, tab))
+                setVisible(binding.subtitleText, true, shouldAnimate, tabDirection(previousTab, tab))
+                setVisible(binding.searchBar, true, shouldAnimate, tabDirection(previousTab, tab))
+                setVisible(binding.statsRow, true, shouldAnimate, tabDirection(previousTab, tab))
+                setVisible(binding.filterScroll, true, shouldAnimate, tabDirection(previousTab, tab))
+                setVisible(binding.notesContent, true, shouldAnimate, tabDirection(previousTab, tab))
+                setVisible(binding.voiceContent, false, shouldAnimate, tabDirection(previousTab, tab))
             }
 
             OriginTab.VOICE -> {
                 viewModel.setFilter(TimelineViewModel.FilterMode.VOICE)
-                setVisible(binding.titleText, false, shouldAnimate)
-                setVisible(binding.searchBar, false, shouldAnimate)
-                setVisible(binding.notesContent, false, shouldAnimate)
-                setVisible(binding.voiceContent, true, shouldAnimate)
+                setVisible(binding.titleText, false, shouldAnimate, tabDirection(previousTab, tab))
+                setVisible(binding.subtitleText, false, shouldAnimate, tabDirection(previousTab, tab))
+                setVisible(binding.searchBar, false, shouldAnimate, tabDirection(previousTab, tab))
+                setVisible(binding.statsRow, false, shouldAnimate, tabDirection(previousTab, tab))
+                setVisible(binding.filterScroll, false, shouldAnimate, tabDirection(previousTab, tab))
+                setVisible(binding.notesContent, false, shouldAnimate, tabDirection(previousTab, tab))
+                setVisible(binding.voiceContent, true, shouldAnimate, tabDirection(previousTab, tab))
             }
 
             OriginTab.SEARCH -> {
-                viewModel.setFilter(TimelineViewModel.FilterMode.ALL)
+                viewModel.setFilter(notesFilter)
                 binding.titleText.text = getString(R.string.main_title)
-                setVisible(binding.titleText, true, shouldAnimate)
-                setVisible(binding.searchBar, true, shouldAnimate)
-                setVisible(binding.notesContent, true, shouldAnimate)
-                setVisible(binding.voiceContent, false, shouldAnimate)
+                setVisible(binding.titleText, true, shouldAnimate, tabDirection(previousTab, tab))
+                setVisible(binding.subtitleText, true, shouldAnimate, tabDirection(previousTab, tab))
+                setVisible(binding.searchBar, true, shouldAnimate, tabDirection(previousTab, tab))
+                setVisible(binding.statsRow, true, shouldAnimate, tabDirection(previousTab, tab))
+                setVisible(binding.filterScroll, true, shouldAnimate, tabDirection(previousTab, tab))
+                setVisible(binding.notesContent, true, shouldAnimate, tabDirection(previousTab, tab))
+                setVisible(binding.voiceContent, false, shouldAnimate, tabDirection(previousTab, tab))
                 if (focusSearch) {
                     binding.searchInput.post {
                         binding.searchInput.requestFocus()
@@ -147,8 +222,17 @@ class MainActivity : AppCompatActivity() {
         }
 
         updateNavState(shouldAnimate)
+        updateFilterChips()
         hasAnimatedTabState = true
         renderCurrentTab()
+    }
+
+    private fun setNotesFilter(mode: TimelineViewModel.FilterMode) {
+        notesFilter = mode
+        if (currentTab != OriginTab.VOICE) {
+            viewModel.setFilter(mode)
+            updateFilterChips()
+        }
     }
 
     private fun updateNavState(animate: Boolean) {
@@ -158,36 +242,30 @@ class MainActivity : AppCompatActivity() {
             OriginTab.SEARCH -> binding.navSearch
         }
 
+        // #region agent log
+        Log.d(
+            "NavBarDebug",
+            "H_UI1 updateNavState tab=$currentTab animate=$animate selected=${selectedView.id}"
+        )
+        // #endregion
+
         listOf(binding.navNotes, binding.navVoice, binding.navSearch).forEach { nav ->
-            nav.setBackgroundResource(
-                if (nav === selectedView) R.drawable.bg_origin_nav_active else android.R.color.transparent
-            )
             val iconView = (nav as LinearLayout).getChildAt(0) as ImageView
-            iconView.alpha = if (nav === selectedView) 1f else 0.86f
-            val targetScale = if (nav === selectedView) 1.03f else 1f
-            if (animate) {
-                nav.animate()
-                    .scaleX(targetScale)
-                    .scaleY(targetScale)
-                    .setDuration(280L)
-                    .setInterpolator(OvershootInterpolator(0.85f))
-                    .start()
-                iconView.animate()
-                    .alpha(if (nav === selectedView) 1f else 0.78f)
-                    .scaleX(if (nav === selectedView) 1.02f else 0.98f)
-                    .scaleY(if (nav === selectedView) 1.02f else 0.98f)
-                    .setDuration(220L)
-                    .start()
-            } else {
-                nav.scaleX = targetScale
-                nav.scaleY = targetScale
-                iconView.scaleX = if (nav === selectedView) 1.02f else 0.98f
-                iconView.scaleY = if (nav === selectedView) 1.02f else 0.98f
-            }
+            // Reference navbar: static icons; selection is a subtle alpha emphasis only.
+            nav.animate().cancel()
+            iconView.animate().cancel()
+            nav.scaleX = 1f
+            nav.scaleY = 1f
+            nav.translationY = 0f
+            iconView.scaleX = 1f
+            iconView.scaleY = 1f
+            iconView.rotation = 0f
+            iconView.alpha = if (nav === selectedView) 1f else 0.78f
         }
     }
 
     private fun renderCurrentTab() {
+        updateStats(latestEntries)
         when (currentTab) {
             OriginTab.NOTES,
             OriginTab.SEARCH -> renderNoteSections(latestEntries)
@@ -256,11 +334,20 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun bindCaptureCard(binding: ItemOriginCaptureCardBinding, entry: CaptureEntry, index: Int) {
+        GlassUi.applyDepth(binding.root, 12f)
+        GlassUi.attachLiquidPress(binding.root)
+
         val displayText = entry.textNote?.takeIf { it.isNotBlank() }
             ?: if (!entry.voiceNotePath.isNullOrBlank()) "Voice memo saved for later playback." else "Saved capture ready for your next action."
 
         binding.cardText.text = displayText
         binding.cardTime.text = cardTimeFormat.format(Date(entry.timestamp))
+        binding.cardReminder.text = ReminderUtils.formatOverviewReminder(binding.root.context, entry.reminderAt)
+        binding.cardKind.text = when {
+            !entry.voiceNotePath.isNullOrBlank() && !entry.textNote.isNullOrBlank() -> getString(R.string.card_kind_hybrid)
+            !entry.voiceNotePath.isNullOrBlank() -> getString(R.string.card_kind_voice)
+            else -> getString(R.string.card_kind_note)
+        }
 
         val showPreview = File(entry.thumbnailPath).exists() && (index % 2 == 0 || entry.textNote.isNullOrBlank())
         binding.cardPreview.visibility = if (showPreview) View.VISIBLE else View.GONE
@@ -281,6 +368,7 @@ class MainActivity : AppCompatActivity() {
             showDeleteDialog(entry)
             true
         }
+        GlassUi.animateEntrance(binding.root, (index * 36L).coerceAtMost(180L), 10f)
     }
 
     private fun renderVoiceSections(entries: List<CaptureEntry>) {
@@ -304,6 +392,11 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun bindVoiceRow(binding: ItemVoiceNoteBinding, entry: CaptureEntry, index: Int) {
+        GlassUi.applyDepth(binding.root, 10f)
+        GlassUi.attachLiquidPress(binding.root)
+        GlassUi.attachLiquidPress(binding.btnPlay, 0.94f, 0.9f)
+        binding.voiceMeta.text = FileUtils.formatDuration(entry.voiceNoteDurationMs)
+
         binding.markerContainer.removeAllViews()
         val markerSeeds = markerSeeds(entry, index)
         markerSeeds.forEachIndexed { markerIndex, weight ->
@@ -325,6 +418,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.root.setOnClickListener { openEntry(entry) }
         binding.btnPlay.setOnClickListener { toggleVoicePlayback(entry, binding.btnPlay) }
+        GlassUi.animateEntrance(binding.root, (index * 44L).coerceAtMost(160L), 10f)
     }
 
     private fun markerSeeds(entry: CaptureEntry, index: Int): List<Float> {
@@ -399,22 +493,9 @@ class MainActivity : AppCompatActivity() {
         permissionsLauncher.launch(perms.toTypedArray())
     }
 
-    private fun isAccessibilityServiceEnabled(): Boolean {
-        val service = "$packageName/${com.essential.spacelite.accessibility.VolumeAccessibilityService::class.java.canonicalName}"
-        val enabledServices = Settings.Secure.getString(
-            contentResolver,
-            Settings.Secure.ENABLED_ACCESSIBILITY_SERVICES
-        ) ?: return false
-        return enabledServices.contains(service)
-    }
-
-    private fun openAccessibilitySettings() {
-        startActivity(Intent(Settings.ACTION_ACCESSIBILITY_SETTINGS))
-    }
-
     private fun px(dp: Int): Int = (dp * resources.displayMetrics.density).toInt()
 
-    private fun setVisible(view: View, visible: Boolean, animate: Boolean) {
+    private fun setVisible(view: View, visible: Boolean, animate: Boolean, direction: Int = 1) {
         if (!animate) {
             view.clearAnimation()
             view.animate().cancel()
@@ -423,6 +504,7 @@ class MainActivity : AppCompatActivity() {
             view.scaleX = 1f
             view.scaleY = 1f
             view.translationY = 0f
+            view.translationX = 0f
             return
         }
 
@@ -432,27 +514,32 @@ class MainActivity : AppCompatActivity() {
             view.scaleX = 0.985f
             view.scaleY = 0.985f
             view.translationY = px(6).toFloat()
+            view.translationX = (px(14) * direction).toFloat()
             view.animate()
                 .alpha(1f)
                 .scaleX(1f)
                 .scaleY(1f)
                 .translationY(0f)
-                .setInterpolator(OvershootInterpolator(0.65f))
-                .setDuration(260L)
+                .translationX(0f)
+                .setInterpolator(OvershootInterpolator(0.55f))
+                .setDuration(360L)
                 .start()
         } else if (view.visibility == View.VISIBLE) {
             view.animate()
                 .alpha(0f)
-                .scaleX(0.985f)
-                .scaleY(0.985f)
-                .translationY(px(4).toFloat())
-                .setDuration(170L)
+                .scaleX(0.99f)
+                .scaleY(0.99f)
+                .translationY(px(2).toFloat())
+                .translationX((-px(10) * direction).toFloat())
+                .setDuration(220L)
+                .setInterpolator(tabInterpolator)
                 .withEndAction {
                     view.visibility = View.GONE
                     view.alpha = 1f
                     view.scaleX = 1f
                     view.scaleY = 1f
                     view.translationY = 0f
+                    view.translationX = 0f
                 }
                 .start()
         } else {
@@ -474,6 +561,86 @@ class MainActivity : AppCompatActivity() {
             textView.letterSpacing = if (useNdot) 0.08f else 0.16f
             textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, if (useNdot) 11f else 12f)
         }
+
+        binding.titleText.typeface = nDotTypeface
+        binding.titleText.letterSpacing = 0.02f
+        binding.voiceTitleText.typeface = nDotTypeface
+        binding.voiceTitleText.letterSpacing = 0.02f
+    }
+
+    private fun applyGlassSystem() {
+        GlassUi.applyBlur(binding.backdropBlobTop, 54f)
+        GlassUi.applyBlur(binding.backdropBlobBottom, 68f)
+
+        listOf(
+            binding.searchBar,
+            binding.statsRow,
+            binding.bottomNav,
+            binding.btnSettingsBottom
+        ).forEach { view ->
+            GlassUi.applyDepth(view, 16f)
+            GlassUi.attachLiquidPress(view)
+        }
+
+        listOf(
+            binding.statCaptures,
+            binding.statVoice,
+            binding.statReminders,
+            binding.chipAll,
+            binding.chipToday,
+            binding.chipNotes,
+            binding.chipVoice
+        ).forEach { view ->
+            GlassUi.applyDepth(view, 8f)
+            GlassUi.attachLiquidPress(view, 0.97f, 0.96f)
+        }
+
+        listOf(binding.navNotes, binding.navVoice, binding.navSearch).forEach { nav ->
+            GlassUi.attachLiquidPress(nav, 0.95f, 0.92f)
+        }
+    }
+
+    private fun animateScreenEntrance() {
+        GlassUi.animateEntrance(binding.titleText, delayMs = 10L, offsetDp = 18f)
+        GlassUi.animateEntrance(binding.subtitleText, delayMs = 38L, offsetDp = 12f)
+        GlassUi.animateEntrance(binding.searchBar, delayMs = 70L, offsetDp = 14f)
+        GlassUi.animateEntrance(binding.statsRow, delayMs = 110L, offsetDp = 12f)
+        GlassUi.animateEntrance(binding.filterScroll, delayMs = 140L, offsetDp = 10f)
+        GlassUi.animateEntrance(binding.bottomNav, delayMs = 180L, offsetDp = 16f)
+        GlassUi.animateEntrance(binding.btnSettingsBottom, delayMs = 220L, offsetDp = 18f)
+    }
+
+    private fun updateStats(entries: List<CaptureEntry>) {
+        binding.statCapturesValue.text = entries.size.toString()
+        binding.statVoiceValue.text = entries.count { !it.voiceNotePath.isNullOrBlank() }.toString()
+        binding.statRemindersValue.text = entries.count { it.reminderAt != null }.toString()
+    }
+
+    private fun updateFilterChips() {
+        updateChip(binding.chipAll, notesFilter == TimelineViewModel.FilterMode.ALL)
+        updateChip(binding.chipToday, notesFilter == TimelineViewModel.FilterMode.TODAY)
+        updateChip(binding.chipNotes, notesFilter == TimelineViewModel.FilterMode.NOTES)
+        updateChip(binding.chipVoice, notesFilter == TimelineViewModel.FilterMode.VOICE)
+    }
+
+    private fun updateChip(chip: TextView, selected: Boolean) {
+        chip.setBackgroundResource(if (selected) R.drawable.bg_filter_chip_active else R.drawable.bg_filter_chip)
+        chip.setTextColor(getColor(if (selected) R.color.text_primary else R.color.text_secondary))
+        chip.alpha = if (selected) 1f else 0.82f
+    }
+
+    private fun tabDirection(from: OriginTab, to: OriginTab): Int {
+        val fromIndex = when (from) {
+            OriginTab.NOTES -> 0
+            OriginTab.VOICE -> 1
+            OriginTab.SEARCH -> 2
+        }
+        val toIndex = when (to) {
+            OriginTab.NOTES -> 0
+            OriginTab.VOICE -> 1
+            OriginTab.SEARCH -> 2
+        }
+        return if (toIndex >= fromIndex) 1 else -1
     }
 
     private fun parseOriginTab(value: String?): OriginTab {
@@ -507,6 +674,27 @@ class MainActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         stopPlayback()
+    }
+
+    override fun dispatchTouchEvent(ev: MotionEvent): Boolean {
+        swipeDetector.onTouchEvent(ev)
+        return super.dispatchTouchEvent(ev)
+    }
+
+    private fun swipeToNextTab() {
+        when (currentTab) {
+            OriginTab.NOTES -> applyTab(OriginTab.VOICE)
+            OriginTab.VOICE -> applyTab(OriginTab.SEARCH)
+            OriginTab.SEARCH -> Unit
+        }
+    }
+
+    private fun swipeToPreviousTab() {
+        when (currentTab) {
+            OriginTab.NOTES -> Unit
+            OriginTab.VOICE -> applyTab(OriginTab.NOTES)
+            OriginTab.SEARCH -> applyTab(OriginTab.VOICE)
+        }
     }
 
     companion object {

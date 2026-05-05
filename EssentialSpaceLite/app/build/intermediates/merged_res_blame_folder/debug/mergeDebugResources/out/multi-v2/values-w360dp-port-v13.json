@@ -4,7 +4,7 @@
             "outputFile": "com.essential.spacelite.app-mergeDebugResources-2:/values-w360dp-port-v13/values-w360dp-port-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\dansh\\.gradle\\caches\\transforms-4\\0244dd0576ff8336a257bba33e266efe\\transformed\\material-1.11.0\\res\\values-w360dp-port-v13\\values-w360dp-port-v13.xml",
+                    "source": "C:\\Users\\dansh\\.gradle\\caches\\transforms-4\\f0df1319ae9307def337846e0ae2f023\\transformed\\material-1.12.0\\res\\values-w360dp-port-v13\\values-w360dp-port-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

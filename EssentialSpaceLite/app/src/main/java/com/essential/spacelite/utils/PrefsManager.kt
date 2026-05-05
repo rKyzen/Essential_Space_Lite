@@ -8,17 +8,18 @@ object PrefsManager {
     private const val KEY_ACCESSIBILITY_RUNNING = "accessibility_running"
     private const val KEY_ACCESSIBILITY_ENABLED = "accessibility_feature_enabled"
     private const val KEY_ONBOARDING_DONE = "onboarding_done"
+    private const val KEY_DISCLOSURE_ACCEPTED = "disclosure_accepted"
     private const val KEY_THEME_OPTION = "theme_option"
     private const val KEY_USE_NDOT = "use_ndot_headings"
 
     enum class ThemeOption(val storageValue: String) {
-        MATERIAL_YOU_LIGHT("material_you_light"),
-        MATERIAL_YOU_DARK("material_you_dark"),
-        NOTHING_LIGHT("nothing_light"),
         NOTHING_DARK("nothing_dark");
 
         companion object {
             fun fromStorage(value: String?): ThemeOption {
+                if (value == "material_you_dark") return NOTHING_DARK
+                if (value == "nothing_light") return NOTHING_DARK
+                if (value == "material_you_light") return NOTHING_DARK
                 return entries.firstOrNull { it.storageValue == value } ?: NOTHING_DARK
             }
         }
@@ -44,6 +45,12 @@ object PrefsManager {
 
     fun setOnboardingDone(context: Context, done: Boolean) =
         prefs(context).edit().putBoolean(KEY_ONBOARDING_DONE, done).apply()
+
+    fun isDisclosureAccepted(context: Context): Boolean =
+        prefs(context).getBoolean(KEY_DISCLOSURE_ACCEPTED, false)
+
+    fun setDisclosureAccepted(context: Context, accepted: Boolean) =
+        prefs(context).edit().putBoolean(KEY_DISCLOSURE_ACCEPTED, accepted).apply()
 
     fun getThemeOption(context: Context): ThemeOption =
         ThemeOption.fromStorage(prefs(context).getString(KEY_THEME_OPTION, null))

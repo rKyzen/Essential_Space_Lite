@@ -1,39 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="bg_primary">#050505</color>
-    <color name="bg_surface">#121212</color>
-    <color name="bg_elevated">#171717</color>
-    <color name="bg_card">#1C1C1C</color>
-    <color name="stroke">#26FFFFFF</color>
-    <color name="stroke_subtle">#14FFFFFF</color>
-    <color name="glass_surface">#18FFFFFF</color>
-    <color name="glass_surface_strong">#22FFFFFF</color>
-    <color name="glass_dark">#D90A0A0A</color>
-    <color name="glass_dark_soft">#C8121212</color>
-    <color name="glass_stroke">#22FFFFFF</color>
+    <color name="bg_primary">#F5F6F8</color>
+    <color name="bg_surface">#FAFBFD</color>
+    <color name="bg_elevated">#EEF1F5</color>
+    <color name="bg_card">#F7F8FB</color>
+    <color name="stroke">#1A1C2430</color>
+    <color name="stroke_subtle">#101C2430</color>
+    <color name="glass_surface">#CCFFFFFF</color>
+    <color name="glass_surface_strong">#E6FFFFFF</color>
+    <color name="glass_dark">#EAF3F5F7</color>
+    <color name="glass_dark_soft">#DDF7F8FA</color>
+    <color name="glass_stroke">#261C2430</color>
+    <color name="glass_glow">#10B7CCE6</color>
+    <color name="glass_edge">#33FFFFFF</color>
 
-    <color name="text_primary">#F7F7F7</color>
-    <color name="text_secondary">#D8D8D8</color>
-    <color name="text_tertiary">#8C8C8C</color>
-    <color name="text_placeholder">#6E6E6E</color>
+    <color name="text_primary">#13151A</color>
+    <color name="text_secondary">#4F5561</color>
+    <color name="text_tertiary">#7A818F</color>
+    <color name="text_placeholder">#A2A9B6</color>
 
-    <color name="accent_white">#F2F2F2</color>
+    <color name="accent_white">#FFFFFF</color>
     <color name="accent_red">#FF3B30</color>
     <color name="accent_green">#34C759</color>
     <color name="accent_dot">#F2F2F2</color>
     <color name="accent_yellow">#FFC91A</color>
 
-    <color name="overlay_dim">#A6000000</color>
-    <color name="thumbnail_placeholder">#242424</color>
+    <color name="overlay_dim">#73040B14</color>
+    <color name="thumbnail_placeholder">#E7EAF0</color>
 
-    <color name="colorPrimary">#F1F1F1</color>
-    <color name="colorPrimaryVariant">#D9D9D9</color>
-    <color name="colorOnPrimary">#0B0B0B</color>
-    <color name="colorSecondary">#202020</color>
-    <color name="colorOnSecondary">#F1F1F1</color>
-    <color name="colorSurface">#151515</color>
-    <color name="colorOnSurface">#F7F7F7</color>
-    <color name="colorBackground">#050505</color>
-    <color name="colorOnBackground">#F7F7F7</color>
+    <color name="colorPrimary">#161A20</color>
+    <color name="colorPrimaryVariant">#0E1116</color>
+    <color name="colorOnPrimary">#FFFFFF</color>
+    <color name="colorSecondary">#FFFFFF</color>
+    <color name="colorOnSecondary">#161A20</color>
+    <color name="colorSurface">#F8FAFC</color>
+    <color name="colorOnSurface">#14171C</color>
+    <color name="colorBackground">#F5F6F8</color>
+    <color name="colorOnBackground">#12151A</color>
     <color name="colorError">#FF453A</color>
 </resources>

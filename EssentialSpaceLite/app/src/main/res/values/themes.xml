@@ -14,12 +14,15 @@
         <item name="colorError">@color/colorError</item>
         <item name="android:statusBarColor">@color/bg_primary</item>
         <item name="android:navigationBarColor">@color/bg_primary</item>
-        <item name="android:windowLightStatusBar">false</item>
-        <item name="android:windowLightNavigationBar">false</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
         <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
-    <style name="Theme.EssentialSpaceLite.Nothing" parent="Theme.EssentialSpaceLite" />
+    <style name="Theme.EssentialSpaceLite.Nothing" parent="Theme.EssentialSpaceLite">
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowLightNavigationBar">true</item>
+    </style>
 
     <style name="Theme.EssentialSpaceLite.MaterialYou" parent="Theme.EssentialSpaceLite">
         <item name="android:statusBarColor">?attr/colorSurface</item>

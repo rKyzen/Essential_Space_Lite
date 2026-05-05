@@ -30,6 +30,7 @@ import com.essential.spacelite.R
 import com.essential.spacelite.data.AppDatabase
 import com.essential.spacelite.data.entity.CaptureEntry
 import com.essential.spacelite.utils.FileUtils
+import com.essential.spacelite.utils.GlassUi
 import com.essential.spacelite.utils.VoiceRecorder
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -116,6 +117,11 @@ class CaptureOverlayManager(private val context: Context) {
         recordingDot = rootView.findViewById(R.id.recording_dot)
         screenshotLoadingIndicator = rootView.findViewById(R.id.screenshot_loading)
 
+        GlassUi.applyDepth(cardContainer, 24f)
+        GlassUi.attachLiquidPress(btnSave, 0.985f, 0.97f)
+        GlassUi.attachLiquidPress(btnVoice, 0.92f, 0.88f)
+        GlassUi.attachLiquidPress(btnDiscard, 0.92f, 0.88f)
+
         btnSave.setOnClickListener { saveAndDismiss() }
         btnDiscard.setOnClickListener { discardAndDismiss() }
         btnVoice.setOnClickListener { toggleVoice() }
@@ -189,25 +195,38 @@ class CaptureOverlayManager(private val context: Context) {
         if (isVisible) {
             resetState()
             rootView.visibility = View.VISIBLE
+            rootView.alpha = 1f
             flashIn()
             triggerHaptic()
             cardContainer.alpha = 1f
             cardContainer.translationY = 0f
+            cardContainer.scaleX = 1f
+            cardContainer.scaleY = 1f
             return
         }
 
         isVisible = true
         resetState()
         rootView.visibility = View.VISIBLE
+        rootView.alpha = 0f
         flashIn()
         triggerHaptic()
 
         cardContainer.alpha = 0f
         cardContainer.translationY = dpToPx(14f)
+        cardContainer.scaleX = 0.985f
+        cardContainer.scaleY = 0.985f
+        rootView.animate()
+            .alpha(1f)
+            .setDuration(180L)
+            .setInterpolator(easeOut)
+            .start()
         cardContainer.animate()
             .alpha(1f)
+            .scaleX(1f)
+            .scaleY(1f)
             .translationY(0f)
-            .setDuration(140)
+            .setDuration(220)
             .setInterpolator(easeOut)
             .setStartDelay(20)
             .start()
@@ -228,13 +247,16 @@ class CaptureOverlayManager(private val context: Context) {
         disableFocusAfterInput()
 
         cardContainer.animate()
+            .scaleX(0.988f)
+            .scaleY(0.988f)
             .alpha(0f)
             .translationY(dpToPx(10f))
-            .setDuration(120)
+            .setDuration(150)
             .setInterpolator(linear)
             .setListener(object : AnimatorListenerAdapter() {
                 override fun onAnimationEnd(animation: Animator) {
                     rootView.visibility = View.GONE
+                    rootView.alpha = 1f
                     isVisible = false
                 }
             })

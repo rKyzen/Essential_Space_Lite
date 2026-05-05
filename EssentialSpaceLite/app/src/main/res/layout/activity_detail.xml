@@ -1,221 +1,377 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/bg_primary">
 
+    <View
+        android:id="@+id/backdrop_blob_top"
+        android:layout_width="220dp"
+        android:layout_height="220dp"
+        android:layout_gravity="top|start"
+        android:layout_marginStart="-74dp"
+        android:layout_marginTop="76dp"
+        android:alpha="0.62"
+        android:background="@drawable/bg_glass_blob" />
+
     <LinearLayout
-        android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_vertical"
-        android:paddingTop="52dp"
-        android:paddingBottom="12dp"
-        android:paddingHorizontal="20dp">
-
-        <ImageButton
-            android:id="@+id/btn_back"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Back"
-            android:src="@drawable/ic_chevron_left"
-            android:tint="@color/text_primary" />
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="1dp"
-            android:layout_weight="1" />
-
-        <Button
-            android:id="@+id/btn_save_note"
-            style="@style/Widget.MaterialComponents.Button"
-            android:layout_width="wrap_content"
-            android:layout_height="36dp"
-            android:backgroundTint="?attr/colorPrimary"
-            android:paddingHorizontal="20dp"
-            android:text="Save"
-            android:textColor="?attr/colorOnPrimary"
-            android:textSize="12sp" />
-
-    </LinearLayout>
-
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:fillViewport="true"
-        android:scrollbars="none">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
         <LinearLayout
+            android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/bg_glass_toolbar"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingTop="52dp"
+            android:paddingBottom="12dp"
+            android:paddingHorizontal="20dp">
 
-            <ImageView
-                android:id="@+id/screenshot_full"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:adjustViewBounds="true"
-                android:background="@color/bg_surface"
-                android:scaleType="fitCenter" />
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:contentDescription="Back"
+                android:src="@drawable/ic_chevron_left"
+                android:tint="@color/text_primary" />
 
-            <LinearLayout
-                android:id="@+id/meta_group"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/btn_save_note"
+                style="@style/Widget.MaterialComponents.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:backgroundTint="?attr/colorPrimary"
                 android:paddingHorizontal="20dp"
-                android:paddingTop="20dp">
-
-                <TextView
-                    android:id="@+id/entry_date_time"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="monospace"
-                    android:letterSpacing="0.04"
-                    android:textColor="@color/text_tertiary"
-                    android:textSize="11sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:id="@+id/btn_share_capture"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:text="@string/share_capture"
-                        android:textAllCaps="false"
-                        android:textColor="@color/text_primary"
-                        app:strokeColor="@color/stroke"
-                        app:strokeWidth="1dp" />
-
-                    <Button
-                        android:id="@+id/btn_copy_note"
-                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                        android:layout_width="0dp"
-                        android:layout_height="40dp"
-                        android:layout_weight="1"
-                        android:layout_marginStart="10dp"
-                        android:text="@string/copy_note"
-                        android:textAllCaps="false"
-                        android:textColor="@color/text_primary"
-                        app:strokeColor="@color/stroke"
-                        app:strokeWidth="1dp" />
-                </LinearLayout>
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="16dp"
-                    android:background="@color/stroke" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/notes_section"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingHorizontal="20dp"
-                android:paddingTop="16dp"
-                android:paddingBottom="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:fontFamily="monospace"
-                    android:letterSpacing="0.1"
-                    android:text="NOTE"
-                    android:textColor="@color/text_tertiary"
-                    android:textSize="10sp" />
-
-                <EditText
-                    android:id="@+id/edit_text_note"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:minHeight="80dp"
-                    android:background="@null"
-                    android:fontFamily="sans-serif-light"
-                    android:gravity="top"
-                    android:hint="No note added..."
-                    android:inputType="textMultiLine|textCapSentences"
-                    android:lineSpacingMultiplier="1.5"
-                    android:textColor="@color/text_primary"
-                    android:textColorHint="@color/text_placeholder"
-                    android:textSize="15sp" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/voice_section"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:paddingHorizontal="20dp"
-                android:paddingBottom="24dp"
-                android:visibility="gone">
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginBottom="16dp"
-                    android:background="@color/stroke" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
-                    android:fontFamily="monospace"
-                    android:letterSpacing="0.1"
-                    android:text="VOICE NOTE"
-                    android:textColor="@color/text_tertiary"
-                    android:textSize="10sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:background="@drawable/bg_voice_preview"
-                    android:paddingHorizontal="16dp"
-                    android:paddingVertical="12dp">
-
-                    <ImageButton
-                        android:id="@+id/btn_play_voice"
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:background="?attr/selectableItemBackgroundBorderless"
-                        android:contentDescription="Play voice note"
-                        android:src="@drawable/ic_play"
-                        android:tint="@color/text_primary" />
-
-                    <TextView
-                        android:id="@+id/voice_duration"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:layout_marginStart="12dp"
-                        android:fontFamily="monospace"
-                        android:textColor="@color/text_secondary"
-                        android:textSize="12sp" />
-
-                </LinearLayout>
-
-            </LinearLayout>
+                android:text="Save"
+                android:textColor="?attr/colorOnPrimary"
+                android:textSize="12sp" />
 
         </LinearLayout>
 
-    </androidx.core.widget.NestedScrollView>
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:scrollbars="none">
 
-</LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/screenshot_full"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:adjustViewBounds="true"
+                    android:background="@color/bg_surface"
+                    android:scaleType="fitCenter" />
+
+                <LinearLayout
+                    android:id="@+id/meta_group"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="18dp"
+                    android:background="@drawable/bg_glass_panel"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="20dp"
+                    android:paddingTop="20dp"
+                    android:paddingBottom="18dp">
+
+                    <TextView
+                        android:id="@+id/entry_date_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="monospace"
+                        android:letterSpacing="0.04"
+                        android:textColor="@color/text_tertiary"
+                        android:textSize="11sp" />
+
+                    <LinearLayout
+                        android:id="@+id/detail_chip_row"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/chip_note"
+                            android:layout_width="wrap_content"
+                            android:layout_height="24dp"
+                            android:background="@drawable/bg_badge_chip"
+                            android:fontFamily="monospace"
+                            android:gravity="center"
+                            android:paddingHorizontal="10dp"
+                            android:text="@string/detail_chip_note"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="9sp" />
+
+                        <TextView
+                            android:id="@+id/chip_voice"
+                            android:layout_width="wrap_content"
+                            android:layout_height="24dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/bg_badge_chip"
+                            android:fontFamily="monospace"
+                            android:gravity="center"
+                            android:paddingHorizontal="10dp"
+                            android:text="@string/detail_chip_voice"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="9sp"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/chip_reminder"
+                            android:layout_width="wrap_content"
+                            android:layout_height="24dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/bg_badge_chip"
+                            android:fontFamily="monospace"
+                            android:gravity="center"
+                            android:paddingHorizontal="10dp"
+                            android:text="@string/detail_chip_reminder"
+                            android:textColor="@color/accent_yellow"
+                            android:textSize="9sp"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btn_share_capture"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:text="@string/share_capture"
+                            android:textAllCaps="false"
+                            android:textColor="@color/text_primary"
+                            app:strokeColor="@color/stroke"
+                            app:strokeWidth="1dp" />
+
+                        <Button
+                            android:id="@+id/btn_copy_note"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:layout_marginStart="10dp"
+                            android:text="@string/copy_note"
+                            android:textAllCaps="false"
+                            android:textColor="@color/text_primary"
+                            app:strokeColor="@color/stroke"
+                            app:strokeWidth="1dp" />
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@color/stroke" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="monospace"
+                        android:letterSpacing="0.1"
+                        android:text="REMINDER"
+                        android:textColor="@color/text_tertiary"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/reminder_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/reminder_never"
+                        android:textColor="@color/accent_yellow"
+                        android:textSize="15sp" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btn_set_reminder"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:text="@string/reminder_set"
+                            android:textAllCaps="false"
+                            android:textColor="@color/text_primary"
+                            app:strokeColor="@color/stroke"
+                            app:strokeWidth="1dp" />
+
+                        <Button
+                            android:id="@+id/btn_clear_reminder"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:layout_marginStart="10dp"
+                            android:text="@string/reminder_clear"
+                            android:textAllCaps="false"
+                            android:textColor="@color/text_primary"
+                            android:visibility="gone"
+                            app:strokeColor="@color/stroke"
+                            app:strokeWidth="1dp" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btn_add_to_calendar"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/reminder_add_to_calendar"
+                        android:textAllCaps="false"
+                        android:textColor="@color/text_primary"
+                        android:visibility="gone"
+                        app:strokeColor="@color/stroke"
+                        app:strokeWidth="1dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/notes_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/bg_glass_panel"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="20dp"
+                    android:paddingTop="18dp"
+                    android:paddingBottom="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:fontFamily="monospace"
+                        android:letterSpacing="0.1"
+                        android:text="NOTE"
+                        android:textColor="@color/text_tertiary"
+                        android:textSize="10sp" />
+
+                    <EditText
+                        android:id="@+id/edit_text_note"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@null"
+                        android:fontFamily="sans-serif-light"
+                        android:gravity="top"
+                        android:hint="No note added..."
+                        android:inputType="textMultiLine|textCapSentences"
+                        android:lineSpacingMultiplier="1.5"
+                        android:minHeight="80dp"
+                        android:textColor="@color/text_primary"
+                        android:textColorHint="@color/text_placeholder"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/note_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="monospace"
+                        android:textColor="@color/text_tertiary"
+                        android:textSize="10sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/voice_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginBottom="24dp"
+                    android:background="@drawable/bg_glass_panel"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="20dp"
+                    android:paddingTop="18dp"
+                    android:paddingBottom="20dp"
+                    android:visibility="gone">
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@color/stroke" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="12dp"
+                        android:fontFamily="monospace"
+                        android:letterSpacing="0.1"
+                        android:text="VOICE NOTE"
+                        android:textColor="@color/text_tertiary"
+                        android:textSize="10sp" />
+
+                    <LinearLayout
+                        android:id="@+id/voice_preview_card"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_voice_preview"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="12dp">
+
+                        <ImageButton
+                            android:id="@+id/btn_play_voice"
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:contentDescription="Play voice note"
+                            android:src="@drawable/ic_play"
+                            android:tint="@color/text_primary" />
+
+                        <TextView
+                            android:id="@+id/voice_duration"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:fontFamily="monospace"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="12sp" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </LinearLayout>
+
+</FrameLayout>
