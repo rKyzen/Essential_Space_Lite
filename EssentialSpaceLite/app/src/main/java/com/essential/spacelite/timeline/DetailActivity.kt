@@ -3,12 +3,14 @@ package com.essential.spacelite.timeline
 import android.content.ClipData
 import android.content.ClipboardManager
 import android.content.Intent
-import android.provider.CalendarContract
+import android.provider.AlarmClock
+import android.app.DatePickerDialog
+import android.app.TimePickerDialog
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
-import android.app.DatePickerDialog
-import android.app.TimePickerDialog
+import android.provider.CalendarContract
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.FileProvider
@@ -20,11 +22,15 @@ import com.essential.spacelite.data.AppDatabase
 import com.essential.spacelite.data.entity.CaptureEntry
 import com.essential.spacelite.databinding.ActivityDetailBinding
 import com.essential.spacelite.utils.FileUtils
+import com.essential.spacelite.utils.GeminiSummaryClient
 import com.essential.spacelite.utils.GlassUi
+import com.essential.spacelite.utils.PrefsManager
 import com.essential.spacelite.utils.ReminderScheduler
 import com.essential.spacelite.utils.ReminderUtils
 import com.essential.spacelite.utils.ThemeHelper
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.Calendar
@@ -39,6 +45,7 @@ class DetailActivity : AppCompatActivity() {
     private var entry: CaptureEntry? = null
     private var mediaPlayer: MediaPlayer? = null
     private var isPlaying = false
+    private var isGeneratingSummary = false
 
     private val dateTimeFormat = SimpleDateFormat("EEEE, MMMM d - h:mm a", Locale.US)
 
@@ -75,19 +82,27 @@ class DetailActivity : AppCompatActivity() {
         binding.entryDateTime.text = dateTimeFormat.format(Date(e.timestamp))
         binding.editTextNote.setText(e.textNote ?: "")
         binding.noteCount.text = getString(R.string.detail_note_count, binding.editTextNote.text?.length ?: 0)
+        val aiEnabled = PrefsManager.isAiSummaryEnabled(this)
 
         val hasVoice = e.voiceNotePath != null && File(e.voiceNotePath).exists()
-        binding.voiceSection.visibility = if (hasVoice) android.view.View.VISIBLE else android.view.View.GONE
-        binding.chipVoice.visibility = if (hasVoice) android.view.View.VISIBLE else android.view.View.GONE
+        binding.voiceSection.visibility = if (hasVoice) View.VISIBLE else View.GONE
+        binding.chipVoice.visibility = if (hasVoice) View.VISIBLE else View.GONE
         if (hasVoice) {
             binding.voiceDuration.text = FileUtils.formatDuration(e.voiceNoteDurationMs)
         }
 
         renderReminder(e)
+        binding.aiSummarySection.visibility = if (aiEnabled) View.VISIBLE else View.GONE
+        if (aiEnabled) {
+            renderAiSummary(e)
+        }
         GlassUi.animateEntrance(binding.metaGroup, 30L, 12f)
         GlassUi.animateEntrance(binding.notesSection, 80L, 12f)
+        if (aiEnabled) {
+            GlassUi.animateEntrance(binding.aiSummarySection, 100L, 12f)
+        }
         if (hasVoice) {
-            GlassUi.animateEntrance(binding.voiceSection, 120L, 12f)
+            GlassUi.animateEntrance(binding.voiceSection, 140L, 12f)
         }
     }
 
@@ -100,6 +115,9 @@ class DetailActivity : AppCompatActivity() {
         binding.btnSetReminder.setOnClickListener { pickReminderDateTime() }
         binding.btnClearReminder.setOnClickListener { clearReminder() }
         binding.btnAddToCalendar.setOnClickListener { addReminderToCalendar() }
+        binding.btnAddToClock.setOnClickListener { addReminderToClock() }
+        binding.btnGenerateSummary.setOnClickListener { generateAiSummary() }
+        binding.btnCopySummary.setOnClickListener { copyAiSummary() }
         binding.editTextNote.doAfterTextChanged {
             binding.noteCount.text = getString(R.string.detail_note_count, it?.length ?: 0)
         }
@@ -112,6 +130,7 @@ class DetailActivity : AppCompatActivity() {
             AppDatabase.getDatabase(applicationContext).captureEntryDao().update(updated)
             entry = updated
             renderReminder(updated)
+            renderAiSummary(updated)
             Toast.makeText(this@DetailActivity, "Note saved", Toast.LENGTH_SHORT).show()
         }
     }
@@ -119,9 +138,28 @@ class DetailActivity : AppCompatActivity() {
     private fun renderReminder(entry: CaptureEntry) {
         binding.reminderValue.text = ReminderUtils.formatDetailReminder(this, entry.reminderAt)
         val hasReminder = entry.reminderAt != null
-        binding.btnClearReminder.visibility = if (hasReminder) android.view.View.VISIBLE else android.view.View.GONE
-        binding.btnAddToCalendar.visibility = if (hasReminder) android.view.View.VISIBLE else android.view.View.GONE
-        binding.chipReminder.visibility = if (hasReminder) android.view.View.VISIBLE else android.view.View.GONE
+        binding.btnClearReminder.visibility = if (hasReminder) View.VISIBLE else View.GONE
+        binding.btnAddToCalendar.visibility = if (hasReminder) View.VISIBLE else View.GONE
+        binding.btnAddToClock.visibility = if (hasReminder) View.VISIBLE else View.GONE
+        binding.chipReminder.visibility = if (hasReminder) View.VISIBLE else View.GONE
+    }
+
+    private fun renderAiSummary(entry: CaptureEntry) {
+        if (!PrefsManager.isAiSummaryEnabled(this)) return
+        val hasSummary = !entry.aiSummary.isNullOrBlank()
+        binding.aiSummaryText.text = entry.aiSummary?.takeIf { it.isNotBlank() }
+            ?: getString(R.string.ai_summary_empty)
+        binding.btnGenerateSummary.text = getString(
+            if (hasSummary) R.string.ai_summary_refresh else R.string.ai_summary_generate
+        )
+        binding.btnCopySummary.visibility = if (hasSummary) View.VISIBLE else View.GONE
+        binding.chipAi.visibility = if (hasSummary) View.VISIBLE else View.GONE
+        if (!GeminiSummaryClient.isConfigured()) {
+            binding.aiSummaryStatus.visibility = View.VISIBLE
+            binding.aiSummaryStatus.text = getString(R.string.ai_summary_missing_key)
+        } else if (!isGeneratingSummary) {
+            binding.aiSummaryStatus.visibility = View.GONE
+        }
     }
 
     private fun pickReminderDateTime() {
@@ -167,6 +205,7 @@ class DetailActivity : AppCompatActivity() {
             ReminderScheduler.schedule(applicationContext, updated)
             entry = updated
             renderReminder(updated)
+            renderAiSummary(updated)
             Toast.makeText(this@DetailActivity, "Reminder set", Toast.LENGTH_SHORT).show()
         }
     }
@@ -179,8 +218,71 @@ class DetailActivity : AppCompatActivity() {
             ReminderScheduler.cancel(applicationContext, current.id)
             entry = updated
             renderReminder(updated)
+            renderAiSummary(updated)
             Toast.makeText(this@DetailActivity, "Reminder cleared", Toast.LENGTH_SHORT).show()
         }
+    }
+
+    private fun generateAiSummary() {
+        val current = entry ?: return
+        if (isGeneratingSummary) return
+        if (!PrefsManager.isAiSummaryEnabled(this)) return
+        if (!GeminiSummaryClient.isConfigured()) {
+            binding.aiSummaryStatus.visibility = View.VISIBLE
+            binding.aiSummaryStatus.text = getString(R.string.ai_summary_missing_key)
+            return
+        }
+
+        isGeneratingSummary = true
+        binding.aiSummaryStatus.visibility = View.VISIBLE
+        binding.aiSummaryStatus.text = getString(R.string.ai_summary_loading)
+        binding.btnGenerateSummary.isEnabled = false
+
+        lifecycleScope.launch {
+            val note = binding.editTextNote.text?.toString()?.trim()
+            val result = withContext(Dispatchers.IO) {
+                GeminiSummaryClient.generateSummary(
+                    screenshotPath = current.screenshotPath,
+                    note = note,
+                    reminderAt = current.reminderAt
+                )
+            }
+
+            isGeneratingSummary = false
+            binding.btnGenerateSummary.isEnabled = true
+
+            result.fold(
+                onSuccess = { summary ->
+                    val updated = current.copy(
+                        textNote = note,
+                        aiSummary = summary
+                    )
+                    lifecycleScope.launch {
+                        AppDatabase.getDatabase(applicationContext).captureEntryDao().update(updated)
+                        entry = updated
+                        binding.aiSummaryStatus.visibility = View.GONE
+                        renderAiSummary(updated)
+                        Toast.makeText(this@DetailActivity, R.string.ai_summary_saved, Toast.LENGTH_SHORT).show()
+                    }
+                },
+                onFailure = { error ->
+                    binding.aiSummaryStatus.visibility = View.VISIBLE
+                    binding.aiSummaryStatus.text = error.message ?: getString(R.string.ai_summary_failed)
+                }
+            )
+        }
+    }
+
+    private fun copyAiSummary() {
+        val summary = entry?.aiSummary?.trim().orEmpty()
+        if (summary.isEmpty()) {
+            Toast.makeText(this, R.string.ai_summary_empty, Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        val clipboard = getSystemService(ClipboardManager::class.java)
+        clipboard.setPrimaryClip(ClipData.newPlainText("Origin Space AI summary", summary))
+        Toast.makeText(this, R.string.ai_summary_copied, Toast.LENGTH_SHORT).show()
     }
 
     private fun addReminderToCalendar() {
@@ -195,6 +297,27 @@ class DetailActivity : AppCompatActivity() {
             putExtra(CalendarContract.EXTRA_EVENT_END_TIME, reminderAt + 30 * 60 * 1000L)
         }
         startActivity(intent)
+    }
+
+    private fun addReminderToClock() {
+        val current = entry ?: return
+        val reminderAt = current.reminderAt ?: return
+        val calendar = Calendar.getInstance().apply { timeInMillis = reminderAt }
+        val label = current.textNote?.takeIf { it.isNotBlank() } ?: getString(R.string.reminder_notification_title)
+        val intent = Intent(AlarmClock.ACTION_SET_ALARM).apply {
+            putExtra(AlarmClock.EXTRA_HOUR, calendar.get(Calendar.HOUR_OF_DAY))
+            putExtra(AlarmClock.EXTRA_MINUTES, calendar.get(Calendar.MINUTE))
+            putExtra(AlarmClock.EXTRA_MESSAGE, label)
+            putExtra(AlarmClock.EXTRA_SKIP_UI, false)
+        }
+
+        if (intent.resolveActivity(packageManager) == null) {
+            Toast.makeText(this, R.string.reminder_clock_unavailable, Toast.LENGTH_SHORT).show()
+            return
+        }
+
+        startActivity(intent)
+        Toast.makeText(this, R.string.reminder_clock_prefill_note, Toast.LENGTH_LONG).show()
     }
 
     private fun togglePlayback() {
@@ -262,6 +385,7 @@ class DetailActivity : AppCompatActivity() {
         GlassUi.applyDepth(binding.toolbar, 18f)
         GlassUi.applyDepth(binding.metaGroup, 14f)
         GlassUi.applyDepth(binding.notesSection, 14f)
+        GlassUi.applyDepth(binding.aiSummarySection, 14f)
         GlassUi.applyDepth(binding.voiceSection, 14f)
         GlassUi.applyDepth(binding.voicePreviewCard, 10f)
 
@@ -270,9 +394,12 @@ class DetailActivity : AppCompatActivity() {
             binding.btnSaveNote,
             binding.btnShareCapture,
             binding.btnCopyNote,
+            binding.btnGenerateSummary,
+            binding.btnCopySummary,
             binding.btnSetReminder,
             binding.btnClearReminder,
             binding.btnAddToCalendar,
+            binding.btnAddToClock,
             binding.btnPlayVoice
         ).forEach { view ->
             GlassUi.attachLiquidPress(view)

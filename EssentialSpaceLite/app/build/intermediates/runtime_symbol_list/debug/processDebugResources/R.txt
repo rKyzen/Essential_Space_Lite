@@ -3248,6 +3248,9 @@ int id action_text 0x7f090043
 int id actions 0x7f090044
 int id activity_chooser_view_content 0x7f090045
 int id add 0x7f090046
+int id ai_summary_section 0x7f090262
+int id ai_summary_status 0x7f090263
+int id ai_summary_text 0x7f090264
 int id alertTitle 0x7f090047
 int id aligned 0x7f090048
 int id all 0x7f090049
@@ -3283,7 +3286,9 @@ int id btn_back 0x7f090066
 int id btn_clear_reminder 0x7f090067
 int id btn_continue 0x7f090068
 int id btn_copy_note 0x7f090069
+int id btn_copy_summary 0x7f090265
 int id btn_discard 0x7f09006a
+int id btn_generate_summary 0x7f090266
 int id btn_later 0x7f09006b
 int id btn_play 0x7f09006c
 int id btn_play_voice 0x7f09006d
@@ -3317,11 +3322,9 @@ int id chain2 0x7f090088
 int id chains 0x7f090089
 int id checkbox 0x7f09008a
 int id checked 0x7f09008b
-int id chip_all 0x7f09008c
+int id chip_ai 0x7f090267
 int id chip_note 0x7f09008d
-int id chip_notes 0x7f09008e
 int id chip_reminder 0x7f09008f
-int id chip_today 0x7f090090
 int id chip_voice 0x7f090091
 int id chronometer 0x7f090092
 int id circle_center 0x7f090093
@@ -3407,7 +3410,6 @@ int id fill 0x7f0900e2
 int id fill_horizontal 0x7f0900e3
 int id fill_vertical 0x7f0900e4
 int id filled 0x7f0900e5
-int id filter_scroll 0x7f0900e6
 int id fitCenter 0x7f0900e7
 int id fitEnd 0x7f0900e8
 int id fitStart 0x7f0900e9
@@ -4020,6 +4022,16 @@ int string abc_shareactionprovider_share_with_application 0x7f100019
 int string abc_toolbar_collapse_description 0x7f10001a
 int string accessibility_service_description 0x7f10001b
 int string accessibility_service_label 0x7f10001c
+int string ai_summary_copied 0x7f1000f3
+int string ai_summary_copy 0x7f1000f4
+int string ai_summary_empty 0x7f1000f5
+int string ai_summary_failed 0x7f1000fd
+int string ai_summary_generate 0x7f1000f6
+int string ai_summary_loading 0x7f1000f7
+int string ai_summary_missing_key 0x7f1000f8
+int string ai_summary_refresh 0x7f1000f9
+int string ai_summary_saved 0x7f1000fa
+int string ai_summary_title 0x7f1000fb
 int string androidx_startup 0x7f10001d
 int string app_name 0x7f10001e
 int string appbar_scrolling_view_behavior 0x7f10001f
@@ -4046,6 +4058,7 @@ int string clear_text_end_icon_content_description 0x7f100033
 int string copy_note 0x7f100034
 int string credits_message 0x7f100035
 int string credits_title 0x7f100036
+int string detail_chip_ai 0x7f1000fc
 int string detail_chip_note 0x7f100037
 int string detail_chip_reminder 0x7f100038
 int string detail_chip_voice 0x7f100039

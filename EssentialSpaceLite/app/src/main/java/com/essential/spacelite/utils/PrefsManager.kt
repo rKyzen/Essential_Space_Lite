@@ -11,6 +11,7 @@ object PrefsManager {
     private const val KEY_DISCLOSURE_ACCEPTED = "disclosure_accepted"
     private const val KEY_THEME_OPTION = "theme_option"
     private const val KEY_USE_NDOT = "use_ndot_headings"
+    private const val KEY_AI_SUMMARY_ENABLED = "ai_summary_enabled"
 
     enum class ThemeOption(val storageValue: String) {
         NOTHING_DARK("nothing_dark");
@@ -63,4 +64,10 @@ object PrefsManager {
 
     fun setUseNdotHeadings(context: Context, enabled: Boolean) =
         prefs(context).edit().putBoolean(KEY_USE_NDOT, enabled).apply()
+
+    fun isAiSummaryEnabled(context: Context): Boolean =
+        prefs(context).getBoolean(KEY_AI_SUMMARY_ENABLED, false)
+
+    fun setAiSummaryEnabled(context: Context, enabled: Boolean) =
+        prefs(context).edit().putBoolean(KEY_AI_SUMMARY_ENABLED, enabled).apply()
 }

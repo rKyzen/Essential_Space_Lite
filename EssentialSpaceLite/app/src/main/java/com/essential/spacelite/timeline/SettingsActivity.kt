@@ -49,11 +49,15 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun setupHeading() {
         binding.switchNdot.isChecked = PrefsManager.useNdotHeadings(this)
+        binding.switchAiSummary.isChecked = PrefsManager.isAiSummaryEnabled(this)
         updateHeading()
 
         binding.switchNdot.setOnCheckedChangeListener { _, isChecked ->
             PrefsManager.setUseNdotHeadings(this, isChecked)
             updateHeading()
+        }
+        binding.switchAiSummary.setOnCheckedChangeListener { _, isChecked ->
+            PrefsManager.setAiSummaryEnabled(this, isChecked)
         }
     }
 
@@ -68,6 +72,9 @@ class SettingsActivity : AppCompatActivity() {
     private fun setupRows() {
         binding.rowNdot.setOnClickListener {
             binding.switchNdot.toggle()
+        }
+        binding.rowAiSummary.setOnClickListener {
+            binding.switchAiSummary.toggle()
         }
         binding.rowKeyBinds.setOnClickListener {
             MaterialAlertDialogBuilder(this)
@@ -163,6 +170,7 @@ class SettingsActivity : AppCompatActivity() {
 
         listOf(
             binding.rowNdot,
+            binding.rowAiSummary,
             binding.rowKeyBinds,
             binding.rowAbout,
             binding.rowPrivacy,
@@ -183,12 +191,13 @@ class SettingsActivity : AppCompatActivity() {
 
         GlassUi.animateEntrance(binding.settingsHeading, 20L, 16f)
         GlassUi.animateEntrance(binding.rowNdot, 70L, 12f)
-        GlassUi.animateEntrance(binding.rowKeyBinds, 95L, 12f)
-        GlassUi.animateEntrance(binding.rowAbout, 120L, 12f)
-        GlassUi.animateEntrance(binding.rowPrivacy, 145L, 12f)
-        GlassUi.animateEntrance(binding.rowTerms, 170L, 12f)
-        GlassUi.animateEntrance(binding.rowDeleteAll, 220L, 12f)
-        GlassUi.animateEntrance(binding.settingsInfoCard, 250L, 12f)
-        GlassUi.animateEntrance(binding.btnSettingsActive, 260L, 16f)
+        GlassUi.animateEntrance(binding.rowAiSummary, 92L, 12f)
+        GlassUi.animateEntrance(binding.rowKeyBinds, 114L, 12f)
+        GlassUi.animateEntrance(binding.rowAbout, 138L, 12f)
+        GlassUi.animateEntrance(binding.rowPrivacy, 162L, 12f)
+        GlassUi.animateEntrance(binding.rowTerms, 186L, 12f)
+        GlassUi.animateEntrance(binding.rowDeleteAll, 228L, 12f)
+        GlassUi.animateEntrance(binding.settingsInfoCard, 254L, 12f)
+        GlassUi.animateEntrance(binding.btnSettingsActive, 270L, 16f)
     }
 }

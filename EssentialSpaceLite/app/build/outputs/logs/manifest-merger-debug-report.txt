@@ -1,20 +1,20 @@
 -- Merging decision tree log ---
 provider#androidx.core.content.FileProvider
-INJECTED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:68:2-76:13
+INJECTED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:69:2-77:13
 	android:grantUriPermissions
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:72:2-36
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:73:2-36
 	android:authorities
 		INJECTED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:70:2-53
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:71:2-53
 	android:exported
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:71:2-26
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:72:2-26
 	android:name
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:69:2-51
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:70:2-51
 manifest
-ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:2:1-79:12
-INJECTED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:2:1-79:12
-INJECTED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:2:1-79:12
-INJECTED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:2:1-79:12
+ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:2:1-80:12
+INJECTED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:2:1-80:12
+INJECTED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:2:1-80:12
+INJECTED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:2:1-80:12
 MERGED from [androidx.databinding:viewbinding:8.3.1] C:\Users\dansh\.gradle\caches\transforms-4\861bd519ab5ec229b487230e3404b4a9\transformed\jetified-viewbinding-8.3.1\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\dansh\.gradle\caches\transforms-4\f0df1319ae9307def337846e0ae2f023\transformed\material-1.12.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\dansh\.gradle\caches\transforms-4\b1e78bcbd8a00581e182daf5bda9b938\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
@@ -87,33 +87,37 @@ uses-permission#android.permission.RECORD_AUDIO
 ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:6:2-68
 	android:name
 		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:6:19-65
+uses-permission#android.permission.INTERNET
+ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:7:2-64
+	android:name
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:7:19-61
 uses-permission#android.permission.READ_MEDIA_IMAGES
-ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:7:2-73
+ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:8:2-73
 	android:name
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:7:19-70
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:8:19-70
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
-ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:8:2-9:31
+ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:9:2-10:31
 	android:maxSdkVersion
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:9:2-28
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:10:2-28
 	android:name
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:8:19-74
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:9:19-74
 uses-permission#android.permission.POST_NOTIFICATIONS
-ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:10:2-74
+ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:11:2-74
 	android:name
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:10:19-71
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:11:19-71
 uses-permission#android.permission.VIBRATE
-ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:11:2-63
+ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:12:2-63
 	android:name
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:11:19-60
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:12:19-60
 uses-permission#android.permission.BIND_ACCESSIBILITY_SERVICE
-ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:12:2-13:40
+ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:13:2-14:40
 	tools:ignore
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:13:2-37
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:14:2-37
 	android:name
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:12:19-79
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:13:19-79
 application
-ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:15:2-78:16
-INJECTED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:15:2-78:16
+ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:16:2-79:16
+INJECTED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:16:2-79:16
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\dansh\.gradle\caches\transforms-4\f0df1319ae9307def337846e0ae2f023\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\dansh\.gradle\caches\transforms-4\f0df1319ae9307def337846e0ae2f023\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\dansh\.gradle\caches\transforms-4\b1e78bcbd8a00581e182daf5bda9b938\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -137,93 +141,93 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\da
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.13.1] C:\Users\dansh\.gradle\caches\transforms-4\40c06525e88c70aebed1f51fe7c77630\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
 	android:supportsRtl
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:21:2-28
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:22:2-28
 	android:label
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:19:2-34
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:20:2-34
 	android:roundIcon
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:20:2-47
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:21:2-47
 	android:icon
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:18:2-36
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:19:2-36
 	android:allowBackup
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:17:2-28
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:18:2-28
 	android:theme
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:22:2-49
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:23:2-49
 	android:name
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:16:2-35
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:17:2-35
 activity#com.essential.spacelite.timeline.AccessibilityDisclosureActivity
-ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:24:2-27:52
+ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:25:2-28:52
 	android:exported
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:26:2-26
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:27:2-26
 	android:theme
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:27:2-49
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:28:2-49
 	android:name
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:25:2-58
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:26:2-58
 activity#com.essential.spacelite.timeline.MainActivity
-ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:30:2-37:13
+ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:31:2-38:13
 	android:exported
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:32:2-25
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:33:2-25
 	android:name
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:31:2-39
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:32:2-39
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:33:2-36:18
+ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:34:2-37:18
 action#android.intent.action.MAIN
-ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:34:2-54
+ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:35:2-54
 	android:name
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:34:10-51
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:35:10-51
 category#android.intent.category.LAUNCHER
-ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:35:2-62
+ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:36:2-62
 	android:name
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:35:12-59
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:36:12-59
 activity#com.essential.spacelite.timeline.DetailActivity
-ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:40:2-43:56
+ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:41:2-44:56
 	android:parentActivityName
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:43:2-53
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:44:2-53
 	android:exported
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:42:2-26
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:43:2-26
 	android:name
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:41:2-41
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:42:2-41
 activity#com.essential.spacelite.timeline.SettingsActivity
-ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:45:2-48:56
+ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:46:2-49:56
 	android:parentActivityName
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:48:2-53
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:49:2-53
 	android:exported
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:47:2-26
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:48:2-26
 	android:name
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:46:2-43
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:47:2-43
 service#com.essential.spacelite.accessibility.VolumeAccessibilityService
-ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:51:2-62:12
+ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:52:2-63:12
 	android:label
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:54:2-53
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:55:2-53
 	android:exported
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:53:2-25
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:54:2-25
 	android:permission
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:55:2-68
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:56:2-68
 	android:name
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:52:2-58
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:53:2-58
 intent-filter#action:name:android.accessibilityservice.AccessibilityService
-ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:56:2-58:18
+ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:57:2-59:18
 action#android.accessibilityservice.AccessibilityService
-ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:57:2-77
+ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:58:2-77
 	android:name
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:57:10-74
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:58:10-74
 meta-data#android.accessibilityservice
-ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:59:2-61:57
+ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:60:2-62:57
 	android:resource
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:61:2-54
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:62:2-54
 	android:name
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:60:2-45
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:61:2-45
 receiver#com.essential.spacelite.reminder.ReminderReceiver
-ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:64:2-66:29
+ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:65:2-67:29
 	android:exported
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:66:2-26
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:67:2-26
 	android:name
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:65:2-43
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:66:2-43
 meta-data#android.support.FILE_PROVIDER_PATHS
-ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:73:2-75:39
+ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:74:2-76:39
 	android:resource
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:75:2-36
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:76:2-36
 	android:name
-		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:74:2-52
+		ADDED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml:75:2-52
 uses-sdk
 INJECTED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from A:\dansh\EssentialSpaceLite\app\src\main\AndroidManifest.xml

@@ -36,6 +36,16 @@
     <color name="thumbnail_placeholder">#E7EAF0</color>
     <string name="accessibility_service_description">Detects simultaneous Volume Up + Down press to trigger an instant screenshot capture with notes and voice memos. No screen content is read until the capture is complete.</string>
     <string name="accessibility_service_label">Origin Space Capture</string>
+    <string name="ai_summary_copied">AI summary copied</string>
+    <string name="ai_summary_copy">Copy summary</string>
+    <string name="ai_summary_empty">Generate a quick summary from the screenshot and your note.</string>
+    <string name="ai_summary_failed">Could not generate a summary right now.</string>
+    <string name="ai_summary_generate">Generate summary</string>
+    <string name="ai_summary_loading">Thinking through the screenshot...</string>
+    <string name="ai_summary_missing_key">Add gemini.api.key to local.properties to enable AI summaries.</string>
+    <string name="ai_summary_refresh">Refresh summary</string>
+    <string name="ai_summary_saved">AI summary saved</string>
+    <string name="ai_summary_title">AI SUMMARY</string>
     <string name="app_name">Origin Space</string>
     <string name="card_kind_hybrid">MIX</string>
     <string name="card_kind_note">NOTE</string>
@@ -43,6 +53,7 @@
     <string name="copy_note">Copy note</string>
     <string name="credits_message">Origin Space is a premium capture-and-memory workspace inspired by Nothing OS minimalism.\n\nBuilt by:\n- rKyzen\n- Origin Space contributors</string>
     <string name="credits_title">About Developers</string>
+    <string name="detail_chip_ai">AI</string>
     <string name="detail_chip_note">Note</string>
     <string name="detail_chip_reminder">Reminder</string>
     <string name="detail_chip_voice">Voice</string>

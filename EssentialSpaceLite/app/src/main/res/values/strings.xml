@@ -45,6 +45,8 @@
     <string name="section_today">TODAY</string>
     <string name="section_yesterday">YESTERDAY</string>
     <string name="settings_toggle_ndot">Use nDot Headings</string>
+    <string name="settings_toggle_ai_summary">Enable AI Summaries</string>
+    <string name="settings_toggle_ai_summary_subtitle">Allow screenshots and notes to be sent to Gemini for summaries.</string>
     <string name="settings_origin_key_binds">Origin Key-binds</string>
     <string name="settings_origin_key_binds_subtitle">Remap the Origin Key</string>
     <string name="settings_privacy_policy">Privacy &amp; Policy</string>
@@ -62,6 +64,7 @@
     <string name="detail_chip_note">Note</string>
     <string name="detail_chip_voice">Voice</string>
     <string name="detail_chip_reminder">Reminder</string>
+    <string name="detail_chip_ai">AI</string>
     <string name="detail_note_count">%1$d characters</string>
     <string name="card_kind_note">NOTE</string>
     <string name="card_kind_voice">VOICE</string>
@@ -69,12 +72,25 @@
     <string name="voice_card_title">Voice Memo</string>
     <string name="overlay_note_hint">Add a note...</string>
     <string name="overlay_caption">Captured just now. Add context before you move on.</string>
+    <string name="ai_summary_title">AI SUMMARY</string>
+    <string name="ai_summary_empty">Generate a quick summary from the screenshot and your note.</string>
+    <string name="ai_summary_generate">Generate summary</string>
+    <string name="ai_summary_refresh">Refresh summary</string>
+    <string name="ai_summary_missing_key">Add gemini.api.key to local.properties to enable AI summaries.</string>
+    <string name="ai_summary_loading">Thinking through the screenshot...</string>
+    <string name="ai_summary_copy">Copy summary</string>
+    <string name="ai_summary_copied">AI summary copied</string>
+    <string name="ai_summary_saved">AI summary saved</string>
+    <string name="ai_summary_failed">Could not generate a summary right now.</string>
     <string name="terms_message">Origin Space stores captures locally and only shares content when you explicitly ask it to.</string>
     <string name="privacy_policy_error">Could not open the privacy policy link.</string>
     <string name="reminder_never">Never remind</string>
     <string name="reminder_set">Set reminder</string>
     <string name="reminder_clear">Clear reminder</string>
     <string name="reminder_add_to_calendar">Add to Google Calendar</string>
+    <string name="reminder_add_to_clock">Add to Clock app</string>
+    <string name="reminder_clock_unavailable">No compatible Clock app found.</string>
+    <string name="reminder_clock_prefill_note">Clock alarm added for the reminder time. Exact future date support depends on your Clock app.</string>
     <string name="reminder_notification_title">Origin Space reminder</string>
     <string name="reminder_notification_text">A saved capture is ready for review.</string>
 </resources>

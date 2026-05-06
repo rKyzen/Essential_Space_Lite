@@ -58,7 +58,6 @@ class MainActivity : AppCompatActivity() {
     private val viewModel: TimelineViewModel by viewModels()
     private var currentTab = OriginTab.NOTES
     private var latestEntries: List<CaptureEntry> = emptyList()
-    private var notesFilter = TimelineViewModel.FilterMode.ALL
     private var mediaPlayer: MediaPlayer? = null
     private var playingButton: ImageButton? = null
     private var hasAnimatedTabState = false
@@ -151,10 +150,6 @@ class MainActivity : AppCompatActivity() {
             applyTab(OriginTab.SEARCH, focusSearch = true)
         }
 
-        binding.chipAll.setOnClickListener { setNotesFilter(TimelineViewModel.FilterMode.ALL) }
-        binding.chipToday.setOnClickListener { setNotesFilter(TimelineViewModel.FilterMode.TODAY) }
-        binding.chipNotes.setOnClickListener { setNotesFilter(TimelineViewModel.FilterMode.NOTES) }
-        binding.chipVoice.setOnClickListener { setNotesFilter(TimelineViewModel.FilterMode.VOICE) }
     }
 
     private fun observeEntries() {
@@ -181,13 +176,12 @@ class MainActivity : AppCompatActivity() {
         currentTab = tab
         when (tab) {
             OriginTab.NOTES -> {
-                viewModel.setFilter(notesFilter)
+                viewModel.setFilter(TimelineViewModel.FilterMode.ALL)
                 binding.titleText.text = getString(R.string.main_title)
                 setVisible(binding.titleText, true, shouldAnimate, tabDirection(previousTab, tab))
                 setVisible(binding.subtitleText, true, shouldAnimate, tabDirection(previousTab, tab))
                 setVisible(binding.searchBar, true, shouldAnimate, tabDirection(previousTab, tab))
                 setVisible(binding.statsRow, true, shouldAnimate, tabDirection(previousTab, tab))
-                setVisible(binding.filterScroll, true, shouldAnimate, tabDirection(previousTab, tab))
                 setVisible(binding.notesContent, true, shouldAnimate, tabDirection(previousTab, tab))
                 setVisible(binding.voiceContent, false, shouldAnimate, tabDirection(previousTab, tab))
             }
@@ -198,19 +192,17 @@ class MainActivity : AppCompatActivity() {
                 setVisible(binding.subtitleText, false, shouldAnimate, tabDirection(previousTab, tab))
                 setVisible(binding.searchBar, false, shouldAnimate, tabDirection(previousTab, tab))
                 setVisible(binding.statsRow, false, shouldAnimate, tabDirection(previousTab, tab))
-                setVisible(binding.filterScroll, false, shouldAnimate, tabDirection(previousTab, tab))
                 setVisible(binding.notesContent, false, shouldAnimate, tabDirection(previousTab, tab))
                 setVisible(binding.voiceContent, true, shouldAnimate, tabDirection(previousTab, tab))
             }
 
             OriginTab.SEARCH -> {
-                viewModel.setFilter(notesFilter)
+                viewModel.setFilter(TimelineViewModel.FilterMode.ALL)
                 binding.titleText.text = getString(R.string.main_title)
                 setVisible(binding.titleText, true, shouldAnimate, tabDirection(previousTab, tab))
                 setVisible(binding.subtitleText, true, shouldAnimate, tabDirection(previousTab, tab))
                 setVisible(binding.searchBar, true, shouldAnimate, tabDirection(previousTab, tab))
                 setVisible(binding.statsRow, true, shouldAnimate, tabDirection(previousTab, tab))
-                setVisible(binding.filterScroll, true, shouldAnimate, tabDirection(previousTab, tab))
                 setVisible(binding.notesContent, true, shouldAnimate, tabDirection(previousTab, tab))
                 setVisible(binding.voiceContent, false, shouldAnimate, tabDirection(previousTab, tab))
                 if (focusSearch) {
@@ -222,17 +214,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         updateNavState(shouldAnimate)
-        updateFilterChips()
         hasAnimatedTabState = true
         renderCurrentTab()
-    }
-
-    private fun setNotesFilter(mode: TimelineViewModel.FilterMode) {
-        notesFilter = mode
-        if (currentTab != OriginTab.VOICE) {
-            viewModel.setFilter(mode)
-            updateFilterChips()
-        }
     }
 
     private fun updateNavState(animate: Boolean) {
@@ -342,7 +325,9 @@ class MainActivity : AppCompatActivity() {
 
         binding.cardText.text = displayText
         binding.cardTime.text = cardTimeFormat.format(Date(entry.timestamp))
-        binding.cardReminder.text = ReminderUtils.formatOverviewReminder(binding.root.context, entry.reminderAt)
+        val reminderText = ReminderUtils.formatOverviewReminder(binding.root.context, entry.reminderAt)
+        binding.cardReminder.text = reminderText
+        binding.cardReminder.visibility = if (entry.reminderAt != null) View.VISIBLE else View.GONE
         binding.cardKind.text = when {
             !entry.voiceNotePath.isNullOrBlank() && !entry.textNote.isNullOrBlank() -> getString(R.string.card_kind_hybrid)
             !entry.voiceNotePath.isNullOrBlank() -> getString(R.string.card_kind_voice)
@@ -582,15 +567,7 @@ class MainActivity : AppCompatActivity() {
             GlassUi.attachLiquidPress(view)
         }
 
-        listOf(
-            binding.statCaptures,
-            binding.statVoice,
-            binding.statReminders,
-            binding.chipAll,
-            binding.chipToday,
-            binding.chipNotes,
-            binding.chipVoice
-        ).forEach { view ->
+        listOf(binding.statCaptures, binding.statVoice, binding.statReminders).forEach { view ->
             GlassUi.applyDepth(view, 8f)
             GlassUi.attachLiquidPress(view, 0.97f, 0.96f)
         }
@@ -605,7 +582,6 @@ class MainActivity : AppCompatActivity() {
         GlassUi.animateEntrance(binding.subtitleText, delayMs = 38L, offsetDp = 12f)
         GlassUi.animateEntrance(binding.searchBar, delayMs = 70L, offsetDp = 14f)
         GlassUi.animateEntrance(binding.statsRow, delayMs = 110L, offsetDp = 12f)
-        GlassUi.animateEntrance(binding.filterScroll, delayMs = 140L, offsetDp = 10f)
         GlassUi.animateEntrance(binding.bottomNav, delayMs = 180L, offsetDp = 16f)
         GlassUi.animateEntrance(binding.btnSettingsBottom, delayMs = 220L, offsetDp = 18f)
     }
@@ -614,19 +590,6 @@ class MainActivity : AppCompatActivity() {
         binding.statCapturesValue.text = entries.size.toString()
         binding.statVoiceValue.text = entries.count { !it.voiceNotePath.isNullOrBlank() }.toString()
         binding.statRemindersValue.text = entries.count { it.reminderAt != null }.toString()
-    }
-
-    private fun updateFilterChips() {
-        updateChip(binding.chipAll, notesFilter == TimelineViewModel.FilterMode.ALL)
-        updateChip(binding.chipToday, notesFilter == TimelineViewModel.FilterMode.TODAY)
-        updateChip(binding.chipNotes, notesFilter == TimelineViewModel.FilterMode.NOTES)
-        updateChip(binding.chipVoice, notesFilter == TimelineViewModel.FilterMode.VOICE)
-    }
-
-    private fun updateChip(chip: TextView, selected: Boolean) {
-        chip.setBackgroundResource(if (selected) R.drawable.bg_filter_chip_active else R.drawable.bg_filter_chip)
-        chip.setTextColor(getColor(if (selected) R.color.text_primary else R.color.text_secondary))
-        chip.alpha = if (selected) 1f else 0.82f
     }
 
     private fun tabDirection(from: OriginTab, to: OriginTab): Int {

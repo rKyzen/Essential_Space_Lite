@@ -86,6 +86,9 @@ drawable ic_stop
 drawable ic_terms
 drawable ic_waveform_origin
 font ndot_47_inspired_by_nothing
+id ai_summary_section
+id ai_summary_status
+id ai_summary_text
 id backdrop_blob_bottom
 id backdrop_blob_top
 id bottom_nav
@@ -94,7 +97,9 @@ id btn_back
 id btn_clear_reminder
 id btn_continue
 id btn_copy_note
+id btn_copy_summary
 id btn_discard
+id btn_generate_summary
 id btn_later
 id btn_play
 id btn_play_voice
@@ -113,11 +118,9 @@ id card_text
 id card_time
 id card_time_group
 id card_voice
-id chip_all
+id chip_ai
 id chip_note
-id chip_notes
 id chip_reminder
-id chip_today
 id chip_voice
 id date_header
 id detail_chip_row
@@ -128,7 +131,6 @@ id empty_state_subtitle
 id empty_state_title
 id entry_date_time
 id entry_time
-id filter_scroll
 id flash_overlay
 id marker_container
 id meta_group
@@ -206,6 +208,16 @@ mipmap ic_launcher
 mipmap ic_launcher_round
 string accessibility_service_description
 string accessibility_service_label
+string ai_summary_copied
+string ai_summary_copy
+string ai_summary_empty
+string ai_summary_failed
+string ai_summary_generate
+string ai_summary_loading
+string ai_summary_missing_key
+string ai_summary_refresh
+string ai_summary_saved
+string ai_summary_title
 string app_name
 string card_kind_hybrid
 string card_kind_note
@@ -213,6 +225,7 @@ string card_kind_voice
 string copy_note
 string credits_message
 string credits_title
+string detail_chip_ai
 string detail_chip_note
 string detail_chip_reminder
 string detail_chip_voice

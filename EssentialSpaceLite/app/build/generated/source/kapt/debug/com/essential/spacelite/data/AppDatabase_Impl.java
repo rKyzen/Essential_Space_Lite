@@ -33,12 +33,12 @@ public final class AppDatabase_Impl extends AppDatabase {
   @Override
   @NonNull
   protected SupportSQLiteOpenHelper createOpenHelper(@NonNull final DatabaseConfiguration config) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(2) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(config, new RoomOpenHelper.Delegate(3) {
       @Override
       public void createAllTables(@NonNull final SupportSQLiteDatabase db) {
-        db.execSQL("CREATE TABLE IF NOT EXISTS `capture_entries` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `screenshot_path` TEXT NOT NULL, `thumbnail_path` TEXT NOT NULL, `text_note` TEXT, `voice_note_path` TEXT, `voice_note_duration_ms` INTEGER NOT NULL, `timestamp` INTEGER NOT NULL, `reminder_at` INTEGER, `app_name` TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS `capture_entries` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `screenshot_path` TEXT NOT NULL, `thumbnail_path` TEXT NOT NULL, `text_note` TEXT, `voice_note_path` TEXT, `voice_note_duration_ms` INTEGER NOT NULL, `timestamp` INTEGER NOT NULL, `reminder_at` INTEGER, `ai_summary` TEXT, `app_name` TEXT)");
         db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '894c97934070f458cc1f90b9325decf3')");
+        db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7893e019e58b6af26053f41cfdceb312')");
       }
 
       @Override
@@ -87,7 +87,7 @@ public final class AppDatabase_Impl extends AppDatabase {
       @NonNull
       public RoomOpenHelper.ValidationResult onValidateSchema(
           @NonNull final SupportSQLiteDatabase db) {
-        final HashMap<String, TableInfo.Column> _columnsCaptureEntries = new HashMap<String, TableInfo.Column>(9);
+        final HashMap<String, TableInfo.Column> _columnsCaptureEntries = new HashMap<String, TableInfo.Column>(10);
         _columnsCaptureEntries.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsCaptureEntries.put("screenshot_path", new TableInfo.Column("screenshot_path", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsCaptureEntries.put("thumbnail_path", new TableInfo.Column("thumbnail_path", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
@@ -96,6 +96,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         _columnsCaptureEntries.put("voice_note_duration_ms", new TableInfo.Column("voice_note_duration_ms", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsCaptureEntries.put("timestamp", new TableInfo.Column("timestamp", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsCaptureEntries.put("reminder_at", new TableInfo.Column("reminder_at", "INTEGER", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsCaptureEntries.put("ai_summary", new TableInfo.Column("ai_summary", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsCaptureEntries.put("app_name", new TableInfo.Column("app_name", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysCaptureEntries = new HashSet<TableInfo.ForeignKey>(0);
         final HashSet<TableInfo.Index> _indicesCaptureEntries = new HashSet<TableInfo.Index>(0);
@@ -108,7 +109,7 @@ public final class AppDatabase_Impl extends AppDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "894c97934070f458cc1f90b9325decf3", "7772f166fbdf199a713653e36bd0a1fb");
+    }, "7893e019e58b6af26053f41cfdceb312", "ae94910223d61ecce20c37d80629b3f6");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(config.context).name(config.name).callback(_openCallback).build();
     final SupportSQLiteOpenHelper _helper = config.sqliteOpenHelperFactory.create(_sqliteConfig);
     return _helper;

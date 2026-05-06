@@ -25,6 +25,15 @@ public final class ActivityDetailBinding implements ViewBinding {
   private final FrameLayout rootView;
 
   @NonNull
+  public final LinearLayout aiSummarySection;
+
+  @NonNull
+  public final TextView aiSummaryStatus;
+
+  @NonNull
+  public final TextView aiSummaryText;
+
+  @NonNull
   public final View backdropBlobTop;
 
   @NonNull
@@ -40,6 +49,12 @@ public final class ActivityDetailBinding implements ViewBinding {
   public final Button btnCopyNote;
 
   @NonNull
+  public final Button btnCopySummary;
+
+  @NonNull
+  public final Button btnGenerateSummary;
+
+  @NonNull
   public final ImageButton btnPlayVoice;
 
   @NonNull
@@ -50,6 +65,9 @@ public final class ActivityDetailBinding implements ViewBinding {
 
   @NonNull
   public final Button btnShareCapture;
+
+  @NonNull
+  public final TextView chipAi;
 
   @NonNull
   public final TextView chipNote;
@@ -96,28 +114,37 @@ public final class ActivityDetailBinding implements ViewBinding {
   @NonNull
   public final LinearLayout voiceSection;
 
-  private ActivityDetailBinding(@NonNull FrameLayout rootView, @NonNull View backdropBlobTop,
+  private ActivityDetailBinding(@NonNull FrameLayout rootView,
+      @NonNull LinearLayout aiSummarySection, @NonNull TextView aiSummaryStatus,
+      @NonNull TextView aiSummaryText, @NonNull View backdropBlobTop,
       @NonNull Button btnAddToCalendar, @NonNull ImageButton btnBack,
-      @NonNull Button btnClearReminder, @NonNull Button btnCopyNote,
-      @NonNull ImageButton btnPlayVoice, @NonNull Button btnSaveNote,
-      @NonNull Button btnSetReminder, @NonNull Button btnShareCapture, @NonNull TextView chipNote,
-      @NonNull TextView chipReminder, @NonNull TextView chipVoice,
-      @NonNull LinearLayout detailChipRow, @NonNull EditText editTextNote,
-      @NonNull TextView entryDateTime, @NonNull LinearLayout metaGroup, @NonNull TextView noteCount,
+      @NonNull Button btnClearReminder, @NonNull Button btnCopyNote, @NonNull Button btnCopySummary,
+      @NonNull Button btnGenerateSummary, @NonNull ImageButton btnPlayVoice,
+      @NonNull Button btnSaveNote, @NonNull Button btnSetReminder, @NonNull Button btnShareCapture,
+      @NonNull TextView chipAi, @NonNull TextView chipNote, @NonNull TextView chipReminder,
+      @NonNull TextView chipVoice, @NonNull LinearLayout detailChipRow,
+      @NonNull EditText editTextNote, @NonNull TextView entryDateTime,
+      @NonNull LinearLayout metaGroup, @NonNull TextView noteCount,
       @NonNull LinearLayout notesSection, @NonNull TextView reminderValue,
       @NonNull ImageView screenshotFull, @NonNull LinearLayout toolbar,
       @NonNull TextView voiceDuration, @NonNull LinearLayout voicePreviewCard,
       @NonNull LinearLayout voiceSection) {
     this.rootView = rootView;
+    this.aiSummarySection = aiSummarySection;
+    this.aiSummaryStatus = aiSummaryStatus;
+    this.aiSummaryText = aiSummaryText;
     this.backdropBlobTop = backdropBlobTop;
     this.btnAddToCalendar = btnAddToCalendar;
     this.btnBack = btnBack;
     this.btnClearReminder = btnClearReminder;
     this.btnCopyNote = btnCopyNote;
+    this.btnCopySummary = btnCopySummary;
+    this.btnGenerateSummary = btnGenerateSummary;
     this.btnPlayVoice = btnPlayVoice;
     this.btnSaveNote = btnSaveNote;
     this.btnSetReminder = btnSetReminder;
     this.btnShareCapture = btnShareCapture;
+    this.chipAi = chipAi;
     this.chipNote = chipNote;
     this.chipReminder = chipReminder;
     this.chipVoice = chipVoice;
@@ -162,6 +189,24 @@ public final class ActivityDetailBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
+      id = R.id.ai_summary_section;
+      LinearLayout aiSummarySection = ViewBindings.findChildViewById(rootView, id);
+      if (aiSummarySection == null) {
+        break missingId;
+      }
+
+      id = R.id.ai_summary_status;
+      TextView aiSummaryStatus = ViewBindings.findChildViewById(rootView, id);
+      if (aiSummaryStatus == null) {
+        break missingId;
+      }
+
+      id = R.id.ai_summary_text;
+      TextView aiSummaryText = ViewBindings.findChildViewById(rootView, id);
+      if (aiSummaryText == null) {
+        break missingId;
+      }
+
       id = R.id.backdrop_blob_top;
       View backdropBlobTop = ViewBindings.findChildViewById(rootView, id);
       if (backdropBlobTop == null) {
@@ -192,6 +237,18 @@ public final class ActivityDetailBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btn_copy_summary;
+      Button btnCopySummary = ViewBindings.findChildViewById(rootView, id);
+      if (btnCopySummary == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_generate_summary;
+      Button btnGenerateSummary = ViewBindings.findChildViewById(rootView, id);
+      if (btnGenerateSummary == null) {
+        break missingId;
+      }
+
       id = R.id.btn_play_voice;
       ImageButton btnPlayVoice = ViewBindings.findChildViewById(rootView, id);
       if (btnPlayVoice == null) {
@@ -213,6 +270,12 @@ public final class ActivityDetailBinding implements ViewBinding {
       id = R.id.btn_share_capture;
       Button btnShareCapture = ViewBindings.findChildViewById(rootView, id);
       if (btnShareCapture == null) {
+        break missingId;
+      }
+
+      id = R.id.chip_ai;
+      TextView chipAi = ViewBindings.findChildViewById(rootView, id);
+      if (chipAi == null) {
         break missingId;
       }
 
@@ -306,9 +369,10 @@ public final class ActivityDetailBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityDetailBinding((FrameLayout) rootView, backdropBlobTop, btnAddToCalendar,
-          btnBack, btnClearReminder, btnCopyNote, btnPlayVoice, btnSaveNote, btnSetReminder,
-          btnShareCapture, chipNote, chipReminder, chipVoice, detailChipRow, editTextNote,
+      return new ActivityDetailBinding((FrameLayout) rootView, aiSummarySection, aiSummaryStatus,
+          aiSummaryText, backdropBlobTop, btnAddToCalendar, btnBack, btnClearReminder, btnCopyNote,
+          btnCopySummary, btnGenerateSummary, btnPlayVoice, btnSaveNote, btnSetReminder,
+          btnShareCapture, chipAi, chipNote, chipReminder, chipVoice, detailChipRow, editTextNote,
           entryDateTime, metaGroup, noteCount, notesSection, reminderValue, screenshotFull, toolbar,
           voiceDuration, voicePreviewCard, voiceSection);
     }

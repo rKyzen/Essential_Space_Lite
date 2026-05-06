@@ -1,31 +1,43 @@
 [
     {
-        "merged": "com.essential.spacelite.app-mergeDebugResources-3:/layout/activity_accessibility_disclosure.xml",
-        "source": "com.essential.spacelite.app-main-6:/layout/activity_accessibility_disclosure.xml"
+        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-mergeDebugResources-3:\\layout\\activity_detail.xml",
+        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\layout\\activity_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-mergeDebugResources-3:\\layout\\item_voice_note.xml",
+        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\layout\\item_voice_note.xml"
+    },
+    {
+        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-mergeDebugResources-3:\\layout\\activity_accessibility_disclosure.xml",
+        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\layout\\activity_accessibility_disclosure.xml"
     },
     {
         "merged": "com.essential.spacelite.app-mergeDebugResources-3:/layout/item_origin_capture_card.xml",
         "source": "com.essential.spacelite.app-main-6:/layout/item_origin_capture_card.xml"
     },
     {
+        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-mergeDebugResources-3:\\layout\\activity_settings.xml",
+        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\layout\\activity_settings.xml"
+    },
+    {
+        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-mergeDebugResources-3:\\layout\\overlay_capture.xml",
+        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\layout\\overlay_capture.xml"
+    },
+    {
         "merged": "com.essential.spacelite.app-mergeDebugResources-3:/layout/activity_detail.xml",
         "source": "com.essential.spacelite.app-main-6:/layout/activity_detail.xml"
     },
     {
-        "merged": "com.essential.spacelite.app-mergeDebugResources-3:/layout/item_voice_note.xml",
-        "source": "com.essential.spacelite.app-main-6:/layout/item_voice_note.xml"
+        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-mergeDebugResources-3:\\layout\\item_timeline_entry.xml",
+        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\layout\\item_timeline_entry.xml"
     },
     {
-        "merged": "com.essential.spacelite.app-mergeDebugResources-3:/layout/overlay_capture.xml",
-        "source": "com.essential.spacelite.app-main-6:/layout/overlay_capture.xml"
+        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-mergeDebugResources-3:\\layout\\item_origin_capture_card.xml",
+        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\layout\\item_origin_capture_card.xml"
     },
     {
-        "merged": "com.essential.spacelite.app-mergeDebugResources-3:/layout/item_timeline_entry.xml",
-        "source": "com.essential.spacelite.app-main-6:/layout/item_timeline_entry.xml"
-    },
-    {
-        "merged": "com.essential.spacelite.app-mergeDebugResources-3:/layout/activity_settings.xml",
-        "source": "com.essential.spacelite.app-main-6:/layout/activity_settings.xml"
+        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-mergeDebugResources-3:\\layout\\activity_main.xml",
+        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\layout\\activity_main.xml"
     },
     {
         "merged": "com.essential.spacelite.app-mergeDebugResources-3:/layout/activity_main.xml",

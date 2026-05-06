@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.FrameLayout;
-import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -36,18 +35,6 @@ public final class ActivityMainBinding implements ViewBinding {
   public final ImageButton btnSettingsBottom;
 
   @NonNull
-  public final TextView chipAll;
-
-  @NonNull
-  public final TextView chipNotes;
-
-  @NonNull
-  public final TextView chipToday;
-
-  @NonNull
-  public final TextView chipVoice;
-
-  @NonNull
   public final LinearLayout emptyState;
 
   @NonNull
@@ -55,9 +42,6 @@ public final class ActivityMainBinding implements ViewBinding {
 
   @NonNull
   public final TextView emptyStateTitle;
-
-  @NonNull
-  public final HorizontalScrollView filterScroll;
 
   @NonNull
   public final LinearLayout navNotes;
@@ -139,10 +123,8 @@ public final class ActivityMainBinding implements ViewBinding {
 
   private ActivityMainBinding(@NonNull FrameLayout rootView, @NonNull View backdropBlobBottom,
       @NonNull View backdropBlobTop, @NonNull LinearLayout bottomNav,
-      @NonNull ImageButton btnSettingsBottom, @NonNull TextView chipAll,
-      @NonNull TextView chipNotes, @NonNull TextView chipToday, @NonNull TextView chipVoice,
-      @NonNull LinearLayout emptyState, @NonNull TextView emptyStateSubtitle,
-      @NonNull TextView emptyStateTitle, @NonNull HorizontalScrollView filterScroll,
+      @NonNull ImageButton btnSettingsBottom, @NonNull LinearLayout emptyState,
+      @NonNull TextView emptyStateSubtitle, @NonNull TextView emptyStateTitle,
       @NonNull LinearLayout navNotes, @NonNull LinearLayout navSearch,
       @NonNull LinearLayout navVoice, @NonNull LinearLayout notesContent,
       @NonNull TextView recentLabel, @NonNull LinearLayout recentRows,
@@ -161,14 +143,9 @@ public final class ActivityMainBinding implements ViewBinding {
     this.backdropBlobTop = backdropBlobTop;
     this.bottomNav = bottomNav;
     this.btnSettingsBottom = btnSettingsBottom;
-    this.chipAll = chipAll;
-    this.chipNotes = chipNotes;
-    this.chipToday = chipToday;
-    this.chipVoice = chipVoice;
     this.emptyState = emptyState;
     this.emptyStateSubtitle = emptyStateSubtitle;
     this.emptyStateTitle = emptyStateTitle;
-    this.filterScroll = filterScroll;
     this.navNotes = navNotes;
     this.navSearch = navSearch;
     this.navVoice = navVoice;
@@ -248,30 +225,6 @@ public final class ActivityMainBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.chip_all;
-      TextView chipAll = ViewBindings.findChildViewById(rootView, id);
-      if (chipAll == null) {
-        break missingId;
-      }
-
-      id = R.id.chip_notes;
-      TextView chipNotes = ViewBindings.findChildViewById(rootView, id);
-      if (chipNotes == null) {
-        break missingId;
-      }
-
-      id = R.id.chip_today;
-      TextView chipToday = ViewBindings.findChildViewById(rootView, id);
-      if (chipToday == null) {
-        break missingId;
-      }
-
-      id = R.id.chip_voice;
-      TextView chipVoice = ViewBindings.findChildViewById(rootView, id);
-      if (chipVoice == null) {
-        break missingId;
-      }
-
       id = R.id.empty_state;
       LinearLayout emptyState = ViewBindings.findChildViewById(rootView, id);
       if (emptyState == null) {
@@ -287,12 +240,6 @@ public final class ActivityMainBinding implements ViewBinding {
       id = R.id.empty_state_title;
       TextView emptyStateTitle = ViewBindings.findChildViewById(rootView, id);
       if (emptyStateTitle == null) {
-        break missingId;
-      }
-
-      id = R.id.filter_scroll;
-      HorizontalScrollView filterScroll = ViewBindings.findChildViewById(rootView, id);
-      if (filterScroll == null) {
         break missingId;
       }
 
@@ -453,12 +400,12 @@ public final class ActivityMainBinding implements ViewBinding {
       }
 
       return new ActivityMainBinding((FrameLayout) rootView, backdropBlobBottom, backdropBlobTop,
-          bottomNav, btnSettingsBottom, chipAll, chipNotes, chipToday, chipVoice, emptyState,
-          emptyStateSubtitle, emptyStateTitle, filterScroll, navNotes, navSearch, navVoice,
-          notesContent, recentLabel, recentRows, searchBar, searchInput, statCaptures,
-          statCapturesValue, statReminders, statRemindersValue, statVoice, statVoiceValue, statsRow,
-          subtitleText, titleText, todayLabel, todayRows, voiceContent, voiceSubtitleText,
-          voiceTitleText, voiceTodayLabel, voiceTodayRows, voiceYesterdayLabel, voiceYesterdayRows);
+          bottomNav, btnSettingsBottom, emptyState, emptyStateSubtitle, emptyStateTitle, navNotes,
+          navSearch, navVoice, notesContent, recentLabel, recentRows, searchBar, searchInput,
+          statCaptures, statCapturesValue, statReminders, statRemindersValue, statVoice,
+          statVoiceValue, statsRow, subtitleText, titleText, todayLabel, todayRows, voiceContent,
+          voiceSubtitleText, voiceTitleText, voiceTodayLabel, voiceTodayRows, voiceYesterdayLabel,
+          voiceYesterdayRows);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

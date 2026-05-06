@@ -149,6 +149,20 @@
                             android:textColor="@color/accent_yellow"
                             android:textSize="9sp"
                             android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/chip_ai"
+                            android:layout_width="wrap_content"
+                            android:layout_height="24dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/bg_badge_chip"
+                            android:fontFamily="monospace"
+                            android:gravity="center"
+                            android:paddingHorizontal="10dp"
+                            android:text="@string/detail_chip_ai"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="9sp"
+                            android:visibility="gone" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -302,6 +316,82 @@
                         android:fontFamily="monospace"
                         android:textColor="@color/text_tertiary"
                         android:textSize="10sp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ai_summary_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/bg_glass_panel"
+                    android:orientation="vertical"
+                    android:paddingHorizontal="20dp"
+                    android:paddingTop="18dp"
+                    android:paddingBottom="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="monospace"
+                        android:letterSpacing="0.1"
+                        android:text="@string/ai_summary_title"
+                        android:textColor="@color/text_tertiary"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/ai_summary_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:fontFamily="sans-serif-light"
+                        android:lineSpacingMultiplier="1.3"
+                        android:text="@string/ai_summary_empty"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/ai_summary_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="monospace"
+                        android:textColor="@color/text_tertiary"
+                        android:textSize="10sp"
+                        android:visibility="gone" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:orientation="horizontal">
+
+                        <Button
+                            android:id="@+id/btn_generate_summary"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:text="@string/ai_summary_generate"
+                            android:textAllCaps="false"
+                            android:textColor="@color/text_primary"
+                            app:strokeColor="@color/stroke"
+                            app:strokeWidth="1dp" />
+
+                        <Button
+                            android:id="@+id/btn_copy_summary"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="0dp"
+                            android:layout_height="40dp"
+                            android:layout_weight="1"
+                            android:layout_marginStart="10dp"
+                            android:text="@string/ai_summary_copy"
+                            android:textAllCaps="false"
+                            android:textColor="@color/text_primary"
+                            app:strokeColor="@color/stroke"
+                            app:strokeWidth="1dp" />
+                    </LinearLayout>
 
                 </LinearLayout>
 

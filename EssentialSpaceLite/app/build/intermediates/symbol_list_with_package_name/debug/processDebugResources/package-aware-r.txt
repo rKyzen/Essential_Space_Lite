@@ -3249,6 +3249,9 @@ id action_text
 id actions
 id activity_chooser_view_content
 id add
+id ai_summary_section
+id ai_summary_status
+id ai_summary_text
 id alertTitle
 id aligned
 id all
@@ -3284,7 +3287,9 @@ id btn_back
 id btn_clear_reminder
 id btn_continue
 id btn_copy_note
+id btn_copy_summary
 id btn_discard
+id btn_generate_summary
 id btn_later
 id btn_play
 id btn_play_voice
@@ -3318,11 +3323,9 @@ id chain2
 id chains
 id checkbox
 id checked
-id chip_all
+id chip_ai
 id chip_note
-id chip_notes
 id chip_reminder
-id chip_today
 id chip_voice
 id chronometer
 id circle_center
@@ -3408,7 +3411,6 @@ id fill
 id fill_horizontal
 id fill_vertical
 id filled
-id filter_scroll
 id fitCenter
 id fitEnd
 id fitStart
@@ -4021,6 +4023,16 @@ string abc_shareactionprovider_share_with_application
 string abc_toolbar_collapse_description
 string accessibility_service_description
 string accessibility_service_label
+string ai_summary_copied
+string ai_summary_copy
+string ai_summary_empty
+string ai_summary_failed
+string ai_summary_generate
+string ai_summary_loading
+string ai_summary_missing_key
+string ai_summary_refresh
+string ai_summary_saved
+string ai_summary_title
 string androidx_startup
 string app_name
 string appbar_scrolling_view_behavior
@@ -4047,6 +4059,7 @@ string clear_text_end_icon_content_description
 string copy_note
 string credits_message
 string credits_title
+string detail_chip_ai
 string detail_chip_note
 string detail_chip_reminder
 string detail_chip_voice

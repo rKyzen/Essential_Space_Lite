@@ -30,6 +30,9 @@ data class CaptureEntry(
     @ColumnInfo(name = "reminder_at")
     val reminderAt: Long? = null,
 
+    @ColumnInfo(name = "ai_summary")
+    val aiSummary: String? = null,
+
     @ColumnInfo(name = "app_name")
     val appName: String? = null
 )

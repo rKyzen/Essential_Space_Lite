@@ -149,7 +149,7 @@
                         android:layout_height="18dp"
                         android:layout_gravity="center"
                         android:alpha="0.92"
-                        android:src="@drawable/ic_settings"
+                        android:src="@drawable/ic_origin_mark"
                         android:tint="@color/text_primary" />
                 </FrameLayout>
 
@@ -339,7 +339,7 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:src="@drawable/ic_origin_mark" />
+                    android:src="@drawable/ic_nav_voice" />
             </LinearLayout>
 
             <LinearLayout
@@ -367,3 +367,7 @@
     </LinearLayout>
 
 </FrameLayout>
+
+
+
+
