@@ -80,7 +80,14 @@ class TimelineViewModel(application: Application) : AndroidViewModel(application
 
     private fun matchesQuery(entry: CaptureEntry, query: String): Boolean {
         if (query.isBlank()) return true
-        return entry.textNote?.contains(query, ignoreCase = true) == true
+        return listOfNotNull(
+            entry.textNote,
+            entry.aiSummary,
+            entry.appName
+        ).any { it.contains(query, ignoreCase = true) } ||
+            (!entry.voiceNotePath.isNullOrBlank() && "voice".contains(query, ignoreCase = true)) ||
+            (entry.reminderAt != null && "reminder".contains(query, ignoreCase = true)) ||
+            (entry.isFavorite && listOf("fav", "favorite", "saved").any { it.contains(query, ignoreCase = true) })
     }
 
     private fun matchesFilter(entry: CaptureEntry, mode: FilterMode): Boolean {

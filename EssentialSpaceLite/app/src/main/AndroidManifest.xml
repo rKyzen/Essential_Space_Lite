@@ -27,6 +27,11 @@
  android:exported="false"
  android:theme="@style/Theme.EssentialSpaceLite" />
 
+ <activity
+ android:name=".timeline.UpdateIntroActivity"
+ android:exported="false"
+ android:theme="@style/Theme.EssentialSpaceLite" />
+
  <!-- Main Activity -->
  <activity
  android:name=".timeline.MainActivity"

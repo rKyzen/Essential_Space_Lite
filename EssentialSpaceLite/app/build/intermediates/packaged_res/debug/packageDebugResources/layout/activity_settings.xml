@@ -80,6 +80,90 @@
             </LinearLayout>
 
             <LinearLayout
+                android:id="@+id/row_ai_summary"
+                android:layout_width="match_parent"
+                android:layout_height="78dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_settings_row"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="18dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="@string/settings_toggle_ai_summary"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="@string/settings_toggle_ai_summary_subtitle"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <com.google.android.material.switchmaterial.SwitchMaterial
+                    android:id="@+id/switch_ai_summary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:thumbTint="@color/text_primary"
+                    app:trackTint="@color/text_tertiary" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/row_theme"
+                android:layout_width="match_parent"
+                android:layout_height="78dp"
+                android:layout_marginTop="4dp"
+                android:background="@drawable/bg_settings_row"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="18dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-light"
+                        android:text="@string/settings_theme"
+                        android:textColor="@color/text_primary"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/theme_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="sans-serif-light"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:alpha="0.72"
+                    android:src="@drawable/ic_chevron_right"
+                    android:tint="@color/text_secondary" />
+            </LinearLayout>
+
+            <LinearLayout
                 android:id="@+id/row_key_binds"
                 android:layout_width="match_parent"
                 android:layout_height="78dp"
@@ -314,14 +398,17 @@
             android:layout_marginEnd="14dp"
             android:background="@drawable/bg_origin_nav_pill"
             android:gravity="center_vertical"
-            android:paddingHorizontal="10dp">
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="6dp">
 
             <LinearLayout
                 android:id="@+id/nav_notes"
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:gravity="center">
+                android:layout_marginEnd="4dp"
+                android:gravity="center"
+                android:paddingHorizontal="8dp">
 
                 <ImageView
                     android:layout_width="22dp"
@@ -334,7 +421,9 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:gravity="center">
+                android:layout_marginHorizontal="2dp"
+                android:gravity="center"
+                android:paddingHorizontal="8dp">
 
                 <ImageView
                     android:layout_width="24dp"
@@ -347,7 +436,9 @@
                 android:layout_width="0dp"
                 android:layout_height="50dp"
                 android:layout_weight="1"
-                android:gravity="center">
+                android:layout_marginStart="4dp"
+                android:gravity="center"
+                android:paddingHorizontal="8dp">
 
                 <ImageView
                     android:layout_width="22dp"

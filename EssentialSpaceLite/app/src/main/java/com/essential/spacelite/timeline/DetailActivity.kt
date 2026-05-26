@@ -10,6 +10,8 @@ import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.provider.CalendarContract
+import android.view.GestureDetector
+import android.view.MotionEvent
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -46,8 +48,20 @@ class DetailActivity : AppCompatActivity() {
     private var mediaPlayer: MediaPlayer? = null
     private var isPlaying = false
     private var isGeneratingSummary = false
+    private var isScreenshotExpanded = false
 
     private val dateTimeFormat = SimpleDateFormat("EEEE, MMMM d - h:mm a", Locale.US)
+    private val screenshotDetector by lazy {
+        GestureDetector(
+            this,
+            object : GestureDetector.SimpleOnGestureListener() {
+                override fun onSingleTapConfirmed(e: MotionEvent): Boolean {
+                    toggleScreenshotExpansion()
+                    return true
+                }
+            }
+        )
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         ThemeHelper.prepareActivity(this)
@@ -60,6 +74,8 @@ class DetailActivity : AppCompatActivity() {
             insets
         }
         applyGlassSystem()
+        applyThemeVisuals()
+        ThemeHelper.applyAmbientMode(PrefsManager.getThemeOption(this), binding.backdropBlobTop)
 
         val entryId = intent.getLongExtra(EXTRA_ENTRY_ID, -1L)
         if (entryId == -1L) {
@@ -77,9 +93,10 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun bindEntry(e: CaptureEntry) {
-        binding.screenshotFull.maxHeight = (resources.displayMetrics.heightPixels * 0.42f).toInt()
+        applyScreenshotHeight()
         Glide.with(this).load(File(e.screenshotPath)).into(binding.screenshotFull)
         binding.entryDateTime.text = dateTimeFormat.format(Date(e.timestamp))
+        binding.sourceAppValue.text = e.appName?.takeIf { it.isNotBlank() } ?: getString(R.string.detail_source_unknown)
         binding.editTextNote.setText(e.textNote ?: "")
         binding.noteCount.text = getString(R.string.detail_note_count, binding.editTextNote.text?.length ?: 0)
         val aiEnabled = PrefsManager.isAiSummaryEnabled(this)
@@ -92,6 +109,7 @@ class DetailActivity : AppCompatActivity() {
         }
 
         renderReminder(e)
+        renderFavoriteState(e)
         binding.aiSummarySection.visibility = if (aiEnabled) View.VISIBLE else View.GONE
         if (aiEnabled) {
             renderAiSummary(e)
@@ -108,6 +126,7 @@ class DetailActivity : AppCompatActivity() {
 
     private fun setupActions() {
         binding.btnBack.setOnClickListener { finish() }
+        binding.btnToggleFavorite.setOnClickListener { toggleFavorite() }
         binding.btnSaveNote.setOnClickListener { saveTextNote() }
         binding.btnShareCapture.setOnClickListener { shareCapture() }
         binding.btnCopyNote.setOnClickListener { copyNote() }
@@ -118,6 +137,11 @@ class DetailActivity : AppCompatActivity() {
         binding.btnAddToClock.setOnClickListener { addReminderToClock() }
         binding.btnGenerateSummary.setOnClickListener { generateAiSummary() }
         binding.btnCopySummary.setOnClickListener { copyAiSummary() }
+        binding.screenshotFull.setOnTouchListener { _, event ->
+            screenshotDetector.onTouchEvent(event)
+            true
+        }
+        binding.screenshotHint.setOnClickListener { toggleScreenshotExpansion() }
         binding.editTextNote.doAfterTextChanged {
             binding.noteCount.text = getString(R.string.detail_note_count, it?.length ?: 0)
         }
@@ -142,6 +166,13 @@ class DetailActivity : AppCompatActivity() {
         binding.btnAddToCalendar.visibility = if (hasReminder) View.VISIBLE else View.GONE
         binding.btnAddToClock.visibility = if (hasReminder) View.VISIBLE else View.GONE
         binding.chipReminder.visibility = if (hasReminder) View.VISIBLE else View.GONE
+    }
+
+    private fun renderFavoriteState(entry: CaptureEntry) {
+        binding.chipFavorite.visibility = if (entry.isFavorite) View.VISIBLE else View.GONE
+        binding.btnToggleFavorite.text = getString(
+            if (entry.isFavorite) R.string.favorite_remove else R.string.favorite_add
+        )
     }
 
     private fun renderAiSummary(entry: CaptureEntry) {
@@ -223,6 +254,21 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
+    private fun toggleFavorite() {
+        val current = entry ?: return
+        val updated = current.copy(isFavorite = !current.isFavorite)
+        lifecycleScope.launch {
+            AppDatabase.getDatabase(applicationContext).captureEntryDao().update(updated)
+            entry = updated
+            renderFavoriteState(updated)
+            Toast.makeText(
+                this@DetailActivity,
+                if (updated.isFavorite) R.string.favorite_saved else R.string.favorite_removed,
+                Toast.LENGTH_SHORT
+            ).show()
+        }
+    }
+
     private fun generateAiSummary() {
         val current = entry ?: return
         if (isGeneratingSummary) return
@@ -283,6 +329,24 @@ class DetailActivity : AppCompatActivity() {
         val clipboard = getSystemService(ClipboardManager::class.java)
         clipboard.setPrimaryClip(ClipData.newPlainText("Origin Space AI summary", summary))
         Toast.makeText(this, R.string.ai_summary_copied, Toast.LENGTH_SHORT).show()
+    }
+
+    private fun toggleScreenshotExpansion() {
+        isScreenshotExpanded = !isScreenshotExpanded
+        applyScreenshotHeight()
+        binding.screenshotHint.text = getString(
+            if (isScreenshotExpanded) R.string.detail_screenshot_fit else R.string.detail_screenshot_hint
+        )
+        binding.screenshotFull.animate()
+            .scaleX(if (isScreenshotExpanded) 1.015f else 1f)
+            .scaleY(if (isScreenshotExpanded) 1.015f else 1f)
+            .setDuration(220L)
+            .start()
+    }
+
+    private fun applyScreenshotHeight() {
+        binding.screenshotFull.maxHeight =
+            (resources.displayMetrics.heightPixels * if (isScreenshotExpanded) 0.78f else 0.42f).toInt()
     }
 
     private fun addReminderToCalendar() {
@@ -391,6 +455,7 @@ class DetailActivity : AppCompatActivity() {
 
         listOf(
             binding.btnBack,
+            binding.btnToggleFavorite,
             binding.btnSaveNote,
             binding.btnShareCapture,
             binding.btnCopyNote,
@@ -406,6 +471,32 @@ class DetailActivity : AppCompatActivity() {
         }
 
         GlassUi.animateEntrance(binding.toolbar, 10L, 10f)
+    }
+
+    private fun applyThemeVisuals() {
+        val palette = ThemeHelper.palette(this)
+        ThemeHelper.applyRootBackground(binding.root, palette)
+        listOf(
+            binding.toolbar,
+            binding.screenshotShell,
+            binding.metaGroup,
+            binding.notesSection,
+            binding.aiSummarySection,
+            binding.voiceSection,
+            binding.voicePreviewCard
+        ).forEachIndexed { index, view ->
+            ThemeHelper.tintSurface(view, if (index <= 1) palette.surfaceStrongTint else palette.surfaceTint)
+        }
+        ThemeHelper.stylePrimaryButton(binding.btnSaveNote, palette)
+        ThemeHelper.styleOutlineButton(binding.btnToggleFavorite, palette)
+        ThemeHelper.styleOutlineButton(binding.btnShareCapture, palette)
+        ThemeHelper.styleOutlineButton(binding.btnCopyNote, palette)
+        ThemeHelper.styleOutlineButton(binding.btnSetReminder, palette)
+        ThemeHelper.styleOutlineButton(binding.btnClearReminder, palette)
+        ThemeHelper.styleOutlineButton(binding.btnAddToCalendar, palette)
+        ThemeHelper.styleOutlineButton(binding.btnAddToClock, palette)
+        ThemeHelper.styleOutlineButton(binding.btnGenerateSummary, palette)
+        ThemeHelper.styleOutlineButton(binding.btnCopySummary, palette)
     }
 
     override fun onPause() {

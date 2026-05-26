@@ -1,302 +1,314 @@
 [
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\mipmap-hdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\mipmap-hdpi\\ic_launcher.png"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_recording_dot.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_recording_dot.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\layout_overlay_capture.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\layout\\overlay_capture.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_glass_panel.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_glass_panel.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_ic_chevron_left.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\ic_chevron_left.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_wave_marker.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_wave_marker.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_ic_settings.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\ic_settings.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "com.essential.spacelite.app-main-6:/mipmap-xxxhdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_ic_capture_dot.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\ic_capture_dot.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/layout_item_timeline_entry.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/layout/item_timeline_entry.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\ic_launcher_foreground.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_dot.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_dot.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_ic_discord.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\ic_discord.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_origin_nav_active.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_origin_nav_active.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_voice_badge.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_voice_badge.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_ic_mic_stop.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/ic_mic_stop.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_origin_card.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_origin_card.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/layout_item_origin_capture_card.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/layout/item_origin_capture_card.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_search_field.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_search_field.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_ic_discord.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/ic_discord.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_ic_mic_stop.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\ic_mic_stop.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_voice_preview.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_voice_preview.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_settings_gear.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_settings_gear.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_glass_toolbar.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_glass_toolbar.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_wave_track.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_wave_track.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_badge_chip.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_badge_chip.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_overlay_card.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_overlay_card.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_delete_row.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_delete_row.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/layout_item_voice_note.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/layout/item_voice_note.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_ic_stop.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\ic_stop.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/xml_accessibility_service_config.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/xml/accessibility_service_config.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_ic_mic.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\ic_mic.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_settings_row.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_settings_row.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_save_button.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_save_button.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/layout_activity_accessibility_disclosure.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/layout/activity_accessibility_disclosure.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\anim_slide_up_enter.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\anim\\slide_up_enter.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_voice_badge.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_voice_badge.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\layout_activity_accessibility_disclosure.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\layout\\activity_accessibility_disclosure.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_update_dot_inactive.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_update_dot_inactive.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\mipmap-mdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\mipmap-mdpi\\ic_launcher.png"
+        "merged": "com.essential.spacelite.app-debug-4:/layout_item_update_intro_page.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/layout/item_update_intro_page.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_origin_voice_card.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_origin_voice_card.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_ic_nav_voice.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/ic_nav_voice.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\layout_item_timeline_entry.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\layout\\item_timeline_entry.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_ic_chevron_right.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/ic_chevron_right.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\xml_accessibility_service_config.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\xml\\accessibility_service_config.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_origin_voice_card.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_origin_voice_card.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_ic_nav_notes.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\ic_nav_notes.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_icon_button.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_icon_button.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\xml_file_paths.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\xml\\file_paths.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_ic_search_origin.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/ic_search_origin.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_overlay_card.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_overlay_card.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_ic_close.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/ic_close.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_settings_row.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_settings_row.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_ic_nav_notes.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/ic_nav_notes.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_wave_track.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_wave_track.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/layout_activity_main.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/layout/activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_ic_launcher_background.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\ic_launcher_background.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/anim_slide_up_enter.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/anim/slide_up_enter.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\layout_item_voice_note.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\layout\\item_voice_note.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_stat_pill.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_stat_pill.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_origin_nav_active.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_origin_nav_active.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_ic_play.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/ic_play.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_stat_pill.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_stat_pill.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_ic_waveform_origin.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/ic_waveform_origin.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_origin_search_bar.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_origin_search_bar.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "com.essential.spacelite.app-main-6:/mipmap-mdpi/ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_ic_delete_origin.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\ic_delete_origin.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/xml_file_paths.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/xml/file_paths.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\layout_item_origin_capture_card.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\layout\\item_origin_capture_card.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_ic_mic.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/ic_mic.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_ic_waveform_origin.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\ic_waveform_origin.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_ic_capture_dot.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/ic_capture_dot.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_wave_marker.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_wave_marker.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_origin_nav_pill.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_origin_nav_pill.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_recording_dot.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_recording_dot.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "com.essential.spacelite.app-main-6:/mipmap-xhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_glass_panel.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_glass_panel.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_ic_terms.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\ic_terms.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/mipmap-hdpi_ic_launcher.png.flat",
+        "source": "com.essential.spacelite.app-main-6:/mipmap-hdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\mipmap-xxxhdpi\\ic_launcher.png"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_delete_row.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_delete_row.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_filter_chip_active.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_filter_chip_active.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_origin_card.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_origin_card.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\layout_activity_detail.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\layout\\activity_detail.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_ic_chevron_left.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/ic_chevron_left.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\anim_slide_down_exit.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\anim\\slide_down_exit.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_capture_card.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_capture_card.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_handle.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_handle.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/layout_activity_update_intro.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/layout/activity_update_intro.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_ic_nav_voice.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\ic_nav_voice.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_handle.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_handle.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "com.essential.spacelite.app-main-6:/mipmap-xxhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\mipmap-xhdpi\\ic_launcher.png"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_ic_launcher_background.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_ic_search_origin.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\ic_search_origin.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_origin_search_bar.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_origin_search_bar.xml"
+    },
+    {
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_ic_filter_origin.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/ic_filter_origin.xml"
     },
     {
         "merged": "com.essential.spacelite.app-debug-4:/font_ndot_47_inspired_by_nothing.otf.flat",
         "source": "com.essential.spacelite.app-main-6:/font/ndot_47_inspired_by_nothing.otf"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_icon_button.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_icon_button.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_ic_settings.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/ic_settings.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_ic_origin_mark.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\ic_origin_mark.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_ic_stop.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/ic_stop.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\mipmap-xhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\mipmap-xhdpi\\ic_launcher_round.png"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_ic_delete_origin.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/ic_delete_origin.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\mipmap-mdpi\\ic_launcher_round.png"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_settings_icon_badge.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_settings_icon_badge.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\mipmap-xxhdpi\\ic_launcher.png"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_filter_chip.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_filter_chip.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\mipmap-hdpi\\ic_launcher_round.png"
+        "merged": "com.essential.spacelite.app-debug-4:/mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "com.essential.spacelite.app-main-6:/mipmap-hdpi/ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\mipmap-anydpi-v26\\ic_launcher.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_ic_origin_mark.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/ic_origin_mark.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\mipmap-xxxhdpi\\ic_launcher_round.png"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_badge_chip.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_badge_chip.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\layout_activity_settings.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\layout\\activity_settings.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_glass_toolbar.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_glass_toolbar.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_origin_nav_pill.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_origin_nav_pill.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "com.essential.spacelite.app-main-6:/mipmap-xxxhdpi/ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_filter_chip.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_filter_chip.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_filter_chip_active.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_filter_chip_active.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_settings_icon_badge.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_settings_icon_badge.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/anim_slide_down_exit.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/anim/slide_down_exit.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_ic_chevron_right.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\ic_chevron_right.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_glass_blob.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_glass_blob.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\layout_activity_main.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\layout\\activity_main.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/layout_activity_settings.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/layout/activity_settings.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\mipmap-xxhdpi\\ic_launcher_round.png"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_update_dot_active.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_update_dot_active.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_capture_card.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_capture_card.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/layout_overlay_capture.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/layout/overlay_capture.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_dot.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_dot.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_thumbnail_placeholder.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_thumbnail_placeholder.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_ic_close.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\ic_close.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_save_button.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_save_button.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_ic_play.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\ic_play.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/layout_activity_detail.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/layout/activity_detail.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_settings_gear.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_settings_gear.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_ic_terms.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/ic_terms.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_ic_filter_origin.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\ic_filter_origin.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/mipmap-anydpi-v26/ic_launcher_round.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_thumbnail_placeholder.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_thumbnail_placeholder.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_search_field.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_search_field.xml"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\font_ndot_47_inspired_by_nothing.otf.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\font\\ndot_47_inspired_by_nothing.otf"
+        "merged": "com.essential.spacelite.app-debug-4:/mipmap-mdpi_ic_launcher.png.flat",
+        "source": "com.essential.spacelite.app-main-6:/mipmap-mdpi/ic_launcher.png"
     },
     {
-        "merged": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-debug-4:\\drawable_bg_glass_blob.xml.flat",
-        "source": "C:\\Users\\dansh\\.gradle\\daemon\\8.7\\com.essential.spacelite.app-main-6:\\drawable\\bg_glass_blob.xml"
+        "merged": "com.essential.spacelite.app-debug-4:/mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "com.essential.spacelite.app-main-6:/mipmap-xxhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.essential.spacelite.app-debug-4:/mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "com.essential.spacelite.app-main-6:/mipmap-xhdpi/ic_launcher.png"
+    },
+    {
+        "merged": "com.essential.spacelite.app-debug-4:/drawable_bg_voice_preview.xml.flat",
+        "source": "com.essential.spacelite.app-main-6:/drawable/bg_voice_preview.xml"
     }
 ]

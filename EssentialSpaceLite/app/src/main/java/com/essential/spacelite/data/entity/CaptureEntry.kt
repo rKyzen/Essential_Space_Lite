@@ -34,5 +34,8 @@ data class CaptureEntry(
     val aiSummary: String? = null,
 
     @ColumnInfo(name = "app_name")
-    val appName: String? = null
+    val appName: String? = null,
+
+    @ColumnInfo(name = "is_favorite")
+    val isFavorite: Boolean = false
 )

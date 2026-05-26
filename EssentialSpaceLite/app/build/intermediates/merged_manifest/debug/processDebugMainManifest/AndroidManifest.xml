@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.essential.spacelite"
-    android:versionCode="26"
-    android:versionName="2.2" >
+    android:versionCode="28"
+    android:versionName="2.4" >
 
     <uses-sdk
         android:minSdkVersion="28"
@@ -39,6 +39,10 @@
         android:theme="@style/Theme.EssentialSpaceLite" >
         <activity
             android:name="com.essential.spacelite.timeline.AccessibilityDisclosureActivity"
+            android:exported="false"
+            android:theme="@style/Theme.EssentialSpaceLite" />
+        <activity
+            android:name="com.essential.spacelite.timeline.UpdateIntroActivity"
             android:exported="false"
             android:theme="@style/Theme.EssentialSpaceLite" />
 

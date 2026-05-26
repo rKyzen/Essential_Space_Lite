@@ -24,6 +24,20 @@
         <item name="android:windowLightNavigationBar">true</item>
     </style>
 
+    <style name="Theme.EssentialSpaceLite.Carbon" parent="Theme.EssentialSpaceLite">
+        <item name="colorPrimary">@color/accent_white</item>
+        <item name="colorOnPrimary">@color/bg_primary</item>
+        <item name="android:statusBarColor">@color/bg_surface</item>
+        <item name="android:navigationBarColor">@color/bg_surface</item>
+    </style>
+
+    <style name="Theme.EssentialSpaceLite.Glass" parent="Theme.EssentialSpaceLite">
+        <item name="colorPrimary">@color/accent_yellow</item>
+        <item name="colorOnPrimary">@color/bg_primary</item>
+        <item name="android:statusBarColor">@color/bg_surface</item>
+        <item name="android:navigationBarColor">@color/bg_surface</item>
+    </style>
+
     <style name="Theme.EssentialSpaceLite.MaterialYou" parent="Theme.EssentialSpaceLite">
         <item name="android:statusBarColor">?attr/colorSurface</item>
         <item name="android:navigationBarColor">?attr/colorSurface</item>

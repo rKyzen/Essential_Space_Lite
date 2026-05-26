@@ -45,11 +45,18 @@ class SettingsActivity : AppCompatActivity() {
         setupNav()
         setupInfoCard()
         applyGlassSystem()
+        applyThemeVisuals()
+        ThemeHelper.applyAmbientMode(
+            PrefsManager.getThemeOption(this),
+            binding.backdropBlobTop,
+            binding.backdropBlobBottom
+        )
     }
 
     private fun setupHeading() {
         binding.switchNdot.isChecked = PrefsManager.useNdotHeadings(this)
         binding.switchAiSummary.isChecked = PrefsManager.isAiSummaryEnabled(this)
+        binding.themeValue.text = ThemeHelper.displayLabel(PrefsManager.getThemeOption(this))
         updateHeading()
 
         binding.switchNdot.setOnCheckedChangeListener { _, isChecked ->
@@ -75,6 +82,9 @@ class SettingsActivity : AppCompatActivity() {
         }
         binding.rowAiSummary.setOnClickListener {
             binding.switchAiSummary.toggle()
+        }
+        binding.rowTheme.setOnClickListener {
+            showThemePicker()
         }
         binding.rowKeyBinds.setOnClickListener {
             MaterialAlertDialogBuilder(this)
@@ -117,6 +127,23 @@ class SettingsActivity : AppCompatActivity() {
         }
     }
 
+    private fun showThemePicker() {
+        val options = PrefsManager.ThemeOption.entries.toTypedArray()
+        val labels = options.map { ThemeHelper.displayLabel(it) }.toTypedArray()
+        val current = options.indexOf(PrefsManager.getThemeOption(this)).coerceAtLeast(0)
+        MaterialAlertDialogBuilder(this)
+            .setTitle(R.string.settings_theme_dialog_title)
+            .setSingleChoiceItems(labels, current) { dialog, which ->
+                val selected = options[which]
+                ThemeHelper.setThemeOption(this, selected)
+                binding.themeValue.text = ThemeHelper.displayLabel(selected)
+                dialog.dismiss()
+                recreate()
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
+    }
+
     private fun confirmDeleteAll() {
         MaterialAlertDialogBuilder(this)
             .setTitle(R.string.settings_delete_all)
@@ -141,6 +168,7 @@ class SettingsActivity : AppCompatActivity() {
     }
 
     private fun setupNav() {
+        applySettingsNavState()
         binding.navNotes.setOnClickListener {
             startActivity(MainActivity.createIntent(this, "notes"))
             finish()
@@ -160,8 +188,16 @@ class SettingsActivity : AppCompatActivity() {
 
     private fun setupInfoCard() {
         val versionName = packageManager.getPackageInfo(packageName, 0).versionName ?: "1.0"
-        binding.settingsInfoBody.text =
-            "Version $versionName\nLocal-first capture workspace with note, voice, reminder, and accessibility shortcut support."
+        lifecycleScope.launch(Dispatchers.IO) {
+            val entries = AppDatabase.getDatabase(applicationContext).captureEntryDao().getAllEntriesSnapshot()
+            val favorites = entries.count { it.isFavorite }
+            val reminders = entries.count { it.reminderAt != null }
+            val withVoice = entries.count { !it.voiceNotePath.isNullOrBlank() }
+            runOnUiThread {
+                binding.settingsInfoBody.text =
+                    "Version $versionName\n${entries.size} captures, $favorites favorites, $withVoice voice memos, $reminders active reminders.\nLocal-first capture workspace with note, voice, reminder, and accessibility shortcut support."
+            }
+        }
     }
 
     private fun applyGlassSystem() {
@@ -171,6 +207,7 @@ class SettingsActivity : AppCompatActivity() {
         listOf(
             binding.rowNdot,
             binding.rowAiSummary,
+            binding.rowTheme,
             binding.rowKeyBinds,
             binding.rowAbout,
             binding.rowPrivacy,
@@ -199,5 +236,34 @@ class SettingsActivity : AppCompatActivity() {
         GlassUi.animateEntrance(binding.rowDeleteAll, 228L, 12f)
         GlassUi.animateEntrance(binding.settingsInfoCard, 254L, 12f)
         GlassUi.animateEntrance(binding.btnSettingsActive, 270L, 16f)
+    }
+
+    private fun applyThemeVisuals() {
+        val palette = ThemeHelper.palette(this)
+        ThemeHelper.applyRootBackground(binding.root, palette)
+        listOf(
+            binding.rowNdot,
+            binding.rowAiSummary,
+            binding.rowTheme,
+            binding.rowKeyBinds,
+            binding.rowAbout,
+            binding.rowPrivacy,
+            binding.rowTerms,
+            binding.rowDeleteAll,
+            binding.settingsInfoCard,
+            binding.settingsBottomNav,
+            binding.btnSettingsActive
+        ).forEachIndexed { index, view ->
+            ThemeHelper.tintSurface(view, if (index < 8) palette.surfaceStrongTint else palette.navShellTint)
+        }
+        applySettingsNavState()
+    }
+
+    private fun applySettingsNavState() {
+        val palette = ThemeHelper.palette(this)
+        ThemeHelper.styleNavActive(binding.navNotes, palette, false)
+        ThemeHelper.styleNavActive(binding.navVoice, palette, false)
+        ThemeHelper.styleNavActive(binding.navSearch, palette, false)
+        ThemeHelper.tintSurface(binding.btnSettingsActive, palette.navActiveTint)
     }
 }

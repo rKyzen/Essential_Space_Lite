@@ -24,6 +24,7 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.LinearLayout
 import android.widget.Toast
 import android.view.WindowManager.BadTokenException
 import com.essential.spacelite.R
@@ -68,9 +69,10 @@ class CaptureOverlayManager(private val context: Context) {
     private lateinit var btnSave: TextView
     private lateinit var btnDiscard: ImageView
     private lateinit var voiceTimerText: TextView
-    private lateinit var voiceWaveform: View
+    private lateinit var voiceWaveform: LinearLayout
     private lateinit var recordingDot: View
     private lateinit var screenshotLoadingIndicator: View
+    private lateinit var voiceBars: List<View>
 
     private var currentScreenshotPath: String? = null
     private var currentThumbnailPath: String? = null
@@ -116,6 +118,13 @@ class CaptureOverlayManager(private val context: Context) {
         voiceWaveform = rootView.findViewById(R.id.voice_waveform)
         recordingDot = rootView.findViewById(R.id.recording_dot)
         screenshotLoadingIndicator = rootView.findViewById(R.id.screenshot_loading)
+        voiceBars = listOf(
+            rootView.findViewById(R.id.voice_bar_1),
+            rootView.findViewById(R.id.voice_bar_2),
+            rootView.findViewById(R.id.voice_bar_3),
+            rootView.findViewById(R.id.voice_bar_4),
+            rootView.findViewById(R.id.voice_bar_5)
+        )
 
         GlassUi.applyDepth(cardContainer, 24f)
         GlassUi.attachLiquidPress(btnSave, 0.985f, 0.97f)
@@ -380,6 +389,7 @@ class CaptureOverlayManager(private val context: Context) {
         recordingDot.visibility = View.VISIBLE
         voiceWaveform.visibility = View.VISIBLE
         voiceTimerText.visibility = View.VISIBLE
+        resetVoiceBars()
         startRecordingTicker()
     }
 
@@ -391,6 +401,7 @@ class CaptureOverlayManager(private val context: Context) {
         btnVoice.setImageResource(R.drawable.ic_mic)
         recordingDot.visibility = View.GONE
         voiceWaveform.visibility = View.GONE
+        resetVoiceBars()
         if (dur < 500) {
             voiceNotePath = ""
             voiceTimerText.visibility = View.GONE
@@ -405,6 +416,7 @@ class CaptureOverlayManager(private val context: Context) {
                 if (!isRecording) return
                 val ms = voiceRecorder.durationMs
                 voiceTimerText.text = formatMs(ms)
+                updateVoiceBars(voiceRecorder.amplitude)
                 if (ms >= 59_500) {
                     stopRecording()
                     return
@@ -490,6 +502,7 @@ class CaptureOverlayManager(private val context: Context) {
         btnVoice.setImageResource(R.drawable.ic_mic)
         btnVoice.isEnabled = true
         btnDiscard.isEnabled = true
+        resetVoiceBars()
         cardContainer.alpha = 0f
         cardContainer.translationY = 0f
         windowParams.flags = windowParams.flags or WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE
@@ -523,6 +536,27 @@ class CaptureOverlayManager(private val context: Context) {
     private fun setSaveEnabled(enabled: Boolean) {
         btnSave.isEnabled = enabled
         btnSave.alpha = if (enabled) 1f else 0.55f
+    }
+
+    private fun updateVoiceBars(amplitude: Int) {
+        val normalized = (amplitude / 32767f).coerceIn(0f, 1f)
+        voiceBars.forEachIndexed { index, bar ->
+            val stagger = 0.22f * index
+            val scale = (0.4f + normalized * (1.35f - stagger)).coerceAtLeast(0.38f)
+            bar.animate()
+                .scaleY(scale)
+                .alpha((0.58f + normalized * 0.42f).coerceAtMost(1f))
+                .setDuration(80L)
+                .setInterpolator(linear)
+                .start()
+        }
+    }
+
+    private fun resetVoiceBars() {
+        voiceBars.forEach { bar ->
+            bar.scaleY = 0.55f
+            bar.alpha = 0.72f
+        }
     }
 
     private fun invalidateCaptureSession() {

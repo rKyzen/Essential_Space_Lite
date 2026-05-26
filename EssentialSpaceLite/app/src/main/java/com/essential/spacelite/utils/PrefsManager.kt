@@ -12,9 +12,12 @@ object PrefsManager {
     private const val KEY_THEME_OPTION = "theme_option"
     private const val KEY_USE_NDOT = "use_ndot_headings"
     private const val KEY_AI_SUMMARY_ENABLED = "ai_summary_enabled"
+    private const val KEY_LAST_SEEN_VERSION_CODE = "last_seen_version_code"
 
     enum class ThemeOption(val storageValue: String) {
-        NOTHING_DARK("nothing_dark");
+        NOTHING_DARK("nothing_dark"),
+        NOTHING_CARBON("nothing_carbon"),
+        NOTHING_GLASS("nothing_glass");
 
         companion object {
             fun fromStorage(value: String?): ThemeOption {
@@ -70,4 +73,10 @@ object PrefsManager {
 
     fun setAiSummaryEnabled(context: Context, enabled: Boolean) =
         prefs(context).edit().putBoolean(KEY_AI_SUMMARY_ENABLED, enabled).apply()
+
+    fun getLastSeenVersionCode(context: Context): Long =
+        prefs(context).getLong(KEY_LAST_SEEN_VERSION_CODE, 0L)
+
+    fun setLastSeenVersionCode(context: Context, versionCode: Long) =
+        prefs(context).edit().putLong(KEY_LAST_SEEN_VERSION_CODE, versionCode).apply()
 }

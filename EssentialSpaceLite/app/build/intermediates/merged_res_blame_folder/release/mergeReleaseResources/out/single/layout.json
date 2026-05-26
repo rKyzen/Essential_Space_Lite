@@ -1,0 +1,42 @@
+[
+    {
+        "merged": "com.essential.spacelite.app-mergeReleaseResources-3:/layout/overlay_capture.xml",
+        "source": "com.essential.spacelite.app-main-5:/layout/overlay_capture.xml"
+    },
+    {
+        "merged": "com.essential.spacelite.app-mergeReleaseResources-3:/layout/item_update_intro_page.xml",
+        "source": "com.essential.spacelite.app-main-5:/layout/item_update_intro_page.xml"
+    },
+    {
+        "merged": "com.essential.spacelite.app-mergeReleaseResources-3:/layout/item_timeline_entry.xml",
+        "source": "com.essential.spacelite.app-main-5:/layout/item_timeline_entry.xml"
+    },
+    {
+        "merged": "com.essential.spacelite.app-mergeReleaseResources-3:/layout/item_voice_note.xml",
+        "source": "com.essential.spacelite.app-main-5:/layout/item_voice_note.xml"
+    },
+    {
+        "merged": "com.essential.spacelite.app-mergeReleaseResources-3:/layout/activity_detail.xml",
+        "source": "com.essential.spacelite.app-main-5:/layout/activity_detail.xml"
+    },
+    {
+        "merged": "com.essential.spacelite.app-mergeReleaseResources-3:/layout/activity_update_intro.xml",
+        "source": "com.essential.spacelite.app-main-5:/layout/activity_update_intro.xml"
+    },
+    {
+        "merged": "com.essential.spacelite.app-mergeReleaseResources-3:/layout/activity_main.xml",
+        "source": "com.essential.spacelite.app-main-5:/layout/activity_main.xml"
+    },
+    {
+        "merged": "com.essential.spacelite.app-mergeReleaseResources-3:/layout/item_origin_capture_card.xml",
+        "source": "com.essential.spacelite.app-main-5:/layout/item_origin_capture_card.xml"
+    },
+    {
+        "merged": "com.essential.spacelite.app-mergeReleaseResources-3:/layout/activity_accessibility_disclosure.xml",
+        "source": "com.essential.spacelite.app-main-5:/layout/activity_accessibility_disclosure.xml"
+    },
+    {
+        "merged": "com.essential.spacelite.app-mergeReleaseResources-3:/layout/activity_settings.xml",
+        "source": "com.essential.spacelite.app-main-5:/layout/activity_settings.xml"
+    }
+]

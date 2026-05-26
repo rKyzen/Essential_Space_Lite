@@ -1,1 +1,0 @@
-Essential Space Lite brings the Essential Space experience to all Android devices. Capture screenshots, add notes and voice memos using volume keys, and organize everything in a clean timeline. Lightweight, fast, with sharing support and future AI features planned.

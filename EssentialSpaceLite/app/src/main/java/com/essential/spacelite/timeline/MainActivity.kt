@@ -61,6 +61,8 @@ class MainActivity : AppCompatActivity() {
     private var mediaPlayer: MediaPlayer? = null
     private var playingButton: ImageButton? = null
     private var hasAnimatedTabState = false
+    private var todayFocusEntry: CaptureEntry? = null
+    private var resumeEntry: CaptureEntry? = null
     private val swipeThresholdPx by lazy { px(72) }
     private val swipeVelocityThresholdPx by lazy { px(72) }
 
@@ -112,6 +114,11 @@ class MainActivity : AppCompatActivity() {
             finish()
             return
         }
+        if (shouldShowWhatsNew()) {
+            startActivity(Intent(this, UpdateIntroActivity::class.java))
+            finish()
+            return
+        }
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(binding.root) { v, insets ->
@@ -123,6 +130,12 @@ class MainActivity : AppCompatActivity() {
         currentTab = parseOriginTab(intent.getStringExtra(EXTRA_INITIAL_TAB))
 
         applyGlassSystem()
+        applyThemeVisuals()
+        ThemeHelper.applyAmbientMode(
+            PrefsManager.getThemeOption(this),
+            binding.backdropBlobTop,
+            binding.backdropBlobBottom
+        )
         setupInteractions()
         applyHeadingTypography()
         observeEntries()
@@ -148,6 +161,26 @@ class MainActivity : AppCompatActivity() {
         }
         binding.navSearch.setOnClickListener {
             applyTab(OriginTab.SEARCH, focusSearch = true)
+        }
+        binding.actionFavorites.setOnClickListener {
+            applyTab(OriginTab.SEARCH, focusSearch = false)
+            binding.searchInput.setText("favorite")
+            binding.searchInput.setSelection(binding.searchInput.text?.length ?: 0)
+        }
+        binding.actionReminders.setOnClickListener {
+            applyTab(OriginTab.SEARCH, focusSearch = false)
+            binding.searchInput.setText("reminder")
+            binding.searchInput.setSelection(binding.searchInput.text?.length ?: 0)
+        }
+        binding.actionVoiceFocus.setOnClickListener {
+            binding.searchInput.text?.clear()
+            applyTab(OriginTab.VOICE)
+        }
+        binding.todayFocusCard.setOnClickListener {
+            todayFocusEntry?.let(::openEntry)
+        }
+        binding.resumeCard.setOnClickListener {
+            resumeEntry?.let(::openEntry)
         }
 
     }
@@ -234,7 +267,6 @@ class MainActivity : AppCompatActivity() {
 
         listOf(binding.navNotes, binding.navVoice, binding.navSearch).forEach { nav ->
             val iconView = (nav as LinearLayout).getChildAt(0) as ImageView
-            // Reference navbar: static icons; selection is a subtle alpha emphasis only.
             nav.animate().cancel()
             iconView.animate().cancel()
             nav.scaleX = 1f
@@ -243,11 +275,16 @@ class MainActivity : AppCompatActivity() {
             iconView.scaleX = 1f
             iconView.scaleY = 1f
             iconView.rotation = 0f
-            iconView.alpha = if (nav === selectedView) 1f else 0.78f
+            val isSelected = nav === selectedView
+            ThemeHelper.styleNavActive(nav, ThemeHelper.palette(this), isSelected)
+            iconView.alpha = if (isSelected) 1f else 0.74f
+            iconView.scaleX = if (isSelected) 1.06f else 1f
+            iconView.scaleY = if (isSelected) 1.06f else 1f
         }
     }
 
     private fun renderCurrentTab() {
+        updateHomeHighlights(latestEntries)
         updateStats(latestEntries)
         when (currentTab) {
             OriginTab.NOTES,
@@ -257,16 +294,102 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    private fun updateHomeHighlights(entries: List<CaptureEntry>) {
+        val favoriteCount = entries.count { it.isFavorite }
+        val reminderCount = entries.count { it.reminderAt != null }
+        val voiceCount = entries.count { !it.voiceNotePath.isNullOrBlank() }
+        binding.actionFavorites.text = getString(R.string.quick_action_favorites_count, favoriteCount)
+        binding.actionReminders.text = getString(R.string.quick_action_reminders_count, reminderCount)
+        binding.actionVoiceFocus.text = getString(R.string.quick_action_voice_count, voiceCount)
+
+        todayFocusEntry = entries
+            .filter { it.reminderAt != null || it.isFavorite }
+            .sortedWith(
+                compareByDescending<CaptureEntry> { it.reminderAt != null }
+                    .thenByDescending { it.isFavorite }
+                    .thenByDescending { it.timestamp }
+            )
+            .firstOrNull()
+            ?: entries.firstOrNull()
+
+        resumeEntry = entries
+            .filter {
+                !it.textNote.isNullOrBlank() ||
+                    !it.voiceNotePath.isNullOrBlank() ||
+                    !it.aiSummary.isNullOrBlank()
+            }
+            .maxByOrNull { it.timestamp }
+
+        bindHighlightCard(
+            entry = todayFocusEntry,
+            titleView = binding.todayFocusTitle,
+            metaView = binding.todayFocusMeta,
+            emptyTitle = getString(R.string.today_focus_empty),
+            emptyMeta = getString(R.string.focus_hint_priority),
+            metaProvider = { entry ->
+                when {
+                    entry.reminderAt != null -> getString(R.string.focus_hint_priority)
+                    entry.isFavorite -> getString(R.string.focus_hint_favorite)
+                    else -> getString(R.string.focus_hint_recent)
+                }
+            }
+        )
+
+        bindHighlightCard(
+            entry = resumeEntry,
+            titleView = binding.resumeTitle,
+            metaView = binding.resumeMeta,
+            emptyTitle = getString(R.string.resume_empty),
+            emptyMeta = getString(R.string.resume_hint_note),
+            metaProvider = { entry ->
+                when {
+                    !entry.aiSummary.isNullOrBlank() -> getString(R.string.resume_hint_summary)
+                    !entry.voiceNotePath.isNullOrBlank() -> getString(R.string.resume_hint_voice)
+                    else -> getString(R.string.resume_hint_note)
+                }
+            }
+        )
+    }
+
+    private fun bindHighlightCard(
+        entry: CaptureEntry?,
+        titleView: TextView,
+        metaView: TextView,
+        emptyTitle: String,
+        emptyMeta: String,
+        metaProvider: (CaptureEntry) -> String
+    ) {
+        if (entry == null) {
+            titleView.text = emptyTitle
+            metaView.text = emptyMeta
+            return
+        }
+
+        titleView.text = entry.textNote?.takeIf { it.isNotBlank() }
+            ?: entry.aiSummary?.takeIf { it.isNotBlank() }
+            ?: if (!entry.voiceNotePath.isNullOrBlank()) getString(R.string.voice_card_title) else getString(R.string.main_subtitle)
+        metaView.text = metaProvider(entry)
+    }
+
     private fun renderNoteSections(entries: List<CaptureEntry>) {
         val isSearching = binding.searchInput.text?.isNotBlank() == true
-        val recentEntries = if (isSearching) entries.take(4) else entries.take(2)
-        val todayEssentials = if (isSearching) emptyList() else entries.drop(2).take(2)
+        val sortedEntries = entries.sortedWith(
+            compareByDescending<CaptureEntry> { it.isFavorite }
+                .thenByDescending { it.timestamp }
+        )
+        val favoriteEntries = if (isSearching) emptyList() else sortedEntries.filter { it.isFavorite }.take(2)
+        val nonFavoriteEntries = sortedEntries.filterNot { favoriteEntries.any { favorite -> favorite.id == it.id } }
+        val recentEntries = if (isSearching) sortedEntries.take(4) else nonFavoriteEntries.take(2)
+        val todayEssentials = if (isSearching) emptyList() else nonFavoriteEntries.drop(2).take(2)
 
+        binding.favoritesLabel.visibility = if (favoriteEntries.isEmpty()) View.GONE else View.VISIBLE
+        binding.favoritesRows.visibility = if (favoriteEntries.isEmpty()) View.GONE else View.VISIBLE
         binding.recentLabel.visibility = if (recentEntries.isEmpty()) View.GONE else View.VISIBLE
         binding.recentRows.visibility = if (recentEntries.isEmpty()) View.GONE else View.VISIBLE
         binding.todayLabel.visibility = if (todayEssentials.isEmpty()) View.GONE else View.VISIBLE
         binding.todayRows.visibility = if (todayEssentials.isEmpty()) View.GONE else View.VISIBLE
-
+        
+        populateCaptureRows(binding.favoritesRows, favoriteEntries)
         populateCaptureRows(binding.recentRows, recentEntries)
         populateCaptureRows(binding.todayRows, todayEssentials)
 
@@ -319,6 +442,8 @@ class MainActivity : AppCompatActivity() {
     private fun bindCaptureCard(binding: ItemOriginCaptureCardBinding, entry: CaptureEntry, index: Int) {
         GlassUi.applyDepth(binding.root, 12f)
         GlassUi.attachLiquidPress(binding.root)
+        val palette = ThemeHelper.palette(this)
+        ThemeHelper.styleCard(binding.root, palette, strong = true)
 
         val displayText = entry.textNote?.takeIf { it.isNotBlank() }
             ?: if (!entry.voiceNotePath.isNullOrBlank()) "Voice memo saved for later playback." else "Saved capture ready for your next action."
@@ -328,6 +453,7 @@ class MainActivity : AppCompatActivity() {
         val reminderText = ReminderUtils.formatOverviewReminder(binding.root.context, entry.reminderAt)
         binding.cardReminder.text = reminderText
         binding.cardReminder.visibility = if (entry.reminderAt != null) View.VISIBLE else View.GONE
+        binding.cardFavorite.visibility = if (entry.isFavorite) View.VISIBLE else View.GONE
         binding.cardKind.text = when {
             !entry.voiceNotePath.isNullOrBlank() && !entry.textNote.isNullOrBlank() -> getString(R.string.card_kind_hybrid)
             !entry.voiceNotePath.isNullOrBlank() -> getString(R.string.card_kind_voice)
@@ -379,6 +505,8 @@ class MainActivity : AppCompatActivity() {
     private fun bindVoiceRow(binding: ItemVoiceNoteBinding, entry: CaptureEntry, index: Int) {
         GlassUi.applyDepth(binding.root, 10f)
         GlassUi.attachLiquidPress(binding.root)
+        val palette = ThemeHelper.palette(this)
+        ThemeHelper.styleCard(binding.root, palette)
         GlassUi.attachLiquidPress(binding.btnPlay, 0.94f, 0.9f)
         binding.voiceMeta.text = FileUtils.formatDuration(entry.voiceNoteDurationMs)
 
@@ -535,6 +663,7 @@ class MainActivity : AppCompatActivity() {
     private fun applyHeadingTypography() {
         val useNdot = PrefsManager.useNdotHeadings(this)
         val headingViews = listOf(
+            binding.favoritesLabel,
             binding.recentLabel,
             binding.todayLabel,
             binding.voiceTodayLabel,
@@ -560,6 +689,8 @@ class MainActivity : AppCompatActivity() {
         listOf(
             binding.searchBar,
             binding.statsRow,
+            binding.todayFocusCard,
+            binding.resumeCard,
             binding.bottomNav,
             binding.btnSettingsBottom
         ).forEach { view ->
@@ -575,6 +706,28 @@ class MainActivity : AppCompatActivity() {
         listOf(binding.navNotes, binding.navVoice, binding.navSearch).forEach { nav ->
             GlassUi.attachLiquidPress(nav, 0.95f, 0.92f)
         }
+        listOf(binding.actionFavorites, binding.actionReminders, binding.actionVoiceFocus).forEach { chip ->
+            GlassUi.applyDepth(chip, 8f)
+            GlassUi.attachLiquidPress(chip, 0.97f, 0.95f)
+        }
+    }
+
+    private fun applyThemeVisuals() {
+        val palette = ThemeHelper.palette(this)
+        ThemeHelper.applyRootBackground(binding.root, palette)
+        ThemeHelper.tintSurface(binding.searchBar, palette.surfaceStrongTint)
+        ThemeHelper.tintSurface(binding.statsRow, palette.surfaceTint)
+        ThemeHelper.tintSurface(binding.bottomNav, palette.navShellTint)
+        ThemeHelper.tintSurface(binding.btnSettingsBottom, palette.navShellTint)
+        ThemeHelper.tintSurface(binding.statCaptures, palette.surfaceStrongTint)
+        ThemeHelper.tintSurface(binding.statVoice, palette.surfaceStrongTint)
+        ThemeHelper.tintSurface(binding.statReminders, palette.surfaceStrongTint)
+        ThemeHelper.tintSurface(binding.actionFavorites, palette.surfaceStrongTint)
+        ThemeHelper.tintSurface(binding.actionReminders, palette.surfaceStrongTint)
+        ThemeHelper.tintSurface(binding.actionVoiceFocus, palette.surfaceStrongTint)
+        ThemeHelper.styleCard(binding.todayFocusCard, palette, strong = true)
+        ThemeHelper.styleCard(binding.resumeCard, palette, strong = true)
+        updateNavState(animate = false)
     }
 
     private fun animateScreenEntrance() {
@@ -582,6 +735,8 @@ class MainActivity : AppCompatActivity() {
         GlassUi.animateEntrance(binding.subtitleText, delayMs = 38L, offsetDp = 12f)
         GlassUi.animateEntrance(binding.searchBar, delayMs = 70L, offsetDp = 14f)
         GlassUi.animateEntrance(binding.statsRow, delayMs = 110L, offsetDp = 12f)
+        GlassUi.animateEntrance(binding.quickActionsRow, delayMs = 138L, offsetDp = 10f)
+        GlassUi.animateEntrance(binding.focusResumeRow, delayMs = 156L, offsetDp = 12f)
         GlassUi.animateEntrance(binding.bottomNav, delayMs = 180L, offsetDp = 16f)
         GlassUi.animateEntrance(binding.btnSettingsBottom, delayMs = 220L, offsetDp = 18f)
     }
@@ -589,7 +744,12 @@ class MainActivity : AppCompatActivity() {
     private fun updateStats(entries: List<CaptureEntry>) {
         binding.statCapturesValue.text = entries.size.toString()
         binding.statVoiceValue.text = entries.count { !it.voiceNotePath.isNullOrBlank() }.toString()
-        binding.statRemindersValue.text = entries.count { it.reminderAt != null }.toString()
+        binding.statRemindersValue.text = entries.count { it.isFavorite }.toString()
+    }
+
+    private fun shouldShowWhatsNew(): Boolean {
+        val currentVersion = packageManager.getPackageInfo(packageName, 0).longVersionCode
+        return PrefsManager.getLastSeenVersionCode(this) < currentVersion
     }
 
     private fun tabDirection(from: OriginTab, to: OriginTab): Int {

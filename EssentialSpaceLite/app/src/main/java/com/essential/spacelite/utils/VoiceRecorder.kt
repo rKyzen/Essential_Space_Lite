@@ -16,6 +16,15 @@ class VoiceRecorder(private val context: Context) {
     val durationMs: Long
         get() = if (isRecording) System.currentTimeMillis() - startTime else 0L
 
+    val amplitude: Int
+        get() = if (isRecording) {
+            try {
+                recorder?.maxAmplitude ?: 0
+            } catch (_: Exception) {
+                0
+            }
+        } else 0
+
     fun start(path: String): Boolean {
         return try {
             outputPath = path

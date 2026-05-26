@@ -50,6 +50,20 @@
                 android:layout_weight="1" />
 
             <Button
+                android:id="@+id/btn_toggle_favorite"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginEnd="10dp"
+                android:minWidth="0dp"
+                android:paddingHorizontal="14dp"
+                android:text="@string/favorite_add"
+                android:textAllCaps="false"
+                android:textColor="@color/text_primary"
+                app:strokeColor="@color/stroke"
+                app:strokeWidth="1dp" />
+
+            <Button
                 android:id="@+id/btn_save_note"
                 style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="wrap_content"
@@ -74,20 +88,46 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <ImageView
-                    android:id="@+id/screenshot_full"
+                <FrameLayout
+                    android:id="@+id/screenshot_shell"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:adjustViewBounds="true"
-                    android:background="@color/bg_surface"
-                    android:scaleType="fitCenter" />
+                    android:layout_marginHorizontal="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_glass_panel"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:id="@+id/screenshot_full"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:adjustViewBounds="true"
+                        android:background="@drawable/bg_thumbnail_placeholder"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:scaleType="fitCenter" />
+
+                    <TextView
+                        android:id="@+id/screenshot_hint"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|end"
+                        android:layout_margin="10dp"
+                        android:background="@drawable/bg_badge_chip"
+                        android:fontFamily="monospace"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="5dp"
+                        android:text="@string/detail_screenshot_hint"
+                        android:textColor="@color/text_secondary"
+                        android:textSize="9sp" />
+                </FrameLayout>
 
                 <LinearLayout
                     android:id="@+id/meta_group"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginHorizontal="16dp"
-                    android:layout_marginTop="18dp"
+                    android:layout_marginTop="14dp"
                     android:background="@drawable/bg_glass_panel"
                     android:orientation="vertical"
                     android:paddingHorizontal="20dp"
@@ -151,8 +191,8 @@
                             android:visibility="gone" />
 
                         <TextView
-                            android:id="@+id/chip_ai"
-                            android:layout_width="wrap_content"
+                        android:id="@+id/chip_ai"
+                        android:layout_width="wrap_content"
                             android:layout_height="24dp"
                             android:layout_marginStart="8dp"
                             android:background="@drawable/bg_badge_chip"
@@ -163,7 +203,41 @@
                             android:textColor="@color/text_secondary"
                             android:textSize="9sp"
                             android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/chip_favorite"
+                            android:layout_width="wrap_content"
+                            android:layout_height="24dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/bg_badge_chip"
+                            android:fontFamily="monospace"
+                            android:gravity="center"
+                            android:paddingHorizontal="10dp"
+                            android:text="@string/detail_chip_favorite"
+                            android:textColor="@color/accent_yellow"
+                            android:textSize="9sp"
+                            android:visibility="gone" />
                     </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:fontFamily="monospace"
+                        android:letterSpacing="0.1"
+                        android:text="@string/detail_source_label"
+                        android:textColor="@color/text_tertiary"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/source_app_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="@string/detail_source_unknown"
+                        android:textColor="@color/text_primary"
+                        android:textSize="14sp" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -263,6 +337,19 @@
                         android:layout_height="40dp"
                         android:layout_marginTop="10dp"
                         android:text="@string/reminder_add_to_calendar"
+                        android:textAllCaps="false"
+                        android:textColor="@color/text_primary"
+                        android:visibility="gone"
+                        app:strokeColor="@color/stroke"
+                        app:strokeWidth="1dp" />
+
+                    <Button
+                        android:id="@+id/btn_add_to_clock"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="10dp"
+                        android:text="@string/reminder_add_to_clock"
                         android:textAllCaps="false"
                         android:textColor="@color/text_primary"
                         android:visibility="gone"
