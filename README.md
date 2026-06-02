@@ -1,6 +1,6 @@
-# 🌌 Origin Space Lite
+# 🌌 Origin Space
 
-Origin Space Lite is a modern Android experience focused on capturing thoughts, moments, reminders, voice notes, and meaningful daily context in one clean and distraction-free space.
+Origin Space is a modern Android experience focused on capturing thoughts, moments, reminders, voice notes, and meaningful daily context in one clean and distraction-free space.
 
 Built with a Material 3 inspired design language, Origin Space Lite focuses on speed, simplicity, and fluid interaction while still feeling personal and alive.
 
@@ -23,7 +23,7 @@ Built with a Material 3 inspired design language, Origin Space Lite focuses on s
 
 # 📸 Experience
 
-Origin Space Lite is designed around reducing clutter and helping important captures stay accessible instead of getting lost.
+Origin Space is designed around reducing clutter and helping important captures stay accessible instead of getting lost.
 
 The app focuses heavily on:
 
