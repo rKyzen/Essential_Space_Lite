@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">_init_ /space</string>
+    <string name="accessibility_service_label">_init_ /space capture</string>
+    <string name="accessibility_service_description">detects simultaneous volume up and volume down keypress to trigger capture. no screen content is read before capture.</string>
+    
+    <!-- disclosure -->
+    <string name="disclosure_title">accessibility disclosure</string>
+    <string name="disclosure_heading">_init_ /space uses accessibility to detect capture shortcuts</string>
+    <string name="disclosure_intro_body">the accessibility service listens for the simultaneous volume up and volume down keypress to trigger capture. no keystrokes, personal data, or screen content are monitored or logged outside active capture sessions.</string>
+    <string name="disclosure_step_1">step 1</string>
+    <string name="disclosure_step_2">step 2</string>
+    <string name="disclosure_step_3">step 3</string>
+    <string name="disclosure_reason_title">purpose</string>
+    <string name="disclosure_reason_body">the service detects the hardware shortcut so you can capture screenshots, text notes, and voice memos instantly from any screen.</string>
+    <string name="disclosure_usage_title">usage</string>
+    <string name="disclosure_usage_body">when the dual volume key gesture is pressed, the service takes a screenshot and displays the capture panel.</string>
+    <string name="disclosure_permissions_title">permissions</string>
+    <string name="disclosure_permission_media">photos and media: stores and reads captures on this device.</string>
+    <string name="disclosure_permission_mic">microphone: records voice memos when chosen.</string>
+    <string name="disclosure_permission_notifications">notifications: delivers scheduled reminders.</string>
+    <string name="disclosure_limit_title">privacy</string>
+    <string name="disclosure_limit_body">_init_ /space does not track typed input, inspect notifications, or monitor other applications.</string>
+    <string name="disclosure_storage_body">all captures, notes, and voice recordings remain stored locally on device unless explicitly shared.</string>
+    <string name="disclosure_continue">open accessibility settings</string>
+    <string name="disclosure_permissions_button">app permissions</string>
+    <string name="disclosure_not_now">continue to app</string>
+
+    <!-- home / timeline -->
+    <string name="home_title">_init_ /space</string>
+    <string name="home_subtitle">capture inbox for thoughts, moments, reminders, and voice</string>
+    <string name="section_recent">recent</string>
+    <string name="section_all">all captures</string>
+    <string name="section_starred">starred</string>
+    <string name="section_reminders">reminders</string>
+    <string name="section_voice">voice</string>
+    <string name="section_notes">notes</string>
+    
+    <string name="counter_captures">captures: %1$d</string>
+    <string name="counter_reminders">reminders: %1$d</string>
+    <string name="counter_starred">starred: %1$d</string>
+    <string name="counter_voice">voice: %1$d</string>
+
+    <string name="filter_all">all</string>
+    <string name="filter_notes">notes</string>
+    <string name="filter_voice">voice</string>
+    <string name="filter_starred">starred</string>
+    <string name="filter_reminders">reminders</string>
+
+    <string name="search_hint">search captures...</string>
+    <string name="empty_state_title">no captures yet</string>
+    <string name="empty_state_subtitle">press volume up + down together to capture anywhere</string>
+    <string name="empty_search_title">no matching captures</string>
+    <string name="empty_search_subtitle">try a different search query or clear the filter</string>
+
+    <string name="recent_empty">no priority capture yet. your latest capture will appear here.</string>
+    <string name="open_capture">open</string>
+
+    <!-- detail -->
+    <string name="detail_title">capture</string>
+    <string name="detail_source_unknown">unknown source</string>
+    <string name="detail_note_hint">add or edit note...</string>
+    <string name="detail_save_note">save note</string>
+    <string name="detail_note_saved">note saved</string>
+    <string name="detail_note_count">%1$d characters</string>
+    <string name="detail_share">share</string>
+    <string name="detail_copy_note">copy text</string>
+    <string name="detail_note_copied">note copied to clipboard</string>
+    <string name="detail_star">star</string>
+    <string name="detail_unstar">unstar</string>
+    <string name="detail_starred">capture starred</string>
+    <string name="detail_unstarred">capture unstarred</string>
+    <string name="detail_delete">delete</string>
+    <string name="detail_delete_confirm_title">delete capture?</string>
+    <string name="detail_delete_confirm_message">this permanently removes the screenshot, note, and voice recording from this device.</string>
+    <string name="detail_delete_confirm_action">delete</string>
+    <string name="detail_cancel">cancel</string>
+    <string name="detail_expand_screenshot">expand</string>
+    <string name="detail_collapse_screenshot">fit</string>
+
+    <!-- reminder -->
+    <string name="reminder_label">reminder</string>
+    <string name="reminder_none">no reminder set</string>
+    <string name="reminder_set_button">set reminder</string>
+    <string name="reminder_clear_button">clear reminder</string>
+    <string name="reminder_add_calendar">add to calendar</string>
+    <string name="reminder_add_clock">add to clock</string>
+    <string name="reminder_notification_title">_init_ /space reminder</string>
+    <string name="reminder_notification_text">saved capture ready for review</string>
+    <string name="reminder_clock_unavailable">no clock application available</string>
+    <string name="reminder_saved">reminder scheduled</string>
+    <string name="reminder_cleared">reminder removed</string>
+
+    <!-- ai summary -->
+    <string name="ai_summary_title">summary</string>
+    <string name="ai_summary_empty">generate a summary from the screenshot and note using openrouter</string>
+    <string name="ai_summary_generate">generate summary</string>
+    <string name="ai_summary_refresh">refresh summary</string>
+    <string name="ai_summary_copy">copy summary</string>
+    <string name="ai_summary_copied">summary copied to clipboard</string>
+    <string name="ai_summary_missing_key">openrouter api key is not configured</string>
+    <string name="ai_summary_loading">processing screenshot and note...</string>
+    <string name="ai_summary_saved">summary updated</string>
+    <string name="ai_summary_failed">unable to generate summary</string>
+
+    <!-- overlay -->
+    <string name="overlay_note_hint">add a note...</string>
+    <string name="overlay_save">save</string>
+    <string name="overlay_discard">discard</string>
+    <string name="overlay_record">record</string>
+    <string name="overlay_stop">stop</string>
+
+    <!-- settings -->
+    <string name="settings_title">settings</string>
+    <string name="settings_version">version %1$s (%2$d)</string>
+    <string name="settings_ai_summary">ai summaries</string>
+    <string name="settings_ai_summary_subtitle">enable openrouter free model summaries for captures</string>
+    <string name="settings_accessibility">accessibility shortcut</string>
+    <string name="settings_accessibility_subtitle">configure volume up + down capture trigger</string>
+    <string name="settings_privacy">privacy policy</string>
+    <string name="settings_privacy_subtitle">view the local-first privacy policy</string>
+    <string name="settings_delete_all">delete all data</string>
+    <string name="settings_delete_all_subtitle">permanently wipe all captures, notes, and audio</string>
+    <string name="settings_delete_all_confirm_title">delete all captures?</string>
+    <string name="settings_delete_all_confirm_message">this action is permanent and will delete all stored screenshots, audio recordings, and notes from this device.</string>
+    <string name="settings_delete_all_confirm_action">delete everything</string>
+    <string name="settings_delete_all_success">all capture data deleted</string>
+    <string name="settings_about_title">about</string>
+    <string name="settings_about_body">_init_ /space is a bare-metal capture workspace under _init_ labs, built for extreme digital minimalism and local-first memory preservation.</string>
+</resources>

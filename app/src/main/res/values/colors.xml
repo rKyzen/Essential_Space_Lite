@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- _init_ family color palette (dark-first, zero red) -->
+    <color name="init_background">#000000</color>
+    <color name="init_surface">#0C0C0C</color>
+    <color name="init_surface_variant">#141414</color>
+    <color name="init_surface_elevated">#1B1B1B</color>
+    <color name="init_border">#242424</color>
+    <color name="init_border_subtle">#161616</color>
+    
+    <color name="init_text_primary">#F5F5F0</color>
+    <color name="init_text_secondary">#8A8A8A</color>
+    <color name="init_text_tertiary">#555555</color>
+    
+    <color name="init_signal_accent">#F5F5F0</color>
+    <color name="init_signal_accent_dim">#33F5F5F0</color>
+    <color name="init_signal_muted_amber">#D99B26</color>
+    
+    <!-- legacy color aliases for compatibility -->
+    <color name="bg_primary">#000000</color>
+    <color name="bg_surface">#0C0C0C</color>
+    <color name="bg_elevated">#1B1B1B</color>
+    <color name="bg_card">#141414</color>
+    <color name="text_primary">#F5F5F0</color>
+    <color name="text_secondary">#8A8A8A</color>
+    <color name="text_tertiary">#555555</color>
+    <color name="text_placeholder">#555555</color>
+    <color name="accent_white">#F5F5F0</color>
+    <color name="colorPrimary">#F5F5F0</color>
+    <color name="colorPrimaryVariant">#8A8A8A</color>
+    <color name="colorOnPrimary">#000000</color>
+    <color name="colorSecondary">#8A8A8A</color>
+    <color name="colorOnSecondary">#000000</color>
+    <color name="colorSurface">#0C0C0C</color>
+    <color name="colorOnSurface">#F5F5F0</color>
+    <color name="colorBackground">#000000</color>
+    <color name="colorOnBackground">#F5F5F0</color>
+    <color name="colorError">#D99B26</color>
+</resources>
